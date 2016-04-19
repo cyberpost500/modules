@@ -60,7 +60,6 @@ mode for execution.
 
 Console Use
 -----------
-This module relies heavily on the command-line.  You will be using a terminal
 emulator to execute the following commands.
 
 ------------------------------------------------------------
@@ -185,7 +184,7 @@ address and begins to execute whatever code it finds there.
 That's approximately what happens when we try to boot our Linux Live drives.
 The BIOS will copy the first 512K, then within that 512K there is a boot-loader
 that carries out whatever additional instructions are necessary to continue
-boot-strapping the actual operating system.  For our Live CD this means
+bootstrapping the actual operating system.  For our Live CD this means
 executing ISOLINUX or SYSLINUX which in turn locates the Linux kernel, copies
 it into RAM, and then jumps to executing the typical startup process.
 
@@ -373,19 +372,6 @@ figures, accept the warnings by entering `Ignore` to each warning.
 
 6. Reboot and test!  Be sure to press the down arrow when the Kali menu appears
    until the entry featuring persistence is selected, then press enter.
-
-
-Using Ubuntu
-----------
-Ubuntu derivatives base their Live CD on a program called casper.  Casper looks
-for a partition with a particular label of a particular format and will use it
-as a persistent partition if it can find it.  So, much like how the
-`persistence` partition was created for Kali, it's possible to create a
-`casper-rw` partition for Ubuntu.
-
-TODO: This section isn't written, there were problems adapting the above
-procedure for Lubuntu, Xubuntu.  I'm going to reevaluate the procedure and then
-either re-add the section, or remove the section entirely.
 
 
 Appendix - `dd`
