@@ -1,6 +1,7 @@
 # Lesson Module Repository
 
-This repository will hold the content of any lessons we (the Post Advisors) produce at the explorer post.
+This repository will hold the content of any lessons we (the Post Advisors)
+produce at the explorer post.
 
 To convert any given Markdown file into a PDF, use `pandoc` with the `xelatex`
 engine, preferably with a Unicode font so that none of the glyphs are missing
