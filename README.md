@@ -20,4 +20,4 @@ PDFS
 The bit about Pandoc and Xelatex confusing?  Yeah, it kind of is.  Here's a
 running list of the modules already exported to PDF:
 
-* Live Boot Module[pdf](live-boot/live-boot.pdf) [html](live-boot/live-boot.html)
+* Live Boot Module [pdf](live-boot/live-boot.pdf) [html](live-boot/live-boot.html)
