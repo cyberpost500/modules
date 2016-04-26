@@ -23,7 +23,13 @@ HTML_OPTS+=--css /modules/styles.css
 # I decided to eschew cleverness and just invoke pandoc on each file individually
 # Anyone adding more content, just copy and paste and update the paths below.
 
-all:
+all: index.html live-boot/live-boot.html live-boot/live-boot.pdf
+
+live-boot/live-boot.pdf: live-boot/live-boot.mkd
 	@pandoc $(PDF_OPTS) live-boot/live-boot.mkd -o live-boot/live-boot.pdf
+
+live-boot/live-boot.html: live-boot/live-boot.mkd
 	@pandoc $(HTML_OPTS) live-boot/live-boot.mkd -o live-boot/live-boot.html
+
+index.html:
 	@pandoc $(HTML_OPTS) README.md -o index.html
