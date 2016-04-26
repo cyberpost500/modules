@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Linux Live Boot Disk</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; }
+code > span.dt { color: #204a87; }
+code > span.dv { color: #0000cf; }
+code > span.bn { color: #0000cf; }
+code > span.fl { color: #0000cf; }
+code > span.ch { color: #4e9a06; }
+code > span.st { color: #4e9a06; }
+code > span.co { color: #8f5902; font-style: italic; }
+code > span.ot { color: #8f5902; }
+code > span.al { color: #ef2929; }
+code > span.fu { color: #000000; }
+code > span.er { font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="/module/styles.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Linux Live Boot Disk</h1>
+</div>
+<h1 id="materials">Materials</h1>
+<ul>
+<li>USB Drive (Suggest 8GB)</li>
+<li>Linux Live CD (Suggestions below)</li>
+</ul>
+<p>The provided USB Disk is 8GB in size.</p>
+<h1 id="skillsconcepts">Skills/Concepts</h1>
+<p>This module will include the following (among other) concepts:</p>
+<ul>
+<li>BIOS/UEFI</li>
+<li>console use</li>
+<li>filesystems</li>
+<li>getting help for commands</li>
+<li>manipulating files</li>
+<li>the boot process</li>
+</ul>
+<h2 id="bios">BIOS</h2>
+<p>It's the program that resides in the computer's physical hardware and executes when you turn the computer on.</p>
+<p>From Wikipedia:</p>
+<blockquote>
+<p>The BIOS (/ˈbaɪ.ɒs/, an acronym for Basic Input/Output System and also known as the System BIOS, ROM BIOS or PC BIOS) is a type of firmware used to perform hardware initialization during the booting process (power-on startup) on IBM PC compatible computers, and to provide runtime services for operating systems and programs.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+</blockquote>
+<h2 id="uefi">UEFI</h2>
+<p>It's the replacement for the BIOS and exists in most modern desktop computers.</p>
+<p>From Wikipedia:</p>
+<blockquote>
+<p>The Unified Extensible Firmware Interface (UEFI, pronounced as an initialism U-E-F-I or like &quot;unify&quot; without the n[a]) is a specification that defines a software interface between an operating system and platform firmware. UEFI replaces the Basic Input/Output System (BIOS) firmware interface originally present in all IBM PC-compatible personal computers, with most UEFI firmware implementations providing legacy support for BIOS services. UEFI can support remote diagnostics and repair of computers, even with no operating system installed.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
+</blockquote>
+<p>Generally, we will be using the BIOS or the BIOS legacy fall-back mode provided by UEFI in this module. That is, most modern systems support UEFI and will use that to boot, but our various Live systems will rely on the fall-back to BIOS mode for execution.</p>
+<h2 id="console-use">Console Use</h2>
+<p>This module relies heavily on the command-line. You will be using a terminal emulator to execute the following commands.</p>
+<table>
+<colgroup>
+<col width="27%" />
+<col width="52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cp</td>
+<td align="left">Copies files from one location to another</td>
+</tr>
+<tr class="even">
+<td align="left">dd</td>
+<td align="left">Copies data from a stream or file to another stream or file</td>
+</tr>
+<tr class="odd">
+<td align="left">diff</td>
+<td align="left">Displays differences</td>
+</tr>
+<tr class="even">
+<td align="left">e2label</td>
+<td align="left">Labels ext filesystems</td>
+</tr>
+<tr class="odd">
+<td align="left">fdisk,parted</td>
+<td align="left">Manipulate partition tables</td>
+</tr>
+<tr class="even">
+<td align="left">man</td>
+<td align="left">View on-line manual pages</td>
+</tr>
+<tr class="odd">
+<td align="left">mkfs.ext4</td>
+<td align="left">Creates ext4 filesystems</td>
+</tr>
+<tr class="even">
+<td align="left">mkfs.vfat</td>
+<td align="left">Creates FAT filesystems</td>
+</tr>
+<tr class="odd">
+<td align="left">sudo</td>
+<td align="left">Execute a command as another user</td>
+</tr>
+<tr class="even">
+<td align="left">sync</td>
+<td align="left">Flushes/waits for pending disk operations</td>
+</tr>
+<tr class="odd">
+<td align="left">udiskctrl</td>
+<td align="left">Mounts/unmounts filesystems</td>
+</tr>
+</tbody>
+</table>
+<h2 id="filesystems">Filesystems</h2>
+<p>The filesystem is the layer of abstraction between the programs and the disk where data is stored.</p>
+<p>From Wikipedia:</p>
+<blockquote>
+<p>In computing, a file system (or filesystem) is used to control how data is stored and retrieved. Without a file system, information placed in a storage area would be one large body of data with no way to tell where one piece of information stops and the next begins. By separating the data into individual pieces, and giving each piece a name, the information is easily separated and identified. Taking its name from the way paper-based information systems are named, each group of data is called a &quot;file&quot;. The structure and logic rules used to manage the groups of information and their names is called a &quot;file system&quot;.<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></p>
+</blockquote>
+<p>The specific file systems we will be dealing with in this module are Ext4, FAT32, and ISO. Ext4 is the fourth iteration of the extended file system that replaces ext3, ext2, and ext which originally was created to work around limitations in MINIX.</p>
+<p>FAT32 is a Windows-compatible file system that is fairly widely supported and so it makes an okay format to use on a thumb drive or other removable device where its limitations aren't likely to cause too much trouble (no case sensitivity, max file size of one byte less than 4GB).</p>
+<p>ISO is commonly used as an abbreviation for the ISO 9660 file system (ISO = international standards organization) that is used as the basic file system on CD and DVD. Generically people will say ISO when they really mean a CD/DVD disk image.</p>
+<h2 id="getting-help-for-commands">Getting Help for Commands</h2>
+<p>Technology these days makes Internet searching just as fast as any built in help, but in addition to googling for stack exchange articles, there is a built-in help or on-line manual for most commands under Linux. Built-in help can typically be accessed by passing <code>--help</code> or <code>-h</code> to the command of interest and it will typically reply back with a short usage block.</p>
+<p>In addition to the built-in help, you can refer to manual pages for more usage information for most commands. These pages are generally terribly formatted, frustrating, and are entirely unhelpful if you're not used to reading them.</p>
+<p>Various packages usually have some additional documentation in the form of a README or guide that can be found in <code>/usr/share/doc/</code>. Sometimes you will need to install an addition <code>-doc</code> package for whatever the package is to get these files.</p>
+<p>I suggest you use the following approach to getting help:</p>
+<ul>
+<li>Check for a man page</li>
+<li>Check for documentation in <code>/usr/share/doc/</code></li>
+<li>Google</li>
+</ul>
+<p>That aside, the general approach to finding help for a given command should be whatever you are most comfortable with or whatever happens to be available. I recommended the above approach because it will help you get used to reading technical documentation so that in the future it will be easier to comprehend whatever documentation is available.</p>
+<h2 id="manipulating-files">Manipulating Files</h2>
+<p>There's not much to be said about this topic, you'll be manipulating files via the command-line.</p>
+<h2 id="the-boot-process">The Boot Process</h2>
+<p>What does any of this module have to do with the computer boot up process? You'll be creating a boot disk and it will work because of how the system boot up process works. Or if it doesn't work, you'll start debugging<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> by examining the assumptions we've made about the system boot-up process to figure out which assumptions are false.</p>
+<p>The traditional BIOS boot-up process involves a series of hardware diagnostics or Power-on Self Test (POST) after which the BIOS copies the first 512K from the default boot device into the computer's RAM, then jumps to that memory address and begins to execute whatever code it finds there.</p>
+<p>That's approximately what happens when we try to boot our Linux Live drives. The BIOS will copy the first 512K, then within that 512K there is a boot-loader that carries out whatever additional instructions are necessary to continue bootstrapping the actual operating system. For our Live CD this means executing ISOLINUX or SYSLINUX which in turn locates the Linux kernel, copies it into RAM, and then jumps to executing the typical startup process.</p>
+<p>If you had any trouble following that, don't worry, an in-depth understanding isn't really necessary at this point.</p>
+<h1 id="preparation">Preparation</h1>
+<p>We'll be booting from a Live CD in order to provide a common work environment. In order to minimize accidentally destroying data, you may wish to disable hard drive access in your system BIOS. The following Live CD are all fine to use as a starting point for this module:</p>
+<ul>
+<li><a href="http://cdimage.ubuntu.com/kubuntu/releases/wily/release/kubuntu-15.10-desktop-amd64.iso">Kubuntu (KDE)</a></li>
+<li><a href="http://cdimage.ubuntu.com/lubuntu/releases/15.10/release/lubuntu-15.10-desktop-amd64.iso">Lubuntu (LXDE)</a></li>
+<li><a href="http://mirror.us.leaseweb.net/ubuntu-cdimage/xubuntu/releases/15.10/release/xubuntu-15.10-desktop-amd64.iso">Xubuntu (XFCE)</a></li>
+</ul>
+<p>These are all Ubuntu-based distributions that mainly vary in their use of desktop interface. You may also use the stock <a href="http://releases.ubuntu.com/15.10/ubuntu-15.10-desktop-amd64.iso?_ga=1.65762094.1433018332.1458880092">Ubuntu</a>, it's not a first choice for us because it's slightly more resource hungry than the distributions mentioned above.</p>
+<h1 id="standard-live-cd">Standard Live CD</h1>
+<p>In this module we will create a very simple Live boot USB by copying a source ISO directly to the block device representing the thumb drive. This will destroy the data at the beginning of the disk and replace it with the ISO. If the wrong target disk is chosen during the write, irreversible damage to the data stored on the disk will result.</p>
+<p>General Steps:</p>
+<ol style="list-style-type: decimal">
+<li>Boot the Live CD/DVD</li>
+<li>Copy the ISO to the USB disk</li>
+<li>Reboot and Test</li>
+</ol>
+<h2 id="boot-the-live-cddvd">Boot the Live CD/DVD</h2>
+<p>Insert the CD or DVD and reboot the computer. There is a key that needs to be pressed in order to boot from the drive, pay attention at power on for a message that will display briefly. For the systems we are using, it should be the F12 key. If that fails, press the <code>esc</code> key to pause after POST, then press F10 for the boot menu.</p>
+<p>On most systems, this approach will work:</p>
+<ol style="list-style-type: decimal">
+<li><p>Tap the delete key until you get into the UEFI/BIOS.</p></li>
+<li><p>Locate the boot menu, and from the boot menu, select the BIOS entry for the thumb drive (usb hard drive).</p></li>
+<li><p>In the case of the drives distributed with this lesson, it's the SanDisk Cruzer Glide entry.</p></li>
+</ol>
+<p>The system will take quite a bit longer to boot up from the CD/DVD than it does to boot from the hard drive.</p>
+<h2 id="copy-the-iso-to-the-usb-disk">Copy the ISO to the USB disk</h2>
+<h3 id="caution">CAUTION</h3>
+<p>Targeting the wrong partition during this tutorial could result in data loss. Be sure to confirm the target drive. For example, unplug and replug the device and then check <code>dmesg</code> to see the name of the drive. Or, use <code>sudo fdisk -l</code> to scan devices, then plug the drive in, run <code>sudo fdisk -l</code> again and compare the output.</p>
+<p>For example:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> fdisk -l <span class="kw">&gt;</span>/tmp/none
+<span class="kw">sudo</span> fdisk -l <span class="kw">&gt;</span>/tmp/some
+<span class="kw">diff</span> /tmp/none /tmp/some <span class="kw">|</span> <span class="kw">grep</span> Disk</code></pre>
+<pre><code>&gt; Disk /dev/sdd: 58.2 GiB, 62518853632 bytes, 122107136 sectors</code></pre>
+<p>In this example, <code>/dev/sdd</code> is the target device.</p>
+<h3 id="process">Process</h3>
+<p>The following steps will be carried out in a terminal. Press <code>ctrl+alt+t</code> or otherwise open a terminal through whatever means the Live Disk provides.</p>
+<ol style="list-style-type: decimal">
+<li><p>Identify the source device. Note: If you are repeating the steps in this module and experimenting with different ISO images, you will instead use a file name as the source instead of a target device. For this module, you will likely use <code>/dev/sdc</code> as the source.</p></li>
+<li><p>Identify the target device. See the example above in the CAUTION section for instructions on how to safely identify the target device. These instructions will use <code>/dev/sdX</code> as the target, but you will need to substitute the real target. If you inadvertently type <code>/dev/sdX</code> the only error should be a message instead of catastrophic data loss.</p></li>
+<li><p>Use <code>dd</code> to copy from the source CD/DVD to the target USB drive.</p></li>
+</ol>
+<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">sudo</span> dd if=/dev/sdc of=/dev/sdX</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Use <code>sync</code> to ensure the device has finished writing.</li>
+</ol>
+<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">sync</span></code></pre>
+<p>This command will not return until all disks have finished writing out their cached data. This ensures that all of the data from the previous <code>dd</code> command has finished writing.</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Reboot, remove the CD/DVD, and boot from the thumb drive. This is much the same process as was used to boot from the CD/DVD. When the system comes up, the user name is <code>root</code> and the password is <code>toor</code>.</li>
+</ol>
+<h3 id="conclusion">Conclusion</h3>
+<p>A very simple boot disk was created by copying the ISO directly to the thumb drive. This works because the image copied is smaller than the total size of the thumb drive. The extra space is not used, nor is it currently accessible.</p>
+<h1 id="persistent-live-cd">Persistent Live CD</h1>
+<p>Create a Persistent Kali Live thumb drive.<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></p>
+<h2 id="using-kali">Using Kali</h2>
+<ol style="list-style-type: decimal">
+<li>Copy the Kali ISO to the thumb drive:</li>
+</ol>
+<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">dd</span> if=kali-linux-2016.1-amd64.iso of=/dev/sdX</code></pre>
+<p>This step will take quite a while to complete, see the appendix on <code>dd</code> for more background and information on how to get status information.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Discover the starting location for the persistent partition:</li>
+</ol>
+<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">ls</span> -lh lubuntu-15.10-desktop-amd64.iso</code></pre>
+<pre><code>-rw-rw-r-- 1 user group 2.8G Mar 25 21:19 kali-linux-2016.1-amd64.iso</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Create an additional partition for persistent storage, using the size of the ISO as an offset for the beginning of the partition, and use the remaining space:</li>
+</ol>
+<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">sudo</span> parted /dev/sdc mkpart primary 2.8g 7g</code></pre>
+<p>A series of warnings will result regarding not being able to use the exact figures, accept the warnings by entering <code>Ignore</code> to each warning.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Label and format the new partition:</li>
+</ol>
+<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">sudo</span> mkfs.ext4 -L persistence /dev/sdX3</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Mount the new partition, and create a configuration file that Kali is able to find:</li>
+</ol>
+<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">udisksctl</span> mount -b /dev/sdX3
+    <span class="kw">echo</span> <span class="st">&quot;/ union&quot;</span> <span class="kw">|</span> <span class="kw">sudo</span> tee -a /media/user/persistence/persistence.conf
+    <span class="kw">udisksctl</span> unmount -b /dev/sdX3</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Flush Buffers:</li>
+</ol>
+<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">sync</span></code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Reboot and test! Be sure to press the down arrow when the Kali menu appears until the entry featuring persistence is selected, then press enter.</li>
+</ol>
+<h1 id="appendix---dd">Appendix - <code>dd</code></h1>
+<p>The <code>dd</code> command used in the module will take a long time to run and while it is running, it provides no output as to what it is doing. This is not uncommon for Linux commands. Unless executed in a verbose mode, they tend to only produce output when there is an error, or in the case of <code>dd</code>, when they have completed. Luckily, the <code>dd</code> command does have a mechanism for getting status.</p>
+<p>To find it, check the manual page. If you're lucky, you'll find the part of the page that explains that you can use another command (<code>kill</code>) to send a special signal to the <code>dd</code> process and then the <code>dd</code> process will yield its current progress and speed.</p>
+<p>In order to execute <code>kill</code> on the process, you need to know the process identifier (PID) of the <code>dd</code> process. You can find it with the following command:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">ps</span> -eo pid,args <span class="kw">|</span> <span class="kw">grep</span> <span class="st">&#39;dd&#39;</span></code></pre>
+<p>The result will be a row of output similar to the following:</p>
+<pre><code>23424 dd if=/dev/sdc of=/dev/sdX</code></pre>
+<p>In this example, the PID is 23424. To instruct <code>dd</code> to print usage statistics, you could execute the following command:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">kill</span> -USR1 23424</code></pre>
+<p>The terminal where <code>dd</code> is running will yield output like the following:</p>
+<pre><code>1974272+0 records in
+1974272+0 records out
+1010827264 bytes (1.0 GB) copied, 322.534 s, 3.1 MB/s</code></pre>
+<p>Try not to mis-type the command, or you could, at worst, inadvertently terminate the process or a different process.</p>
+<h2 id="reading-the-dd-man-page">Reading the <code>dd</code> man page</h2>
+<p>Open the man page, that is try the following:</p>
+<pre><code>man dd</code></pre>
+<p>You will immediately see the manual page for the <code>dd</code> command. In the top left, you will see the command being described (DD in this case) followed by a numeral in parenthesis. This number is a section number. Some manual pages are actually available in multiple sections. If you know there is a different section for a given command, you can provide the section number in your invocation of man. For example, you could have invoked <code>man 1 dd</code> to view the current manual page.</p>
+<p>Next you will see labels on the left in all capital letters. Under <code>NAME</code> you will typically see the command name followed by a one-line description.</p>
+<p>Under <code>SYNOPSIS</code> you will see a description of the arguments for the command. Any arguments in brackets are typically optional. Any arguments that may repeat are usually followed by ellipsis. The first entry under synopsis shows that <code>dd</code> can either be invoked with optionally repeating operands or a single option.</p>
+<p>Under the <code>DESCRIPTION</code> it immediately jumps into describing the operands. Operands are provided on the command-line without any leading hyphens. If you scroll down (space, j, arrows, or ctrl+D,...) you will eventually reach the section on options. <code>--help</code> and <code>--version</code> are the only options, you may provide either one or the other, as per the synopsis.</p>
+<p>For our purposes, we're not currently interested in all of the options or what they do, we just want to know how to get status from an already executing <code>dd</code> command in order to find out how many bytes it has copied.</p>
+<p>Man pages support searching, but, rather unhelpfully, there is no good search term we can use in order to find the section that describes how to get status. Some manual pages provide an <code>EXAMPLES</code> sub-section, which makes it easy to locate, but this one does not. Your only option is to scroll and read through the page. Or, if you have looked at the page before, you might know that getting status has something to do with the <code>kill</code> command. So, search for &quot;kill&quot; by typing <code>/kill</code> and hitting enter.</p>
+<p>The manual will reward you with a rather intimidating example:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">    $ <span class="kw">dd</span> if=/dev/zero of=/dev/null<span class="kw">&amp;</span> <span class="ot">pid=$!</span>
+    $ <span class="kw">kill</span> -USR1 <span class="ot">$pid</span><span class="kw">;</span> <span class="kw">sleep</span> 1<span class="kw">;</span> <span class="kw">kill</span> <span class="ot">$pid</span></code></pre>
+<p>Directly before the example is a slightly-but-not-really helpful description saying that you can use a <code>USR1</code> signal to display I/O statistics. It is a rather contrived example but what it is showing is starting a <code>dd</code> to copy a sequence of zeroes from the special <code>/dev/zero</code> device and writing the output to the special <code>/dev/null</code> device. The command is forked into the background by using the <code>&amp;</code> and then the PID is being saved to a variable. The next command is showing sending the <code>USR1</code> signal to the PID saved in the variable from the previous line. Then after sleeping for one second, the contrived dd command is sent an actual kill to terminate it.</p>
+<p>If you continue scrolling you will see other sub-sections of the manual page, such as <code>AUTHOR</code>, <code>REPORTING BUGS</code>, etc...</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Retrieved from <a href="https://en.wikipedia.org/wiki/BIOS">Wikipedia</a> on 2016-04-13.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Retrieved from <a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">Wikipedia</a> on 2016-04-13.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>Retrieved from <a href="https://en.wikipedia.org/wiki/File_system">Wikipedia</a> on 2016-04-13.<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>Debugging can be considered the process of eliminating false assumptions to find problems or bugs with a given process. The name refers to the act of removing a literal insect from a machine so that it can resume normal operations but it has become synonymous with the process of manually walking through code or an algorithm to understand exactly what it is doing (commonly versus what it is assumed to be doing).<a href="#fnref4">↩</a></p></li>
+<li id="fn5"><p><a href="http://docs.kali.org/downloading/kali-linux-live-usb-persistence">Kali Linux Live USB Persistence instructions</a>.<a href="#fnref5">↩</a></p></li>
+</ol>
+</div>
+</body>
+</html>

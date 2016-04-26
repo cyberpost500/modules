@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/module/styles.css" type="text/css" />
+</head>
+<body>
+<h1 id="lesson-module-repository">Lesson Module Repository</h1>
+<p>The module repository will hold the content of any lessons we (the Post Advisors) produce at the explorer post.</p>
+<p>To convert any given Markdown file from the repository into a PDF, use <code>pandoc</code> with the <code>xelatex</code> engine, preferably with a Unicode font so that none of the glyphs are missing from the resulting document.</p>
+<p>For example:</p>
+<pre><code>pandoc -V geometry:margin=0.5in --variable mainfont=&quot;DejaVu Sans&quot; --variable \
+sansfont=&quot;DejaVu Sans&quot; --variable monofont=&quot;DejaVu Sans Mono&quot; \
+--latex-engine=xelatex  live-boot.mkd -o live-boot.pdf --highlight-style=tango \
+--toc</code></pre>
+<h2 id="pdfs">PDFS</h2>
+<p>The bit about Pandoc and Xelatex confusing? Yeah, it kind of is. Here's a running list of the modules already exported to PDF:</p>
+<ul>
+<li>Live Boot Module<a href="live-boot/live-boot.pdf">pdf</a> <a href="live-boot/live-boot.html">html</a></li>
+</ul>
+</body>
+</html>
