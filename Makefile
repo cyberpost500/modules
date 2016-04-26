@@ -18,7 +18,7 @@ PDF_OPTS+=-N                             # number the sections, doesn't look
 
 HTML_OPTS:=--highlight-style=tango
 HTML_OPTS+=-s                            #stand-alone
-HTML_OPTS+=--css /module/styles.css
+HTML_OPTS+=--css /modules/styles.css
 
 # I decided to eschew cleverness and just invoke pandoc on each file individually
 # Anyone adding more content, just copy and paste and update the paths below.
