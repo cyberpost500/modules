@@ -1,4 +1,5 @@
-# Lesson Module Repository
+Lesson Module Repository
+========================
 
 This repository will hold the content of any lessons we (the Post Advisors) produce at the explorer post.
 
@@ -13,3 +14,9 @@ For example:
     --latex-engine=xelatex  live-boot.mkd -o live-boot.pdf --highlight-style=tango \
     --toc
 
+PDFS
+----
+The bit about Pandoc and Xelatex confusing?  Yeah, it kind of is.  Here's a
+running list of the modules already exported to PDF:
+
+* [Live Boot Module](live-boot/live-boot.pdf)
