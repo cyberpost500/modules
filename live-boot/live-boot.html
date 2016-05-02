@@ -32,13 +32,42 @@ code > span.er { font-weight: bold; }
 <div id="header">
 <h1 class="title">Linux Live Boot Disk</h1>
 </div>
-<h1 id="materials">Materials</h1>
+<div id="TOC">
+<ul>
+<li><a href="#materials"><span class="toc-section-number">0.1</span> Materials</a></li>
+<li><a href="#skillsconcepts"><span class="toc-section-number">1</span> Skills/Concepts</a><ul>
+<li><a href="#bios"><span class="toc-section-number">1.1</span> BIOS</a></li>
+<li><a href="#uefi"><span class="toc-section-number">1.2</span> UEFI</a></li>
+<li><a href="#console-use"><span class="toc-section-number">1.3</span> Console Use</a></li>
+<li><a href="#filesystems"><span class="toc-section-number">1.4</span> Filesystems</a></li>
+<li><a href="#getting-help-for-commands"><span class="toc-section-number">1.5</span> Getting Help for Commands</a></li>
+<li><a href="#manipulating-files"><span class="toc-section-number">1.6</span> Manipulating Files</a></li>
+<li><a href="#the-boot-process"><span class="toc-section-number">1.7</span> The Boot Process</a></li>
+</ul></li>
+<li><a href="#preparation"><span class="toc-section-number">2</span> Preparation</a></li>
+<li><a href="#standard-live-cd"><span class="toc-section-number">3</span> Standard Live CD</a><ul>
+<li><a href="#boot-the-live-cddvd"><span class="toc-section-number">3.1</span> Boot the Live CD/DVD</a></li>
+<li><a href="#copy-the-iso-to-the-usb-disk"><span class="toc-section-number">3.2</span> Copy the ISO to the USB disk</a><ul>
+<li><a href="#caution"><span class="toc-section-number">3.2.1</span> CAUTION</a></li>
+<li><a href="#process"><span class="toc-section-number">3.2.2</span> Process</a></li>
+<li><a href="#conclusion"><span class="toc-section-number">3.2.3</span> Conclusion</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#persistent-live-cd"><span class="toc-section-number">4</span> Persistent Live CD</a><ul>
+<li><a href="#using-kali"><span class="toc-section-number">4.1</span> Using Kali</a></li>
+</ul></li>
+<li><a href="#appendix---dd"><span class="toc-section-number">5</span> Appendix - <code>dd</code></a><ul>
+<li><a href="#reading-the-dd-man-page"><span class="toc-section-number">5.1</span> Reading the <code>dd</code> man page</a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="materials"><span class="header-section-number">0.1</span> Materials</h2>
 <ul>
 <li>USB Drive (Suggest 8GB)</li>
 <li>Linux Live CD (Suggestions below)</li>
 </ul>
 <p>The provided USB Disk is 8GB in size.</p>
-<h1 id="skillsconcepts">Skills/Concepts</h1>
+<h1 id="skillsconcepts"><span class="header-section-number">1</span> Skills/Concepts</h1>
 <p>This module will include the following (among other) concepts:</p>
 <ul>
 <li>BIOS/UEFI</li>
@@ -48,21 +77,21 @@ code > span.er { font-weight: bold; }
 <li>manipulating files</li>
 <li>the boot process</li>
 </ul>
-<h2 id="bios">BIOS</h2>
+<h2 id="bios"><span class="header-section-number">1.1</span> BIOS</h2>
 <p>It's the program that resides in the computer's physical hardware and executes when you turn the computer on.</p>
 <p>From Wikipedia:</p>
 <blockquote>
 <p>The BIOS (/ˈbaɪ.ɒs/, an acronym for Basic Input/Output System and also known as the System BIOS, ROM BIOS or PC BIOS) is a type of firmware used to perform hardware initialization during the booting process (power-on startup) on IBM PC compatible computers, and to provide runtime services for operating systems and programs.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
 </blockquote>
-<h2 id="uefi">UEFI</h2>
+<h2 id="uefi"><span class="header-section-number">1.2</span> UEFI</h2>
 <p>It's the replacement for the BIOS and exists in most modern desktop computers.</p>
 <p>From Wikipedia:</p>
 <blockquote>
 <p>The Unified Extensible Firmware Interface (UEFI, pronounced as an initialism U-E-F-I or like &quot;unify&quot; without the n[a]) is a specification that defines a software interface between an operating system and platform firmware. UEFI replaces the Basic Input/Output System (BIOS) firmware interface originally present in all IBM PC-compatible personal computers, with most UEFI firmware implementations providing legacy support for BIOS services. UEFI can support remote diagnostics and repair of computers, even with no operating system installed.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
 </blockquote>
 <p>Generally, we will be using the BIOS or the BIOS legacy fall-back mode provided by UEFI in this module. That is, most modern systems support UEFI and will use that to boot, but our various Live systems will rely on the fall-back to BIOS mode for execution.</p>
-<h2 id="console-use">Console Use</h2>
-<p>This module relies heavily on the command-line. You will be using a terminal emulator to execute the following commands.</p>
+<h2 id="console-use"><span class="header-section-number">1.3</span> Console Use</h2>
+<p>emulator to execute the following commands.</p>
 <table>
 <colgroup>
 <col width="27%" />
@@ -121,7 +150,7 @@ code > span.er { font-weight: bold; }
 </tr>
 </tbody>
 </table>
-<h2 id="filesystems">Filesystems</h2>
+<h2 id="filesystems"><span class="header-section-number">1.4</span> Filesystems</h2>
 <p>The filesystem is the layer of abstraction between the programs and the disk where data is stored.</p>
 <p>From Wikipedia:</p>
 <blockquote>
@@ -130,7 +159,7 @@ code > span.er { font-weight: bold; }
 <p>The specific file systems we will be dealing with in this module are Ext4, FAT32, and ISO. Ext4 is the fourth iteration of the extended file system that replaces ext3, ext2, and ext which originally was created to work around limitations in MINIX.</p>
 <p>FAT32 is a Windows-compatible file system that is fairly widely supported and so it makes an okay format to use on a thumb drive or other removable device where its limitations aren't likely to cause too much trouble (no case sensitivity, max file size of one byte less than 4GB).</p>
 <p>ISO is commonly used as an abbreviation for the ISO 9660 file system (ISO = international standards organization) that is used as the basic file system on CD and DVD. Generically people will say ISO when they really mean a CD/DVD disk image.</p>
-<h2 id="getting-help-for-commands">Getting Help for Commands</h2>
+<h2 id="getting-help-for-commands"><span class="header-section-number">1.5</span> Getting Help for Commands</h2>
 <p>Technology these days makes Internet searching just as fast as any built in help, but in addition to googling for stack exchange articles, there is a built-in help or on-line manual for most commands under Linux. Built-in help can typically be accessed by passing <code>--help</code> or <code>-h</code> to the command of interest and it will typically reply back with a short usage block.</p>
 <p>In addition to the built-in help, you can refer to manual pages for more usage information for most commands. These pages are generally terribly formatted, frustrating, and are entirely unhelpful if you're not used to reading them.</p>
 <p>Various packages usually have some additional documentation in the form of a README or guide that can be found in <code>/usr/share/doc/</code>. Sometimes you will need to install an addition <code>-doc</code> package for whatever the package is to get these files.</p>
@@ -141,14 +170,14 @@ code > span.er { font-weight: bold; }
 <li>Google</li>
 </ul>
 <p>That aside, the general approach to finding help for a given command should be whatever you are most comfortable with or whatever happens to be available. I recommended the above approach because it will help you get used to reading technical documentation so that in the future it will be easier to comprehend whatever documentation is available.</p>
-<h2 id="manipulating-files">Manipulating Files</h2>
+<h2 id="manipulating-files"><span class="header-section-number">1.6</span> Manipulating Files</h2>
 <p>There's not much to be said about this topic, you'll be manipulating files via the command-line.</p>
-<h2 id="the-boot-process">The Boot Process</h2>
+<h2 id="the-boot-process"><span class="header-section-number">1.7</span> The Boot Process</h2>
 <p>What does any of this module have to do with the computer boot up process? You'll be creating a boot disk and it will work because of how the system boot up process works. Or if it doesn't work, you'll start debugging<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> by examining the assumptions we've made about the system boot-up process to figure out which assumptions are false.</p>
 <p>The traditional BIOS boot-up process involves a series of hardware diagnostics or Power-on Self Test (POST) after which the BIOS copies the first 512K from the default boot device into the computer's RAM, then jumps to that memory address and begins to execute whatever code it finds there.</p>
 <p>That's approximately what happens when we try to boot our Linux Live drives. The BIOS will copy the first 512K, then within that 512K there is a boot-loader that carries out whatever additional instructions are necessary to continue bootstrapping the actual operating system. For our Live CD this means executing ISOLINUX or SYSLINUX which in turn locates the Linux kernel, copies it into RAM, and then jumps to executing the typical startup process.</p>
 <p>If you had any trouble following that, don't worry, an in-depth understanding isn't really necessary at this point.</p>
-<h1 id="preparation">Preparation</h1>
+<h1 id="preparation"><span class="header-section-number">2</span> Preparation</h1>
 <p>We'll be booting from a Live CD in order to provide a common work environment. In order to minimize accidentally destroying data, you may wish to disable hard drive access in your system BIOS. The following Live CD are all fine to use as a starting point for this module:</p>
 <ul>
 <li><a href="http://cdimage.ubuntu.com/kubuntu/releases/wily/release/kubuntu-15.10-desktop-amd64.iso">Kubuntu (KDE)</a></li>
@@ -156,7 +185,7 @@ code > span.er { font-weight: bold; }
 <li><a href="http://mirror.us.leaseweb.net/ubuntu-cdimage/xubuntu/releases/15.10/release/xubuntu-15.10-desktop-amd64.iso">Xubuntu (XFCE)</a></li>
 </ul>
 <p>These are all Ubuntu-based distributions that mainly vary in their use of desktop interface. You may also use the stock <a href="http://releases.ubuntu.com/15.10/ubuntu-15.10-desktop-amd64.iso?_ga=1.65762094.1433018332.1458880092">Ubuntu</a>, it's not a first choice for us because it's slightly more resource hungry than the distributions mentioned above.</p>
-<h1 id="standard-live-cd">Standard Live CD</h1>
+<h1 id="standard-live-cd"><span class="header-section-number">3</span> Standard Live CD</h1>
 <p>In this module we will create a very simple Live boot USB by copying a source ISO directly to the block device representing the thumb drive. This will destroy the data at the beginning of the disk and replace it with the ISO. If the wrong target disk is chosen during the write, irreversible damage to the data stored on the disk will result.</p>
 <p>General Steps:</p>
 <ol style="list-style-type: decimal">
@@ -164,7 +193,7 @@ code > span.er { font-weight: bold; }
 <li>Copy the ISO to the USB disk</li>
 <li>Reboot and Test</li>
 </ol>
-<h2 id="boot-the-live-cddvd">Boot the Live CD/DVD</h2>
+<h2 id="boot-the-live-cddvd"><span class="header-section-number">3.1</span> Boot the Live CD/DVD</h2>
 <p>Insert the CD or DVD and reboot the computer. There is a key that needs to be pressed in order to boot from the drive, pay attention at power on for a message that will display briefly. For the systems we are using, it should be the F12 key. If that fails, press the <code>esc</code> key to pause after POST, then press F10 for the boot menu.</p>
 <p>On most systems, this approach will work:</p>
 <ol style="list-style-type: decimal">
@@ -173,8 +202,8 @@ code > span.er { font-weight: bold; }
 <li><p>In the case of the drives distributed with this lesson, it's the SanDisk Cruzer Glide entry.</p></li>
 </ol>
 <p>The system will take quite a bit longer to boot up from the CD/DVD than it does to boot from the hard drive.</p>
-<h2 id="copy-the-iso-to-the-usb-disk">Copy the ISO to the USB disk</h2>
-<h3 id="caution">CAUTION</h3>
+<h2 id="copy-the-iso-to-the-usb-disk"><span class="header-section-number">3.2</span> Copy the ISO to the USB disk</h2>
+<h3 id="caution"><span class="header-section-number">3.2.1</span> CAUTION</h3>
 <p>Targeting the wrong partition during this tutorial could result in data loss. Be sure to confirm the target drive. For example, unplug and replug the device and then check <code>dmesg</code> to see the name of the drive. Or, use <code>sudo fdisk -l</code> to scan devices, then plug the drive in, run <code>sudo fdisk -l</code> again and compare the output.</p>
 <p>For example:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> fdisk -l <span class="kw">&gt;</span>/tmp/none
@@ -182,7 +211,7 @@ code > span.er { font-weight: bold; }
 <span class="kw">diff</span> /tmp/none /tmp/some <span class="kw">|</span> <span class="kw">grep</span> Disk</code></pre>
 <pre><code>&gt; Disk /dev/sdd: 58.2 GiB, 62518853632 bytes, 122107136 sectors</code></pre>
 <p>In this example, <code>/dev/sdd</code> is the target device.</p>
-<h3 id="process">Process</h3>
+<h3 id="process"><span class="header-section-number">3.2.2</span> Process</h3>
 <p>The following steps will be carried out in a terminal. Press <code>ctrl+alt+t</code> or otherwise open a terminal through whatever means the Live Disk provides.</p>
 <ol style="list-style-type: decimal">
 <li><p>Identify the source device. Note: If you are repeating the steps in this module and experimenting with different ISO images, you will instead use a file name as the source instead of a target device. For this module, you will likely use <code>/dev/sdc</code> as the source.</p></li>
@@ -198,11 +227,12 @@ code > span.er { font-weight: bold; }
 <ol start="5" style="list-style-type: decimal">
 <li>Reboot, remove the CD/DVD, and boot from the thumb drive. This is much the same process as was used to boot from the CD/DVD. When the system comes up, the user name is <code>root</code> and the password is <code>toor</code>.</li>
 </ol>
-<h3 id="conclusion">Conclusion</h3>
+<h3 id="conclusion"><span class="header-section-number">3.2.3</span> Conclusion</h3>
 <p>A very simple boot disk was created by copying the ISO directly to the thumb drive. This works because the image copied is smaller than the total size of the thumb drive. The extra space is not used, nor is it currently accessible.</p>
-<h1 id="persistent-live-cd">Persistent Live CD</h1>
+<h1 id="persistent-live-cd"><span class="header-section-number">4</span> Persistent Live CD</h1>
 <p>Create a Persistent Kali Live thumb drive.<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></p>
-<h2 id="using-kali">Using Kali</h2>
+<p>You can download a copy of the Kali iso <a href="https://www.kali.org/downloads/">here</a>, we used the 64 bit version at the meeting.</p>
+<h2 id="using-kali"><span class="header-section-number">4.1</span> Using Kali</h2>
 <ol style="list-style-type: decimal">
 <li>Copy the Kali ISO to the thumb drive:</li>
 </ol>
@@ -235,7 +265,7 @@ code > span.er { font-weight: bold; }
 <ol start="6" style="list-style-type: decimal">
 <li>Reboot and test! Be sure to press the down arrow when the Kali menu appears until the entry featuring persistence is selected, then press enter.</li>
 </ol>
-<h1 id="appendix---dd">Appendix - <code>dd</code></h1>
+<h1 id="appendix---dd"><span class="header-section-number">5</span> Appendix - <code>dd</code></h1>
 <p>The <code>dd</code> command used in the module will take a long time to run and while it is running, it provides no output as to what it is doing. This is not uncommon for Linux commands. Unless executed in a verbose mode, they tend to only produce output when there is an error, or in the case of <code>dd</code>, when they have completed. Luckily, the <code>dd</code> command does have a mechanism for getting status.</p>
 <p>To find it, check the manual page. If you're lucky, you'll find the part of the page that explains that you can use another command (<code>kill</code>) to send a special signal to the <code>dd</code> process and then the <code>dd</code> process will yield its current progress and speed.</p>
 <p>In order to execute <code>kill</code> on the process, you need to know the process identifier (PID) of the <code>dd</code> process. You can find it with the following command:</p>
@@ -249,7 +279,7 @@ code > span.er { font-weight: bold; }
 1974272+0 records out
 1010827264 bytes (1.0 GB) copied, 322.534 s, 3.1 MB/s</code></pre>
 <p>Try not to mis-type the command, or you could, at worst, inadvertently terminate the process or a different process.</p>
-<h2 id="reading-the-dd-man-page">Reading the <code>dd</code> man page</h2>
+<h2 id="reading-the-dd-man-page"><span class="header-section-number">5.1</span> Reading the <code>dd</code> man page</h2>
 <p>Open the man page, that is try the following:</p>
 <pre><code>man dd</code></pre>
 <p>You will immediately see the manual page for the <code>dd</code> command. In the top left, you will see the command being described (DD in this case) followed by a numeral in parenthesis. This number is a section number. Some manual pages are actually available in multiple sections. If you know there is a different section for a given command, you can provide the section number in your invocation of man. For example, you could have invoked <code>man 1 dd</code> to view the current manual page.</p>
