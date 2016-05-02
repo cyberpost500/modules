@@ -315,6 +315,10 @@ Persistent Live CD
 
 Create a Persistent Kali Live thumb drive.[^kali]
 
+You can download a copy of the Kali iso
+[here](https://www.kali.org/downloads/), we used the 64 bit version at the
+meeting.
+
 [^kali]: [Kali Linux Live USB Persistence instructions](http://docs.kali.org/downloading/kali-linux-live-usb-persistence).
 
 Using Kali
