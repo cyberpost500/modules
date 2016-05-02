@@ -1,7 +1,7 @@
 % Linux Live Boot Disk
 
 Materials
-=========
+---------
 * USB Drive (Suggest 8GB)
 * Linux Live CD (Suggestions below)
 
@@ -60,7 +60,6 @@ mode for execution.
 
 Console Use
 -----------
-This module relies heavily on the command-line.  You will be using a terminal
 emulator to execute the following commands.
 
 ------------------------------------------------------------
@@ -315,6 +314,10 @@ Persistent Live CD
 ==================
 
 Create a Persistent Kali Live thumb drive.[^kali]
+
+You can download a copy of the Kali iso
+[here](https://www.kali.org/downloads/), we used the 64 bit version at the
+meeting.
 
 [^kali]: [Kali Linux Live USB Persistence instructions](http://docs.kali.org/downloading/kali-linux-live-usb-persistence).
 
