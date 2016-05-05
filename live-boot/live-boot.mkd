@@ -347,7 +347,7 @@ more background and information on how to get status information.
 space:
 
 ~~~~ {.bash}
-    sudo parted /dev/sdc mkpart primary 2.8g 7g
+    sudo parted /dev/sdX mkpart primary 2.8g 7g
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A series of warnings will result regarding not being able to use the exact
