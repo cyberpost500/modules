@@ -246,7 +246,7 @@ code > span.er { font-weight: bold; }
 <ol start="2" style="list-style-type: decimal">
 <li>Create an additional partition for persistent storage, using the size of the ISO as an offset for the beginning of the partition, and use the remaining space:</li>
 </ol>
-<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">sudo</span> parted /dev/sdc mkpart primary 2.8g 7g</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">sudo</span> parted /dev/sdX mkpart primary 2.8g 7g</code></pre>
 <p>A series of warnings will result regarding not being able to use the exact figures, accept the warnings by entering <code>Ignore</code> to each warning.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Label and format the new partition:</li>
