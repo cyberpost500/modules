@@ -2,10 +2,16 @@
   - The INTs (HUMINT, ELINT, GEOINT, OSINT, etc.)  
   - Text Analytics  - the process of analyzing unstructured text, extracting relevant information, and transforming it into useful intelligence.  
   - Text to be analyzed: a list of songs by the Beatles   
-    - How many different words did they use??  
+    - How many different words did they use?  
     - Which words were used frequently?  
     - Which word was used the most?
-    ```- tr [:space:] '\n' < beatles-songs.txt | grep -v "^\s*$" | sort | sed -r -e "s/\)//g" -e "s/\(//g" -e "s/,//g" | uniq -c | sort -bnr | wc -l```
-  - Linux commands used: wget, tr, vi, wc, sed, cat, less, more
+  - Linux stuff: >, <, &, |, wget, tr, vi, wc, sed, cat, less, more  
+
+# Step-by-step:  
+  1. Make a directory to work in and move into it  
+	`mkdir song`  
+	`cd songs`  
+  2. Get a list of Beatles songs   
+    		wget 
 	
 		
