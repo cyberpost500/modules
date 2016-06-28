@@ -21,7 +21,6 @@ echo $HOME > myHome.txt
 x myHome.txt
 cat myHome.txt
 export PS1='$ '
-
 gedit &
 x ~/nlp
 x ~/nlp/programs/cor
@@ -36,14 +35,14 @@ unalias x
    2. Go to a news website (e.g., cnn.com, bbc.com, theonion.com), browse to a news story, copy the text into your text editor, and save the file as ~/nlp/data/news1.text 
    3.  Use wget to get a copy of a different news web page  
       ```
-      wget http://msnbc.com
-      mv index.html ~/nlp/data/news2.txt  
+    wget http://msnbc.com ; 
+    mv index.html ~/nlp/data/news2.txt  
       ```
  2. See what version of Java you have installed - version 1.8 is needed.  
     ```
-    java -version
+  java -version
     ```
- 3. Make an alias for running the coreNLP program ([reference](http://stanfordnlp.github.io/CoreNLP/cmdline.html)  
+ 3. Make an alias for running the coreNLP program ([reference](http://stanfordnlp.github.io/CoreNLP/cmdline.html))  
     ```
-    java -cp "$HOME\nlp\programs\core*" -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse,dcoref -file 
+    alias nlpCore='java -cp "$HOME/nlp/programs/core/*" -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse,dcoref -file'
     ```
