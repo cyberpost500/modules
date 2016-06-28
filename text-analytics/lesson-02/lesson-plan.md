@@ -12,6 +12,7 @@ cd ~
 pwd
 cd $HOME
 pwd
+pwd;pwd;pwd
 ls
 ls --all --author -1 --group
 alias x='ls --all -author -1 --group'
@@ -24,14 +25,18 @@ unalias x
 gedit &
 ````
 
-## [Stanford  Natural Language Processing Tools](http://nlp.stanford.edu/software/)  
- 1. Get some text to analyze:
+## Stanford  Natural Language Processing Tools  
+ 1. Visit the [NLP Software page](http://nlp.stanford.edu/software/)
+ 2. Get some text to analyze:
    1. Open up a text editor and have it run in the background  
    2. Go to a news website (e.g., cnn.com, bbc.com, theonion.com), browse to a news story, copy the text into your text editor, and save the file as ~/nlp/data/news1.text 
    3.  Use wget to get a copy of a different news web page  
-      ````
-      wget http://msnbc.com  
+      ```
+      wget http://msnbc.com
       mv index.html ~/nlp/data/news2.txt  
-      ````
- 2. xxx
+      ```
+ 2. See what version of Java you have installed - version 1.8 is needed.  
+    ```
+    java -version
+    ```
  3. xx
