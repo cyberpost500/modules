@@ -6,6 +6,7 @@
 
 ## While waiting for class to begin, login, launch a terminal window, and try these commands:
 ````
+clear
 pwd
 echo $HOME
 cd ~
@@ -32,6 +33,7 @@ x ~/nlp/programs/cor
 x ~/nlp/programs/core
 x ~/nlp/programs/ner
 unalias x
+history
 ````
 
 ## Stanford  Natural Language Processing Tools  
