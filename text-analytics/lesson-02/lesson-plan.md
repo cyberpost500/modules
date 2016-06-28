@@ -20,10 +20,12 @@ x
 echo $HOME > myHome.txt
 x myHome.txt
 cat myHome.txt
+gedit myHome.txt &
+rm myHome.txt  
 export PS1='$ '
-gedit &
 x ~/nlp
 x ~/nlp/programs/cor
+x ~/nlp/programs/core
 x ~/nlp/programs/ner
 unalias x
 ````
@@ -33,11 +35,12 @@ unalias x
  2. Get some text to analyze:
    1. Open up a text editor and have it run in the background  
    2. Go to a news website (e.g., cnn.com, bbc.com, theonion.com), browse to a news story, copy the text into your text editor, and save the file as ~/nlp/data/news1.text 
-   3.  Use wget to get a copy of a different news web page  
-      ```
-    wget http://msnbc.com ; 
+   3.  Use wget to get a copy of a different news web page
+  
+  ````
+    wget http://msnbc.com 
     mv index.html ~/nlp/data/news2.txt  
-      ```
+  ````
  2. See what version of Java you have installed - version 1.8 is needed.  
     ```
   java -version
@@ -46,3 +49,9 @@ unalias x
     ```
     alias nlpCore='java -cp "$HOME/nlp/programs/core/*" -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse,dcoref -file'
     ```
+ 4. Execute the java program to analyze the two files you collected  
+   
+ ````
+    nlpCore ~/data/news1.txt  
+    nlpCore ~/data/news2.txt  
+ ````  
