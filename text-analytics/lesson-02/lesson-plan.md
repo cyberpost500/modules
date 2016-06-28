@@ -21,8 +21,12 @@ echo $HOME > myHome.txt
 x myHome.txt
 cat myHome.txt
 export PS1='$ '
-unalias x
+
 gedit &
+x ~/nlp
+x ~/nlp/programs/cor
+x ~/nlp/programs/ner
+unalias x
 ````
 
 ## Stanford  Natural Language Processing Tools  
@@ -39,4 +43,7 @@ gedit &
     ```
     java -version
     ```
- 3. xx
+ 3. Make an alias for running the coreNLP program ([reference](http://stanfordnlp.github.io/CoreNLP/cmdline.html)  
+    ```
+    java -cp "$HOME\nlp\programs\core*" -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse,dcoref -file 
+    ```
