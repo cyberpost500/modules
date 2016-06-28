@@ -1,4 +1,3 @@
-### https://github.com/matt-jacobs/modules/blob/master/text-analytics/lesson-02/lesson-plan.md
 # Text Analytics - Lesson 2
 ## Lesson Outline
   - The INTs (HUMINT, ELINT, GEOINT, OSINT, etc.)  
@@ -6,6 +5,7 @@
   - Linux: wget, mv, alias, rm, ~, echo, $HOME, pwd, PS1
 
 ## While waiting for class to begin, login, launch a terminal window, and try these commands:
+### https://github.com/matt-jacobs/modules/blob/master/text-analytics/lesson-02/lesson-plan.md
 ````
 clear
 pwd
