@@ -59,8 +59,8 @@ history
  4. Execute the java program to analyze the two files you collected
  
  ````
-    nlpCore ~/data/news1.txt  
-    nlpCore ~/data/news2.txt  
+    nlpCore ~/nlp/data/news1.txt  
+    nlpCore ~/nlp/data/news2.txt  
  ````  
  5.  Use gedit to look at the two files that were generated: ~/data.news1.txt.output and ~/data/news2.txt.output  
  6.  Checkout this list of [POS (parts-of-speech) tags](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html)  
