@@ -1,3 +1,4 @@
+### https://github.com/matt-jacobs/modules/blob/master/text-analytics/lesson-02/lesson-plan.md
 # Text Analytics - Lesson 2
 ## Lesson Outline
   - The INTs (HUMINT, ELINT, GEOINT, OSINT, etc.)  
