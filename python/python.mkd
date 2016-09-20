@@ -187,7 +187,7 @@ Process
 1.  Open `first.py` in your editor of choice and add update it to look more
     like the following:
 
-~~~~ {.python}
+~~~~
     #!/usr/bin/python
     # -*- coding: utf-8 -*-
 
