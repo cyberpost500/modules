@@ -10,8 +10,7 @@ This module will continue to build on the previous concepts of:
 * blitting
 * Drawing APIs
 
-In addition, this module will introduce classes, inheritance, and finite state
-machines.
+In addition, this module will introduce classes and inheritance.
 
 Preparation
 ===========
