@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Some Simple Python Programs</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/modules/styles.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Some Simple Python Programs</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#skillsconcepts"><span class="toc-section-number">1</span> Skills/Concepts</a><ul>
+<li><a href="#interpreted-languages"><span class="toc-section-number">1.1</span> Interpreted Languages</a></li>
+<li><a href="#moduleslibraries"><span class="toc-section-number">1.2</span> Modules/Libraries</a></li>
+<li><a href="#functions"><span class="toc-section-number">1.3</span> Functions</a></li>
+<li><a href="#console-use"><span class="toc-section-number">1.4</span> Console Use</a></li>
+</ul></li>
+<li><a href="#preparation"><span class="toc-section-number">2</span> Preparation</a></li>
+<li><a href="#create-your-first-python-program"><span class="toc-section-number">3</span> Create your first Python program</a><ul>
+<li><a href="#background"><span class="toc-section-number">3.1</span> Background</a></li>
+<li><a href="#process"><span class="toc-section-number">3.2</span> Process</a></li>
+<li><a href="#conclusion"><span class="toc-section-number">3.3</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#make-your-first-python-program-marginally-better"><span class="toc-section-number">4</span> Make your first python program marginally better</a><ul>
+<li><a href="#background-1"><span class="toc-section-number">4.1</span> Background</a></li>
+<li><a href="#process-1"><span class="toc-section-number">4.2</span> Process</a></li>
+<li><a href="#conclusion-1"><span class="toc-section-number">4.3</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#use-git-to-spot-changes"><span class="toc-section-number">5</span> Use git to spot changes</a><ul>
+<li><a href="#background-2"><span class="toc-section-number">5.1</span> Background</a></li>
+<li><a href="#process-2"><span class="toc-section-number">5.2</span> Process</a></li>
+<li><a href="#conclusion-2"><span class="toc-section-number">5.3</span> Conclusion</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="skillsconcepts"><span class="header-section-number">1</span> Skills/Concepts</h1>
+<p>This module will involve creating some simple, hello-world style Python programs. This will involve the following concepts:</p>
+<ul>
+<li>interpreted languages</li>
+<li>modules/libraries</li>
+<li>functions</li>
+<li>console use</li>
+</ul>
+<h2 id="interpreted-languages"><span class="header-section-number">1.1</span> Interpreted Languages</h2>
+<p>Python is an interpreted language. Unlike programs that compile into machine code and run directly on the CPU, Python compiles into something that still requires another program to execute. Other examples of interpreted languages: C#, Java, JavaScript, Perl... Some non-interpreted languages are Assembly, C, C++, Go...</p>
+<h2 id="moduleslibraries"><span class="header-section-number">1.2</span> Modules/Libraries</h2>
+<p>Code, whether compiled or not, is generally organized into statements that are placed into functions, and functions are collected (possibly within objects) into modules or libraries. Python modules are generally in single files or organized hierarchically in directories.</p>
+<p>This topic will be revisited later, a lot.</p>
+<h2 id="functions"><span class="header-section-number">1.3</span> Functions</h2>
+<p>Functions are a logical collection of statements that generally have a specific purpose. By collecting statements into a single functional unit, it can be easily re-used. This avoids naively copying and pasting code, but more importantly it reduces duplicate code. Well written functions make it easier to re-use code and solve problems.</p>
+<p>Generally, functions have a name, a return type, and take parameters. Python functions are no exception. Examples come later.</p>
+<h2 id="console-use"><span class="header-section-number">1.4</span> Console Use</h2>
+<p>This module relies heavily on the command-line. You will be using a terminal emulator to execute the following commands.</p>
+<table>
+<colgroup>
+<col width="27%" />
+<col width="52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">git</td>
+<td align="left">A version control system</td>
+</tr>
+<tr class="even">
+<td align="left">touch</td>
+<td align="left">Creates or updates access times</td>
+</tr>
+<tr class="odd">
+<td align="left">ls</td>
+<td align="left">Lists files</td>
+</tr>
+<tr class="even">
+<td align="left">chmod</td>
+<td align="left">Changes the mode of a file</td>
+</tr>
+<tr class="odd">
+<td align="left">pydoc</td>
+<td align="left">Views Python documentation</td>
+</tr>
+</tbody>
+</table>
+<h1 id="preparation"><span class="header-section-number">2</span> Preparation</h1>
+<p>You should be fine booting up any Linux distribution as long as it has Python. Actually, any operating system with a Python interpreter should suffice, but this module will use the Kali live systems we have been using.</p>
+<h1 id="create-your-first-python-program"><span class="header-section-number">3</span> Create your first Python program</h1>
+<h2 id="background"><span class="header-section-number">3.1</span> Background</h2>
+<p>This module will demonstrate creating some simple Python programs.</p>
+<h2 id="process"><span class="header-section-number">3.2</span> Process</h2>
+<p>Commands will be entered into a terminal but file editing may be done in any text editor.</p>
+<ol style="list-style-type: decimal">
+<li>Create a directory to use as the root of your project and make it a git repository.</li>
+</ol>
+<pre><code>    mkdir pyplay
+    git init pyplay</code></pre>
+<p>Successful output should be similar to the following:</p>
+<pre><code>Initialized empty Git repository in /home/user/pyplay/.git/</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Enter the newly created directory and create a program, we will use touch for this so that certain editors will know right away to apply the appropriate syntax highlighting.</li>
+</ol>
+<pre><code>    cd pyplay
+    touch first.py</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Make the new file executable so that it can be run by typing its name:</li>
+</ol>
+<pre><code>    chmod +x first.py</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Edit the new file, for example:</p>
+<pre><code>gedit first.py</code></pre></li>
+</ol>
+<p>Or:</p>
+<pre><code>subl first.py</code></pre>
+<p>Or:</p>
+<pre><code>gvim first.py</code></pre>
+<p>Or:</p>
+<pre><code>vim first.py</code></pre>
+<p>or...</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Put the following text into the file:</li>
+</ol>
+<pre><code>    #!/usr/bin/python
+
+    print(&quot;Hello, world!&quot;)</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li><p>Save the file using whatever means your editor uses. (Ctrl+S, :w, etc)</p></li>
+<li><p>Execute your new program from a terminal:</p>
+<pre><code>./first.py</code></pre></li>
+</ol>
+<p>Successful output will look like the following:</p>
+<pre><code>    Hello, World!</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li><p>If your program is working, commit it to revision control so you can refer back to it later.</p>
+<pre><code>git add first.py
+git commit -m &quot;Committed working version of my first python program.&quot;</code></pre></li>
+<li><p>Confirm it was committed by viewing the git status:</p>
+<pre><code>git status</code></pre></li>
+</ol>
+<p>Successful output will look like the following:</p>
+<pre><code>    Author: user &lt;user@example.com&gt;
+    Date:   Mon Sep 12 21:30:24 2016 -0400
+
+        Committed working version of my first python program.</code></pre>
+<h2 id="conclusion"><span class="header-section-number">3.3</span> Conclusion</h2>
+<p>You've create a simple program using python, but this program might be considered of poor design. Successive modules will improve upon this.</p>
+<h1 id="make-your-first-python-program-marginally-better"><span class="header-section-number">4</span> Make your first python program marginally better</h1>
+<h2 id="background-1"><span class="header-section-number">4.1</span> Background</h2>
+<p>It's generally considered a poor practice to put raw python statements into a python program. Instead, code should be put into functions and invoked only when the code is being run as a program. The reason for this is that there is no difference between a python program and a library. So, for maximum reusability all programs should be written as though they are a library.</p>
+<p>Another good motivation for this is the tool for viewing python documentation will inadvertantly execute the code in a program when it parses it to display the documentation.</p>
+<p>So, in this module, we will add documentation and a main function to our program.</p>
+<h2 id="process-1"><span class="header-section-number">4.2</span> Process</h2>
+<ol style="list-style-type: decimal">
+<li>Open <code>first.py</code> in your editor of choice and add update it to look more like the following:</li>
+</ol>
+<pre><code>    #!/usr/bin/python
+    # -*- coding: utf-8 -*-
+
+    &#39;&#39;&#39; Our first python program. 
+
+    This is how a top-level module or program includes embedded documentation.
+    &#39;&#39;&#39;
+
+    def main():
+        &#39;&#39;&#39;
+        This is a function containing the main logic of our first program.  It&#39;s
+        placed here to avoid accidental execution when viewing documentation or if
+        someone else attempts to import this program to use some function contained
+        in it.
+        &#39;&#39;&#39;
+
+        print(&quot;Hello, world!&quot;)
+
+    if __name__ == &quot;__main__&quot;:
+        main()</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Run your new program:</p>
+<pre><code>./first.py</code></pre></li>
+</ol>
+<p>Successful output will look like the following:</p>
+<pre><code>    Hello, World!</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><p>View the embedded documentation in your program using the pydoc command (note there is no file extension when you do this):</p>
+<pre><code>pydoc first</code></pre></li>
+</ol>
+<p>This will launch a simple command-line utility for viewing python documentation. Successful output will look like the following:</p>
+<pre><code>    Help on module first:
+
+    NAME
+        first - Our first python program.
+
+    FILE
+        /home/stephen/pyplay/first.py
+
+    DESCRIPTION
+        This is how a top-level module or program includes embedded documentation.
+
+    FUNCTIONS
+        main()
+            This is a function containing the main logic of our first program.  It&#39;s
+            placed here to avoid accidental execution when viewing documentation or if
+            someone else attempts to import this program to use some function contained
+            in it.
+
+    ~
+    ~
+    ~
+    ~
+    (END)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Commit your new changes:</p>
+<pre><code>commit -a -m &quot;Improved the program layout and added documentation&quot;&quot;</code></pre></li>
+</ol>
+<p>Successful output will look like the following:</p>
+<pre><code>    [master d2263cd] Improved the program layout and added documentation
+     1 file changed, 17 insertions(+), 1 deletion(-)
+     mode change 100644 =&gt; 100755 first.py</code></pre>
+<h2 id="conclusion-1"><span class="header-section-number">4.3</span> Conclusion</h2>
+<p>Although this is overkill for such a simple program, this is a more correct way of structuring your program.</p>
+<p>We'll discuss the different changes, but in summary this updated program is a decent example of how to:</p>
+<ul>
+<li>specify the file encoding to avoid conversion errors</li>
+<li>modularize your code for inclusion in other people's programs</li>
+<li>add documentation to your code for use by <code>pydoc</code></li>
+<li>avoid side effects when viewing your module documentation in <code>pydoc</code></li>
+</ul>
+<h1 id="use-git-to-spot-changes"><span class="header-section-number">5</span> Use git to spot changes</h1>
+<h2 id="background-2"><span class="header-section-number">5.1</span> Background</h2>
+<p>Now that we have a repository with some meaningful content, we'll simulate introducing a bug and using git to highlight differences for us.</p>
+<h2 id="process-2"><span class="header-section-number">5.2</span> Process</h2>
+<ol style="list-style-type: decimal">
+<li><p>Introduce a bug in the code. Open <code>first.py</code> and delete a character from the last line so that instead of saying main it says mai.</p></li>
+<li><p>Use the git diff command to view the edit:</p>
+<pre><code>git diff</code></pre></li>
+</ol>
+<p>Successful output will look like the following:</p>
+<pre><code>diff --git a/first.py b/first.py
+index 3b873ed..c0d2fd2 100755
+--- a/first.py
++++ b/first.py
+@@ -17,4 +17,4 @@ def main():
+     print(&quot;Hello, world!&quot;)
+
+ if __name__ == &quot;__main__&quot;:
+-    main()
++    mai()</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><p>This output can be difficul to see and interpret, so lets use something meant for humans and use the difftool command of git:</p>
+<p>git difftool</p></li>
+</ol>
+<p>Successful output varies based on the configured application, but generally there will be a window displaying the old and new version of the file with colors showing where content appears to have been deleted or added, or otherwise modified.</p>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Lets discard the changes and go back to the previous version of the file:</p>
+<pre><code>git checkout first.py</code></pre></li>
+</ol>
+<h2 id="conclusion-2"><span class="header-section-number">5.3</span> Conclusion</h2>
+<p>The bug introduced was a pretty trivial example, but it should be apparent that you can, at the very least, view the differences in your working copy of a file versus the repository version. This is useful for hunting down bugs, summarizing changes for a future commit message, or just seeing what's changed. The <code>git diff</code> command gives the classic <code>diff</code> command output which is great for viewing short changes or creating a patch to share a changeset with others.</p>
+<p>The <code>git difftool</code> command is better for interactively viewing large sets of changes and the specific tool it invokes depends on how the system is configured.</p>
+</body>
+</html>

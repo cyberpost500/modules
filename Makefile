@@ -26,7 +26,8 @@ HTML_OPTS+=--toc
 EVERYTHING:=index.html live-boot/live-boot.html live-boot/live-boot.pdf \
 	text-analytics/lesson-01/lesson-plan.html text-analytics/lesson-01/lesson-plan.pdf \
 	text-analytics/lesson-02/lesson-plan.html text-analytics/lesson-02/lesson-plan.pdf \
-	git/git.pdf git/git.html
+	git/git.pdf git/git.html \
+	python/python.pdf python/python.html
 
 all: $(EVERYTHING)
 
