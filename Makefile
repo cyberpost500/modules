@@ -22,16 +22,25 @@ HTML_OPTS+=--css /modules/styles.css
 HTML_OPTS+=-N
 HTML_OPTS+=--toc
 
-# I decided to eschew cleverness and just invoke pandoc on each file individually
 # Anyone adding more content, just copy and paste and update the paths below.
+EVERYTHING:=index.html live-boot/live-boot.html live-boot/live-boot.pdf \
+	text-analytics/lesson-01/lesson-plan.html text-analytics/lesson-01/lesson-plan.pdf \
+	text-analytics/lesson-02/lesson-plan.html text-analytics/lesson-02/lesson-plan.pdf \
+	git/git.pdf git/git.html
 
-all: index.html live-boot/live-boot.html live-boot/live-boot.pdf
+all: $(EVERYTHING)
 
-live-boot/live-boot.pdf: live-boot/live-boot.mkd
-	@pandoc $(PDF_OPTS) live-boot/live-boot.mkd -o live-boot/live-boot.pdf
+%.pdf: %.mkd
+	pandoc $(PDF_OPTS) $< -o $@
 
-live-boot/live-boot.html: live-boot/live-boot.mkd
-	@pandoc $(HTML_OPTS) live-boot/live-boot.mkd -o live-boot/live-boot.html
+%.pdf: %.md
+	pandoc $(PDF_OPTS) $< -o $@
+
+%.html: %.mkd
+	pandoc $(HTML_OPTS) $< -o $@
+
+%.html: %.md
+	pandoc $(HTML_OPTS) $< -o $@
 
 index.html:
 	@pandoc $(HTML_OPTS) README.md -o index.html

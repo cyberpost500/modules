@@ -9,7 +9,14 @@
   <link rel="stylesheet" href="/modules/styles.css" type="text/css" />
 </head>
 <body>
-<h1 id="lesson-module-repository">Lesson Module Repository</h1>
+<div id="TOC">
+<ul>
+<li><a href="#lesson-module-repository"><span class="toc-section-number">1</span> Lesson Module Repository</a><ul>
+<li><a href="#pdfs-and-html"><span class="toc-section-number">1.1</span> PDFS (and HTML)</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="lesson-module-repository"><span class="header-section-number">1</span> Lesson Module Repository</h1>
 <p>The <a href="https://github.com/cyberpost500/modules/">module repository</a> will hold the content of any lessons we (the Post Advisors) produce at the explorer post.</p>
 <p>Lessons are written up in a langauge called Markdown. To convert any given Markdown file from the repository into a PDF, use <code>pandoc</code> with the <code>xelatex</code> engine, preferably with a Unicode font so that none of the glyphs are missing from the resulting document.</p>
 <p>For example:</p>
@@ -17,10 +24,20 @@
 sansfont=&quot;DejaVu Sans&quot; --variable monofont=&quot;DejaVu Sans Mono&quot; \
 --latex-engine=xelatex  live-boot.mkd -o live-boot.pdf --highlight-style=tango \
 --toc -N</code></pre>
-<h2 id="pdfs-and-html">PDFS (and HTML)</h2>
+<h2 id="pdfs-and-html"><span class="header-section-number">1.1</span> PDFS (and HTML)</h2>
 <p>The bit about Pandoc and Xelatex confusing? Yeah, it kind of is. Here's a running list of the modules already exported to PDF (and HTML):</p>
 <ul>
-<li>Live Boot Module <a href="live-boot/live-boot.pdf">pdf</a> <a href="live-boot/live-boot.html">html</a></li>
+<li>Live Boot Module <a href="live-boot/live-boot.mkd">txt</a> <a href="live-boot/live-boot.pdf">pdf</a> <a href="live-boot/live-boot.html">html</a></li>
+<li>Text Analytics</li>
+<li>Lesson 1 <a href="text-analytics/lesson-01/lesson-plan.md">txt</a> <a href="text-analytics/lesson-01/lesson-plan.pdf">pdf</a> <a href="text-analytics/lesson-01/lesson-plan.html">html</a></li>
+<li>Lesson 2 <a href="text-analytics/lesson-02/lesson-plan.md">txt</a> <a href="text-analytics/lesson-02/lesson-plan.pdf">pdf</a> <a href="text-analytics/lesson-02/lesson-plan.html">html</a></li>
+<li>Python <a href="python/python.mkd">txt</a> <a href="python/python.pdf">pdf</a> <a href="python/python.html">html</a></li>
+<li>Git <a href="git/git.mkd">txt</a> <a href="git/git.pdf">pdf</a> <a href="git/git.html">html</a></li>
+<li>Python Games</li>
+<li>Lesson 1 <a href="python-games/python-games.mkd">txt</a> <a href="python-games/python-games.pdf">pdf</a> <a href="python/python-games.html">html</a></li>
+<li>Lesson 2 <a href="python-games/python-games-2.mkd">txt</a> <a href="python-games/python-games-2.pdf">pdf</a> <a href="python-games/python-games-2.html">html</a></li>
+<li>Lesson 3 <a href="python-games/python-games-3.mkd">txt</a> <a href="python-games/python-games-3.pdf">pdf</a> <a href="python-games/python-games-3.html">html</a></li>
+<li>Project File <a href="python-games/project.tar">tar only</a></li>
 </ul>
 </body>
 </html>

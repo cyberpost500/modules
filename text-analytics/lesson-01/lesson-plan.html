@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/modules/styles.css" type="text/css" />
+</head>
+<body>
+<div id="TOC">
+<ul>
+<li><a href="#lesson-outline"><span class="toc-section-number">1</span> Lesson Outline</a></li>
+<li><a href="#step-by-step"><span class="toc-section-number">2</span> Step-by-step:</a></li>
+</ul>
+</div>
+<h1 id="lesson-outline"><span class="header-section-number">1</span> Lesson Outline</h1>
+<ul>
+<li>The INTs (HUMINT, ELINT, GEOINT, OSINT, etc.)<br /></li>
+<li>Text Analytics - the process of analyzing unstructured text, extracting relevant information, and transforming it into useful intelligence.<br /></li>
+<li>Text to be analyzed: a list of songs by the Beatles
+<ul>
+<li>How many different words did they use?<br /></li>
+<li>Which words were used frequently?<br /></li>
+<li>Which word was used the most?</li>
+</ul></li>
+<li>Morse Code example</li>
+<li>Linux stuff: &gt;, &lt;, &amp;, |, wget, tr, vi, wc, sed, cat, less, more, sort, uniq</li>
+</ul>
+<h1 id="step-by-step"><span class="header-section-number">2</span> Step-by-step:</h1>
+<ol style="list-style-type: decimal">
+<li>Make a directory to work in and move into it<br /><code>mkdir songs</code><br /><code>cd songs</code><br /></li>
+<li>Get a list of Beatles songs from the Internet and look at it several different ways<br /><code>wget https://raw.githubusercontent.com/matt-jacobs/modules/master/text-analytics/lesson-01/beatles-songs.txt</code><br /><code>cat beatles-songs.txt # cat is short for catenate</code><br /><code>less beatles-songs.txt # less shows the file a page at a time</code><br /><code>more beatles-songs.txt # is a newer version of less</code><br /><code>vi beatles-songs.txt  # vi is a text editor.  ESC!q exits without saving changes</code><br /><code>nano beatles-songs.txt &amp;</code> <code>nano beatles-songs.txt # this time without the ampersand</code></li>
+<li>How many songs did the Beatles write?<br /><code>wc -l &lt; beatles-songs.txt # wc counts the number of lines in a file</code><br /><code>wc -c &lt; beatles-songs.txt # wc counts the number of characters in a file</code><br /><code>wc -w &lt; beatles-songs.txt # wc counts the number of &quot;words&quot; in a file</code><br /></li>
+<li>Use the <strong>man</strong> command to see how a <strong>word</strong> is defined<br /><code>man wc</code><br /></li>
+<li>To get each word on its own line, change spaces to newlines<br /><code>tr ' ' '\n' &lt; beatles-songs.txt</code><br /><code>tr ' ' '\n' &lt; beatles-songs.txt | more</code><br /><code>tr ' ' '\n' &lt; beatles-songs.txt | sort | more</code><br /><code>tr ' ' '\n' &lt; beatles-songs.txt | sort | uniq | more</code><br /></li>
+<li>To get rid of parentheses, change them to spaces BEFORE changing the spaces to new lines<br /><code>tr '(' ' ' &lt; beatles-songs.txt |  tr ' ' '\n'|  sort | uniq | more</code><br /><code>tr '(' ' ' &lt; beatles-songs.txt |  tr ')' ' ' | tr ' ' '\n'|  sort | uniq | more</code><br /><code>sed -e 's?[()]? ?g' &lt; beatles-songs.txt  | tr ' ' '\n'|  sort | uniq | more</code><br /></li>
+<li>To get rid of other characters, also change them to spaces BEFORE changing the spaces to new lines<br /> <code>sed -e 's?[(),/!.?]? ?g' &lt; beatles-songs.txt | tr ' ' '\n' | sort | uniq | more</code></li>
+<li>Are uppercase and lowercase versions of words different?<br /> <code>sed -e 's?[(),/!.?]? ?g' &lt; beatles-songs.txt | tr ' ' '\n' | tr [:upper:] [:lower:] | sed '/^\s*$/d' | sort | uniq | more</code></li>
+<li>Get rid of blank lines<br /> <code>sed -e 's?[(),/!.?]? ?g' &lt; beatles-songs.txt | tr ' ' '\n' | tr [:upper:] [:lower:] | sed '/^\s*$/d' | sort | uniq | more</code><br /></li>
+<li>Now we can count words<br /> <code>sed -e 's?[(),/!.?]? ?g' &lt; beatles-songs.txt | tr ' ' '\n' | tr [:upper:] [:lower:] | sed '/^\s*$/d' | sort | uniq -c | more</code><br /> <code>sed -e 's?[(),/!.?]? ?g' &lt; beatles-songs.txt | tr ' ' '\n' | tr [:upper:] [:lower:] | sed '/^\s*$/d' | sort | uniq -c |sort -bnr &gt; counts.txt</code><br /> <code>more counts.txt</code></li>
+<li>Test some words to see if the counts are correct<br /><code>grep -i goodbye beatles-songs.txt</code></li>
+</ol>
+</body>
+</html>

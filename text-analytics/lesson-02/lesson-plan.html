@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/modules/styles.css" type="text/css" />
+</head>
+<body>
+<div id="TOC">
+<ul>
+<li><a href="#text-analytics---lesson-2"><span class="toc-section-number">1</span> Text Analytics - Lesson 2</a><ul>
+<li><a href="#lesson-outline"><span class="toc-section-number">1.1</span> Lesson Outline</a></li>
+<li><a href="#while-waiting-for-class-to-begin-login-launch-a-terminal-window-and-try-these-commands"><span class="toc-section-number">1.2</span> While waiting for class to begin, login, launch a terminal window, and try these commands:</a><ul>
+<li><a href="#httpsgithub.commatt-jacobsmodulesblobmastertext-analyticslesson-02lesson-plan.md"><span class="toc-section-number">1.2.1</span> https://github.com/matt-jacobs/modules/blob/master/text-analytics/lesson-02/lesson-plan.md</a></li>
+</ul></li>
+<li><a href="#stanford-natural-language-processing-tools"><span class="toc-section-number">1.3</span> Stanford Natural Language Processing Tools</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="text-analytics---lesson-2"><span class="header-section-number">1</span> Text Analytics - Lesson 2</h1>
+<h2 id="lesson-outline"><span class="header-section-number">1.1</span> Lesson Outline</h2>
+<ul>
+<li>The INTs (HUMINT, ELINT, GEOINT, OSINT, etc.)<br /></li>
+<li>Text Analytics - the process of analyzing unstructured text, extracting relevant information, and transforming it into useful intelligence.<br /></li>
+<li>Linux: wget, mv, alias, rm, ~, echo, $HOME, pwd, PS1</li>
+</ul>
+<h2 id="while-waiting-for-class-to-begin-login-launch-a-terminal-window-and-try-these-commands"><span class="header-section-number">1.2</span> While waiting for class to begin, login, launch a terminal window, and try these commands:</h2>
+<h3 id="httpsgithub.commatt-jacobsmodulesblobmastertext-analyticslesson-02lesson-plan.md"><span class="header-section-number">1.2.1</span> https://github.com/matt-jacobs/modules/blob/master/text-analytics/lesson-02/lesson-plan.md</h3>
+<pre><code>clear
+pwd
+echo $HOME
+cd ~
+pwd
+cd $HOME
+pwd
+pwd;pwd;pwd
+ls
+ls --all --author -1 --group
+alias x=&#39;ls --all -author -1 --group&#39;
+x
+echo $HOME &gt; myHome.txt
+x myHome.txt
+cat myHome.txt
+mv myHome.txt anotherPlace.txt
+x *.txt
+mv anotherPlace.txt myHome.txt 
+x *.txt
+gedit myHome.txt &amp;
+rm myHome.txt  
+export PS1=&#39;$ &#39;
+x ~/nlp
+x ~/nlp/programs/cor
+x ~/nlp/programs/core
+x ~/nlp/programs/ner
+unalias x
+history</code></pre>
+<h2 id="stanford-natural-language-processing-tools"><span class="header-section-number">1.3</span> Stanford Natural Language Processing Tools</h2>
+<ol style="list-style-type: decimal">
+<li>Visit the <a href="http://nlp.stanford.edu/software/">NLP Software page</a>. Read about the core and NER.</li>
+<li>Get some text to analyze:</li>
+<li>Open up a text editor and have it run in the background<br /></li>
+<li>Go to a news website (e.g., cnn.com, bbc.com, theonion.com), browse to a news story, copy the text into your text editor, and save the file as ~/nlp/data/news1.text</li>
+<li>Use wget to get a copy of a different news web page</li>
+</ol>
+<p><code>wget http://msnbc.com      mv index.html ~/nlp/data/news2.txt</code> 2. See what version of Java you have installed - version 1.8 is needed.<br /> <code>java -version</code> 3. Make an alias for running the coreNLP program (<a href="http://stanfordnlp.github.io/CoreNLP/cmdline.html">reference</a>)<br /> <code>alias nlpCore='java -cp &quot;$HOME/nlp/programs/core/*&quot; -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse,dcoref -file'</code> 4. Execute the java program to analyze the two files you collected</p>
+<p><code>nlpCore ~/nlp/data/news1.txt       nlpCore ~/nlp/data/news2.txt</code><br /> 5. Use gedit to look at the two files that were generated: ~/data.news1.txt.output and ~/data/news2.txt.output<br /> 6. Checkout this list of <a href="https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html">POS (parts-of-speech) tags</a><br /> 7. See if you can figure out how to run the Named Entity Recognizer program using the instructions on <a href="http://nlp.stanford.edu/software/CRF-NER.html">this page</a></p>
+</body>
+</html>

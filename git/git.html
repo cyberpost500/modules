@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>GIT (and Version Control Systems)</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/modules/styles.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">GIT (and Version Control Systems)</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#skillsconcepts"><span class="toc-section-number">1</span> Skills/Concepts</a><ul>
+<li><a href="#version-control-systems"><span class="toc-section-number">1.1</span> Version Control Systems</a></li>
+<li><a href="#console-use"><span class="toc-section-number">1.2</span> Console Use</a></li>
+<li><a href="#getting-help-for-commands"><span class="toc-section-number">1.3</span> Getting Help for Commands</a></li>
+<li><a href="#manipulating-files"><span class="toc-section-number">1.4</span> Manipulating Files</a></li>
+</ul></li>
+<li><a href="#preparation"><span class="toc-section-number">2</span> Preparation</a></li>
+<li><a href="#create-a-git-repository"><span class="toc-section-number">3</span> Create a GIT Repository</a><ul>
+<li><a href="#background"><span class="toc-section-number">3.1</span> Background</a></li>
+<li><a href="#process"><span class="toc-section-number">3.2</span> Process</a></li>
+<li><a href="#conclusion"><span class="toc-section-number">3.3</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#add-and-modify-a-file"><span class="toc-section-number">4</span> Add and Modify a File</a><ul>
+<li><a href="#background-1"><span class="toc-section-number">4.1</span> Background</a></li>
+<li><a href="#process-1"><span class="toc-section-number">4.2</span> Process</a></li>
+<li><a href="#conclusion-1"><span class="toc-section-number">4.3</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#delete-a-file-and-get-it-back"><span class="toc-section-number">5</span> Delete a File (and get it back)</a><ul>
+<li><a href="#background-2"><span class="toc-section-number">5.1</span> Background</a></li>
+<li><a href="#process-2"><span class="toc-section-number">5.2</span> Process</a></li>
+<li><a href="#conclusion-2"><span class="toc-section-number">5.3</span> Conclusion</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="skillsconcepts"><span class="header-section-number">1</span> Skills/Concepts</h1>
+<p>This module will include the following (among other) concepts:</p>
+<ul>
+<li>version control systems</li>
+<li>console use</li>
+<li>filesystems</li>
+<li>manipulating files</li>
+</ul>
+<h2 id="version-control-systems"><span class="header-section-number">1.1</span> Version Control Systems</h2>
+<p>Version control systems provide a means of tracking changes to files over time. That is, they allow retrieving past versions of a file. Generally, the developer needs to designate checkpoints and choose to save a given version of a file. Then, as needed, special commands may be used to fetch previous versions, compare current with previous versions, compare previous versions with other previous versions, or perform a wide array of related tasks. Generally there is some other metadata stored with previous file revisions, including date, author, and optional comments.</p>
+<p>Some other version control systems (which will not be covered):</p>
+<ul>
+<li>CVS</li>
+<li>Mercurial</li>
+<li>Subversion</li>
+</ul>
+<h2 id="console-use"><span class="header-section-number">1.2</span> Console Use</h2>
+<p>This module relies heavily on the command-line. You will be using a terminal emulator to execute the following commands.</p>
+<table>
+<colgroup>
+<col width="27%" />
+<col width="52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">git</td>
+<td align="left">A version control system</td>
+</tr>
+<tr class="even">
+<td align="left">rm</td>
+<td align="left">Remove files</td>
+</tr>
+<tr class="odd">
+<td align="left">ls</td>
+<td align="left">Lists files</td>
+</tr>
+<tr class="even">
+<td align="left">man</td>
+<td align="left">View on-line manual pages</td>
+</tr>
+</tbody>
+</table>
+<h2 id="getting-help-for-commands"><span class="header-section-number">1.3</span> Getting Help for Commands</h2>
+<p>We are just touching on some features of git and wont be using it, but the <code>git</code> command has a whole host of on-line help that can be viewed via either <code>git help</code> or via the <code>man</code> command.</p>
+<p>In addition, when doing these operations on your own, the following are excellent resources for help with Git:</p>
+<ul>
+<li><a href="http://git-scm.com">Git-SCM Web Site</a> which provides an excellent book called <a href="https://git-scm.com/book">Pro Git</a></li>
+<li><a href="https://www.stackoverflow.com">Stack Overflow</a></li>
+</ul>
+<h2 id="manipulating-files"><span class="header-section-number">1.4</span> Manipulating Files</h2>
+<p>You'll be using an editor (your choice) to edit file content, and then you'll be using the command line to create, delete, and restore files.</p>
+<p>When we use a terminal emulator, we will be using the Bash shell. This shell, like many others, supports redirection. We will be using the <code>echo</code> command in conjunction with output redirection when we create files.</p>
+<p>The specific redirection operator we will use is the standard out redirection operator <code>&gt;</code>. The command to the left of the <code>&gt;</code> will be redirected to the file named on the right of the <code>&gt;</code>.</p>
+<p>For example:</p>
+<pre><code>echo hello &gt; /tmp/hello.txt</code></pre>
+<p>This example invokes echo, which just repeats on standard out whatever text it is given, and saves the result of echoing <code>hello</code> to the file <code>/tmp/hello.txt</code>. That is, after running the above command, in the <code>/tmp/</code> directory, there will be a file named <code>hello.txt</code> that contains the text <code>hello</code>.</p>
+<h1 id="preparation"><span class="header-section-number">2</span> Preparation</h1>
+<p>You should be fine booting up any Linux distribution as long as it has <code>git</code>. The various live CDs we have mentioned in the past (including Kali) all provide <code>git</code> as a command or can install it to the live session.</p>
+<h1 id="create-a-git-repository"><span class="header-section-number">3</span> Create a GIT Repository</h1>
+<h2 id="background"><span class="header-section-number">3.1</span> Background</h2>
+<p>This module will demonstrate creating a Git repository from the command-line.</p>
+<h2 id="process"><span class="header-section-number">3.2</span> Process</h2>
+<p>The following steps will be carried out in a terminal. Press <code>ctrl+alt+t</code> or otherwise open a terminal through whatever means the Live Disk provides.</p>
+<ol style="list-style-type: decimal">
+<li><p>Create a directory to use as the root of your version controlled project:</p>
+<p>mkdir project</p></li>
+<li><p>Initialize the new directory as a git repository:</p>
+<p>git init project</p></li>
+</ol>
+<p>Successful output should be similar to the following:</p>
+<pre><code>Initialized empty Git repository in /home/user/project/.git/</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Confirm that the new directory is a git repository:</p>
+<p>cd project git status</p></li>
+</ol>
+<p>Successful output will look like the following:</p>
+<pre><code>On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use &quot;git add&quot; to track)</code></pre>
+<p>This output indicates that you are in a git repostiroy (the directory <code>project</code>) and there are no modifications in the checkout that need to be committed or saved.</p>
+<p>If an error has occurred:</p>
+<pre><code>fatal: Not a git repository (or any of the parent directories): .git</code></pre>
+<p>If this error has occurred, make sure you changed to the target (<code>project</code>) directory before executing your <code>git status</code> command.</p>
+<h2 id="conclusion"><span class="header-section-number">3.3</span> Conclusion</h2>
+<p>Althought it doesn't currently contain any files, you now have an empty Git repository that is capable of accepting new files and tracking changes made to those files over time.</p>
+<h1 id="add-and-modify-a-file"><span class="header-section-number">4</span> Add and Modify a File</h1>
+<h2 id="background-1"><span class="header-section-number">4.1</span> Background</h2>
+<p>As it stands, you have an empty git repository. In order to make it useful, you need to be able to add, modify, and explore files.</p>
+<h2 id="process-1"><span class="header-section-number">4.2</span> Process</h2>
+<p>Execute these commands from within the <code>project</code> directory.</p>
+<ol style="list-style-type: decimal">
+<li><p>Create a new file:</p>
+<p>echo This is a new file &gt; file1</p></li>
+<li><p>Confirm the new file exists:</p>
+<p>ls -l file1</p></li>
+<li><p>Add the new to staging:</p>
+<p>git add file1</p></li>
+<li><p>View the current pending changes that are still in staging:</p>
+<p>git status</p></li>
+</ol>
+<p>The result should be:</p>
+<pre><code>On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+
+    new file:   file1</code></pre>
+<p>Typically, the new files will be displayed in green.</p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Commit the pending changes:</p>
+<p>git commit</p></li>
+</ol>
+<p>An editor will open up where you can type in an optional commit message. Type in a message and save and quit.</p>
+<p>For vim, press <code>i</code> then type a message, hit escape, and type <code>:wq</code>. For nano, type in your message, then press Control+O and then Control+X.</p>
+<p>The result will look similar to the following:</p>
+<pre><code>[master (root-commit) da50d2e] Created a file.
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file1</code></pre>
+<p>This summary shows that a single file was committed that contained new (inserted) data. The file mode was set to read/write for the owner, and read for everyone else.</p>
+<ol start="6" style="list-style-type: decimal">
+<li><p>View the current status to see there are no more pending changes:</p>
+<p>git status</p></li>
+</ol>
+<p>The result should be:</p>
+<pre><code>On branch master
+nothing to commit, working directory clean</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li><p>Confirm the commit details using the log command:</p>
+<p>git log</p></li>
+</ol>
+<p>The result should be:</p>
+<pre><code>commit da50d2ea51f9bdbe244a785aa59dd87bfcd46854
+Author: Stephen &lt;stephenrd@gmail.com&gt;
+Date:   Tue Aug 23 15:59:21 2016 -0400
+
+    Created a file.</code></pre>
+<h2 id="conclusion-1"><span class="header-section-number">4.3</span> Conclusion</h2>
+<p>The respository now exists with a single file in it. The file has a history that can be viwed with the <code>log</code> command, though the only history that will be visible is when the file was added to the repository. From this point on it's possible to get back to this version of the file.</p>
+<h1 id="delete-a-file-and-get-it-back"><span class="header-section-number">5</span> Delete a File (and get it back)</h1>
+<h2 id="background-2"><span class="header-section-number">5.1</span> Background</h2>
+<p>As it stands, you now have a git repository with a single file. If that file is changed, you can compare the new version with the old. And if that file is deleted, the previous version still exists.</p>
+<h2 id="process-2"><span class="header-section-number">5.2</span> Process</h2>
+<p>Execute these commands from within the <code>project</code> directory.</p>
+<ol style="list-style-type: decimal">
+<li><p>Delete the file, <code>file1</code>.</p>
+<p>rm file1</p></li>
+<li><p>View the current status according to git:</p>
+<p>git status</p></li>
+</ol>
+<p>The result should be:</p>
+<pre><code>On branch master
+Changes not staged for commit:
+  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+    deleted:    file1
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Check out the current version of the now deleted file:</p>
+<p>git checkout file1</p></li>
+<li><p>Verify the file now exists:</p>
+<p>ls</p></li>
+</ol>
+<p>The result should be:</p>
+<pre><code>file1</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Confirm that there are no outstanding changes with the status command:</p>
+<p>git status</p></li>
+</ol>
+<p>The result should be:</p>
+<pre><code>On branch master
+nothing to commit, working directory clean</code></pre>
+<h2 id="conclusion-2"><span class="header-section-number">5.3</span> Conclusion</h2>
+<p>Because the file had been checked in, it was possible to check the file out again to get the version of it that exists ion the master branch of the repository.</p>
+</body>
+</html>
