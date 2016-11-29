@@ -30,7 +30,9 @@ EVERYTHING:=index.html live-boot/live-boot.html live-boot/live-boot.pdf \
 	python/python.pdf python/python.html \
 	python-games/python-games.pdf python-games/python-games.html \
 	python-games/python-games-2.pdf python-games/python-games-2.html \
-	python-games/python-games-3.pdf python-games/python-games-3.html
+	python-games/python-games-3.pdf python-games/python-games-3.html \
+	python-games/python-games-4.pdf python-games/python-games-4.html
+
 
 all: $(EVERYTHING)
 
