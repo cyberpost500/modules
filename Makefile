@@ -27,7 +27,10 @@ EVERYTHING:=index.html live-boot/live-boot.html live-boot/live-boot.pdf \
 	text-analytics/lesson-01/lesson-plan.html text-analytics/lesson-01/lesson-plan.pdf \
 	text-analytics/lesson-02/lesson-plan.html text-analytics/lesson-02/lesson-plan.pdf \
 	git/git.pdf git/git.html \
-	python/python.pdf python/python.html
+	python/python.pdf python/python.html \
+	python-games/python-games.pdf python-games/python-games.html \
+	python-games/python-games-2.pdf python-games/python-games-2.html \
+	python-games/python-games-3.pdf python-games/python-games-3.html
 
 all: $(EVERYTHING)
 

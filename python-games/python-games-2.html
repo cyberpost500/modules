@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Simple Python &quot;Games&quot; pt. 2</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; }
+code > span.dt { color: #204a87; }
+code > span.dv { color: #0000cf; }
+code > span.bn { color: #0000cf; }
+code > span.fl { color: #0000cf; }
+code > span.ch { color: #4e9a06; }
+code > span.st { color: #4e9a06; }
+code > span.co { color: #8f5902; font-style: italic; }
+code > span.ot { color: #8f5902; }
+code > span.al { color: #ef2929; }
+code > span.fu { color: #000000; }
+code > span.er { font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="/modules/styles.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Simple Python &quot;Games&quot; pt. 2</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#skillsconcepts"><span class="toc-section-number">1</span> Skills/Concepts</a></li>
+<li><a href="#preparation"><span class="toc-section-number">2</span> Preparation</a></li>
+<li><a href="#shapes"><span class="toc-section-number">3</span> Shapes</a><ul>
+<li><a href="#background"><span class="toc-section-number">3.1</span> Background</a></li>
+<li><a href="#reviewrunmodify-the-code"><span class="toc-section-number">3.2</span> Review/Run/Modify the Code</a></li>
+<li><a href="#conclusion"><span class="toc-section-number">3.3</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#animated-shapes"><span class="toc-section-number">4</span> Animated Shapes</a><ul>
+<li><a href="#background-1"><span class="toc-section-number">4.1</span> Background</a></li>
+<li><a href="#reviewrunmodify-the-code-1"><span class="toc-section-number">4.2</span> Review/Run/Modify the Code</a></li>
+<li><a href="#conclusion-1"><span class="toc-section-number">4.3</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#bouncing-shapes"><span class="toc-section-number">5</span> Bouncing Shapes</a><ul>
+<li><a href="#background-2"><span class="toc-section-number">5.1</span> Background</a></li>
+<li><a href="#reviewrunmodify-the-code-2"><span class="toc-section-number">5.2</span> Review/Run/Modify the Code</a></li>
+<li><a href="#conclusion-2"><span class="toc-section-number">5.3</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#shape-class"><span class="toc-section-number">6</span> Shape Class</a><ul>
+<li><a href="#background-3"><span class="toc-section-number">6.1</span> Background</a></li>
+<li><a href="#reviewrunmodify-the-code-3"><span class="toc-section-number">6.2</span> Review/Run/Modify the Code</a></li>
+<li><a href="#conclusion-3"><span class="toc-section-number">6.3</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#new-classes"><span class="toc-section-number">7</span> New Classes</a><ul>
+<li><a href="#background-4"><span class="toc-section-number">7.1</span> Background</a></li>
+<li><a href="#reviewrunmodify-the-code-4"><span class="toc-section-number">7.2</span> Review/Run/Modify the Code</a></li>
+<li><a href="#conclusion-4"><span class="toc-section-number">7.3</span> Conclusion</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="skillsconcepts"><span class="header-section-number">1</span> Skills/Concepts</h1>
+<p>This module is a continuation of the Python Games module.</p>
+<p>This module will continue to build on the previous concepts of:</p>
+<ul>
+<li>SDL</li>
+<li>blitting</li>
+<li>Drawing APIs</li>
+</ul>
+<p>In addition, this module will introduce classes and inheritance.</p>
+<h1 id="preparation"><span class="header-section-number">2</span> Preparation</h1>
+<p>Continue with the same environment from the previous (Python Games) module.</p>
+<p>We will be using an existing git repository that contains a fair amount of code instead of producing a new program from scratch. This is to avoid copy and paste errors and allow us to cover material faster.</p>
+<p>To get the code, execute the following command:</p>
+<pre><code>git clone https://www.github.com/cyberpost500/modules/</code></pre>
+<p>Then extract the project repository to your desktop:</p>
+<pre><code>cd modules/python-games/
+tar -C ~/Desktop/ -xf project.tar</code></pre>
+<p>The code will be in the Desktop/project directory.</p>
+<h1 id="shapes"><span class="header-section-number">3</span> Shapes</h1>
+<h2 id="background"><span class="header-section-number">3.1</span> Background</h2>
+<p>In addition to blitting text and filling a region of pixels with a color, simple shapes are also possible. Simple shapes will help to form a basis for more complicated programming structures.</p>
+<p>These APIs are demonstrated on the <code>cirlces</code> branch of the project repository. Switch to that branch with the following command:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> checkout circles</code></pre>
+<h2 id="reviewrunmodify-the-code"><span class="header-section-number">3.2</span> Review/Run/Modify the Code</h2>
+<ol start="0" style="list-style-type: decimal">
+<li>View the Documentation for the program: ~<sub>~</sub> pydoc game <sub><sub><sub><sub>~</sub></sub></sub><sub><sub>~</sub></sub></sub>~<sub>~</sub></li>
+</ol>
+<p>Press <em>Q</em> to exit when you're done.</p>
+<ol style="list-style-type: decimal">
+<li>Run the Program:</li>
+</ol>
+<pre><code>python game.py</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Move the position where the circle is drawn:</li>
+</ol>
+<pre><code>pygame.draw.circle(screen, (0xff, 0xff, 0), (shape_x, shape_y), 10, 1</code></pre>
+<p>This is the line responsible for drawing the circle. The position where the circle is drawn is controlled by variables <code>shape_x</code> and <code>shape_y</code>.</p>
+<p>Modify either the values passed on line 58 or change the initial values for <code>shape_x</code> and <code>shape_y</code> on line 43.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Save and run your program.</p></li>
+<li><p>Add another shape to screen as well. Some other functions:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">pygame.draw.rect</td>
+<td align="left">rectdraw a rectangle shape</td>
+</tr>
+<tr class="even">
+<td align="left">pygame.draw.polygon</td>
+<td align="left">polygondraw a shape with any number of sides</td>
+</tr>
+<tr class="odd">
+<td align="left">pygame.draw.circle</td>
+<td align="left">circledraw a circle around a point</td>
+</tr>
+<tr class="even">
+<td align="left">pygame.draw.ellipse</td>
+<td align="left">ellipsedraw a round shape inside a rectangle</td>
+</tr>
+<tr class="odd">
+<td align="left">pygame.draw.arc</td>
+<td align="left">arcdraw a partial section of an ellipse</td>
+</tr>
+<tr class="even">
+<td align="left">pygame.draw.line</td>
+<td align="left">linedraw a straight line segment</td>
+</tr>
+<tr class="odd">
+<td align="left">pygame.draw.lines</td>
+<td align="left">linesdraw multiple contiguous line segments</td>
+</tr>
+<tr class="even">
+<td align="left">pygame.draw.aaline</td>
+<td align="left">aalinedraw fine antialiased lines</td>
+</tr>
+<tr class="odd">
+<td align="left">pygame.draw.aalines</td>
+<td align="left">aalinesdraw a connected sequence of antialiased lines</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<p>Look up help for the function you want with pydoc:</p>
+<pre><code>pydoc pygame.draw.circle</code></pre>
+<p>Add the instruction for drawing the new shape directly beneath the instruction for drawing the existing circle.</p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Save and run your program.</p></li>
+<li><p>Revert the file changes back.</p></li>
+</ol>
+<p>Undo your edits to the file using the following git command:</p>
+<pre><code>git checkout game.py</code></pre>
+<h2 id="conclusion"><span class="header-section-number">3.3</span> Conclusion</h2>
+<p>Now the program displays a circle and optionally any other shapes you may have put into it. The arguments used to make the circle are similar to those used for the other primitive shapes, there shouldn't be anything too surprising. But, if the Python documentation is a little daunting, feel free to search online for other examples.</p>
+<h1 id="animated-shapes"><span class="header-section-number">4</span> Animated Shapes</h1>
+<h2 id="background-1"><span class="header-section-number">4.1</span> Background</h2>
+<p>Animated shapes via primitive graphics is much like the old fashioned cartoon animations. A new image is drawn that is slightly different than the last, providing the illusion that the object has moved from one location to another. Accomplishing this with Python is as simple as changing the coordinates used to draw successive versions of the shape being animated.</p>
+<p>These APIs are demonstrated on the <code>animated_cirlces</code> branch of the project repository. Switch to that branch with the following command:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> checkout animated_circles</code></pre>
+<h2 id="reviewrunmodify-the-code-1"><span class="header-section-number">4.2</span> Review/Run/Modify the Code</h2>
+<ol start="0" style="list-style-type: decimal">
+<li>View the Documentation for the program: ~<sub>~</sub> pydoc game <sub><sub><sub><sub>~</sub></sub></sub><sub><sub>~</sub></sub></sub>~<sub>~</sub></li>
+</ol>
+<p>Press <em>Q</em> to exit when you're done.</p>
+<ol style="list-style-type: decimal">
+<li>Run the Program:</li>
+</ol>
+<pre><code>python game.py</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Change the speed and/or heading of the animated circle.</li>
+</ol>
+<p>Look at line 45 for the assignment of the &quot;speed&quot;</p>
+<p>Look at line 31 and 32 for the modification of the x and y position of the shape.</p>
+<p>Modify these lines at will, but predict what the outcome will be before running the program.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Save and run your program.</p></li>
+<li><p>Revert the file changes back.</p></li>
+</ol>
+<p>Undo your edits to the file using the following git command:</p>
+<pre><code>git checkout game.py</code></pre>
+<h2 id="conclusion-1"><span class="header-section-number">4.3</span> Conclusion</h2>
+<p>The shape is now moved around the screen at will, but once it moves off an edge, it never comes back. In fact, it appears as though the shape is continually moved off in that direction even though it can't be seen.</p>
+<h1 id="bouncing-shapes"><span class="header-section-number">5</span> Bouncing Shapes</h1>
+<h2 id="background-2"><span class="header-section-number">5.1</span> Background</h2>
+<p>The moving shape will continue off the screen, but it would be better to make it respond to the edge of the screen by &quot;bouncing&quot; but remaining on screen.</p>
+<p>These APIs are demonstrated on the <code>animated_cirlces_2</code> branch of the project repository. Switch to that branch with the following command:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> checkout animated_circles_2</code></pre>
+<h2 id="reviewrunmodify-the-code-2"><span class="header-section-number">5.2</span> Review/Run/Modify the Code</h2>
+<ol style="list-style-type: decimal">
+<li>Run the Program:</li>
+</ol>
+<pre><code>python game.py</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Make it run faster.</li>
+</ol>
+<p>Edit the speed so that it reaches a boundary faster.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Change the code that controls where the shape will bounce by replacing one of the array values with a new value or re-assigning the array at a given offset to a new value.</li>
+</ol>
+<p>Line 48 assigns the screen size. The easiest way to modify this is to directly modify the array. For example:</p>
+<pre><code>bounds[1]=10</code></pre>
+<p>If placed below line 48, can you predict where the shape will bounce?</p>
+<p>Another way to modify where the bounce occurs is to change one of the test statements on line 72, 75, 78, or 81 (and the following assignment).</p>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Save and run your program.</p></li>
+<li><p>Revert the file changes back.</p></li>
+</ol>
+<pre><code>git checkout game.py</code></pre>
+<h2 id="conclusion-2"><span class="header-section-number">5.3</span> Conclusion</h2>
+<p>The shape is now moved around the screen at will and bounces off an edge of the screen. These features work, but they're not obvious in how they work and this slows down the speed that someone can read, and therefore maintain, this code.</p>
+<h1 id="shape-class"><span class="header-section-number">6</span> Shape Class</h1>
+<h2 id="background-3"><span class="header-section-number">6.1</span> Background</h2>
+<p>Abstracting related functions into a library or a class can help to ease readability and improve reusability of a body of code. This means that it's potentially easier to re-use and easier to read and understand.</p>
+<p>These APIs are demonstrated on the <code>shape_class</code> and <code>moving_shape_class</code> branches of the project repository. Switch to that branch with the following command:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> checkout shape_class</code></pre>
+<h2 id="reviewrunmodify-the-code-3"><span class="header-section-number">6.2</span> Review/Run/Modify the Code</h2>
+<ol start="0" style="list-style-type: decimal">
+<li>View the Documentation for the program:</li>
+</ol>
+<pre><code>pydoc game</code></pre>
+<p>Press <em>Q</em> to exit when you're done.</p>
+<ol style="list-style-type: decimal">
+<li>Run the Program:</li>
+</ol>
+<pre><code>python game.py</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Notice that the program content is a step backwards in functionality. The shape no longer moves, but take a moment to review the content of the Shape class.</p></li>
+<li><p>Notice that the only uses of the Shape class in the main function are creation of the shape, and telling the shape to draw itself to the board.</p></li>
+<li><p>Now switch to the <code>bouncing_shape_class</code> branch with the checkout command:</p></li>
+</ol>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> checkout bouncing_shape_class</code></pre>
+<p>Take a moment to compare the content of the Shape and MovingShape classes.</p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Take a moment to cmopare the MovingShape and BouncingShape classes.</p></li>
+<li><p>Add a new BouncingShape to the program by duplicating lines 142, 156, and 157, for example, the following on line 143:</p></li>
+</ol>
+<pre class="sourceCode python"><code class="sourceCode python">bouncer = BouncingShape((<span class="dv">42</span>, <span class="dv">36</span>, <span class="dv">90</span>), <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">20</span>, bounds)</code></pre>
+<p>And the following on line 157 and 158:</p>
+<pre class="sourceCode python"><code class="sourceCode python">bouncer.move()
+bouncer.draw()</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li><p>Save and run your program.</p></li>
+<li><p>Revert your changes back.</p></li>
+</ol>
+<pre><code>git checkout game.py</code></pre>
+<h2 id="conclusion-3"><span class="header-section-number">6.3</span> Conclusion</h2>
+<p>You should start to see how classes can make a program flow cleaner by removing all the nitty gritty details and instead the main just calls abstract functions to do the work that needs to be done.</p>
+<h1 id="new-classes"><span class="header-section-number">7</span> New Classes</h1>
+<h2 id="background-4"><span class="header-section-number">7.1</span> Background</h2>
+<p>Creating new classes from scratch provides a new functional object that accomplishes some specific tasks and acts as a basis for a new object that is can leverage the existing class but add some new functionality.</p>
+<p>The code to be modified is in the <code>clear_bg</code> branch. It is essentially the same as the previous branch but with the addition that new shapes are drawn to a clean screen instead of drawing over top of each other.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> checkout clear_bg</code></pre>
+<h2 id="reviewrunmodify-the-code-4"><span class="header-section-number">7.2</span> Review/Run/Modify the Code</h2>
+<ol start="0" style="list-style-type: decimal">
+<li>View the Documentation for the program:</li>
+</ol>
+<pre><code>pydoc game</code></pre>
+<p>Press <em>Q</em> to exit when you're done.</p>
+<ol style="list-style-type: decimal">
+<li>Run the Program:</li>
+</ol>
+<pre><code>python game.py</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Take a moment to review the content of the file, just skimming through it is fine.</p></li>
+<li><p>Create a new bouncing shape class for drawing a rectangle instead of a circle and add it to your program.</p></li>
+</ol>
+<p>The new class will only need to define one method: draw.</p>
+<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> BouncingRectangle(BouncingShape):
+    <span class="co">&#39;&#39;&#39;</span>
+<span class="co">    Creates a bouncing rectangle much like the BouncingShape, but uses a</span>
+<span class="co">    rectangle instead of a circle.</span>
+<span class="co">    &#39;&#39;&#39;</span>
+    <span class="kw">def</span> draw(<span class="ot">self</span>, surface):
+        half = <span class="ot">self</span>.size/<span class="dv">2</span>
+        top = <span class="ot">self</span>.x-half
+        left = <span class="ot">self</span>.y-half
+        rectangle = pygame.rect.Rect(<span class="ot">self</span>.x, <span class="ot">self</span>.y, <span class="ot">self</span>.size, <span class="ot">self</span>.size)
+        pygame.draw.rect(surface, <span class="ot">self</span>.color, rectangle, <span class="ot">self</span>.border)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Create an instance of the new class and put it into the shapes list.</li>
+</ol>
+<pre class="sourceCode python"><code class="sourceCode python">shapes.append(BouncingRectangle((<span class="dv">0</span>, <span class="bn">0xff</span>, <span class="bn">0xff</span>), <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">7</span>, bounds))</code></pre>
+<p>You may want to use a differnt starting size or position so that it doesn't follow the previous shape around the screen. The value is left the same here for illustrative purposes.</p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Save and run your program.</p></li>
+<li><p>Create another bouncing shape class, and make it show a smiley face or other composite shape.</p></li>
+</ol>
+<h2 id="conclusion-4"><span class="header-section-number">7.3</span> Conclusion</h2>
+<p>This last modification should show how useful classes are for leveraging an existing class to accomplish some slightly different task or behavior.</p>
+</body>
+</html>
