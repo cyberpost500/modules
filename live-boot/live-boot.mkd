@@ -60,13 +60,12 @@ mode for execution.
 
 Console Use
 -----------
+This module relies heavily on the command-line.  You will be using a terminal
 emulator to execute the following commands.
 
 ------------------------------------------------------------
 Command             Description
 ---------           --------------------------------------
-cp                  Copies files from one location to another
-
 dd                  Copies data from a stream or file to another stream or file
 
 diff                Displays differences
@@ -84,8 +83,6 @@ mkfs.vfat           Creates FAT filesystems
 sudo                Execute a command as another user
 
 sync                Flushes/waits for pending disk operations
-
-udiskctrl           Mounts/unmounts filesystems
 ----------------------------------------------------------
 
 
@@ -337,7 +334,7 @@ more background and information on how to get status information.
 2. Discover the starting location for the persistent partition:
 
 ~~~~ {.bash}
-    ls -lh lubuntu-15.10-desktop-amd64.iso
+    ls -lh kali-linux-2016.1-amd64.iso
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     -rw-rw-r-- 1 user group 2.8G Mar 25 21:19 kali-linux-2016.1-amd64.iso
 
