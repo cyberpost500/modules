@@ -1,0 +1,152 @@
+% Simple Python "Games" pt. 5
+
+Skills/Concepts
+===============
+This module is a continuation of the Python Games module.
+
+This module will continue to build on the previous concepts of:
+
+* SDL
+* blitting
+* Drawing APIs
+* Classes
+* Member Functions
+* Finite State Machines
+
+Additionally, this module will introduce module organization.
+
+Preparation
+===========
+Continue with the same environment from the previous (Python Games) module.
+
+We will be using an existing git repository that contains a fair amount of
+code instead of producing a new program from scratch.  This is to avoid copy
+and paste errors and allow us to cover material faster.
+
+To get the code, execute the following command:
+
+    git clone https://www.github.com/cyberpost500/modules/
+
+Then extract the project repository to your desktop:
+
+    cd modules/python-games/
+    tar -C ~/Desktop/ -xf project.tar
+
+The code will be in the Desktop/project directory.
+
+
+Music
+=====
+
+Background
+----------
+The game is somewhat playable, but it's still not quite there.  Adding music
+and sound effects is an easy way to improve the playability.  But, you can't
+just embed randomly downloaded audio in your game.  You have to be aware of
+copyright issues or there could be huge legal problems.  So, for our purposes,
+we will be using open source audio files that are available for use under the
+public domain.
+
+Pygame provides a mixer library that allows playing sound.  It's a little
+different than the other Pygame modules in that some additional set up is
+needed before initializing it.  Because the module deals with audio, there are
+some settings that need to be fine tuned controlling the audio output frequency
+(eg quality), number of audio channels (for stereo), and the audio buffer size,
+for smoother playback when switching between samples.  This initialization
+needs to occur before the general mixer initialization.
+
+The call for this is:
+
+    pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=4096)
+    pygame.mixer.init()
+
+Review/Run/Modify the Code
+------------
+0.  Check out the `music` branch:
+
+    git checkout music
+
+1.  There is an audio clip, `Loading Loop.wav` already in the project, add a
+    call to load this in the `main` function and then call the
+pygame.mixer.music.play() method to start playing it.  These calls will look
+like this:
+
+~~~~ {.python}
+    pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=4096)
+    pygame.mixer.init()
+    pygame.mixer.music.load("Loading Loop.wav")
+    pygame.mixer.music.play()
+~~~~~~~~~~~~~~~~~~~~
+
+2.  Don't forget to save your work before running.
+
+3.  Put the functionality into a class so it's easier to use throughout the
+    module.
+
+4.  Discard these changes, and check out from the `gamemusic` branch to get a
+    class that uses code very similar to that you just added.
+
+~~~~
+    git checkout game.py
+    git checkout gamemusic
+~~~~~~~~~~~~~~~~~~~~
+
+5.  Review the code in this new class (Look for `class GameMusic`).  Make use
+    of this new class from the `doplay` function so that music will play when
+the user selects play from the menu.
+
+The code you need to add will look like this:
+
+~~~~
+    GameMusic().play()
+~~~~~~~~~~~~~~~~~~~~
+
+6.  Try it out.
+
+7.  Discard these changes and check out the `menumusic` branch.
+
+~~~~
+    git checkout menumusic
+~~~~~~~~~~~~~~~~~~~~
+
+8.  Modify the program to use the `MenuMusic` when displaying the menu and the
+    `GameMusic` class when the game is being played.  This step will require a
+fair amount of trial and error, as the music may need to change whenever there
+is a state change and the needed changes aren't always obvious.
+
+9.  Add a chomp sound effect using the `Dragon Bite-SoundBible.com-1625781385.wav`.  Instead of using the music loading
+and playing code, this will require creating a sound object and invoking play
+on that object.
+
+For example:
+
+~~~~
+    CHOMP = pygame.mixer.Sound("Dragon Bite-SoundBible.com-1625781385.wav")
+~~~~~~~~~~~~~~~~~~~~
+
+And then updating `remove_and_resize` so that anywhere it contains a call to
+shapes.remove() is also calls the new sound.
+
+For example:
+
+~~~~
+    CHOMP.play()
+~~~~~~~~~~~~~~~~~~~~
+
+Conclusion
+----------
+Can you think of ways to reduce the code in the two very similar classes
+`GameMusic` and `MenuMusic`?
+
+Did you notice any limitations in using those classes?  This is related to a
+topic called re-entrance.
+
+Adding sounds changes the "feel" of the game, but the sounds that are added
+must be appropriately licensed.  The sounds used in the module were all public
+domain.
+
+Attribution:
+
+ * http://www.dl-sounds.com/royalty-free/loading-loop/
+ * http://www.dl-sounds.com/royalty-free/no-monkey/
+ * http://soundbible.com/1394-Dragon-Bite.html
