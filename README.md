@@ -28,9 +28,11 @@ running list of the modules already exported to PDF (and HTML):
 * Python [txt](python/python.mkd) [pdf](python/python.pdf) [html](python/python.html)
 * Git [txt](git/git.mkd) [pdf](git/git.pdf) [html](git/git.html)
 * Python Games
-    + Lesson 1 [txt](python-games/python-games.mkd) [pdf](python-games/python-games.pdf) [html](python/python-games.html)
+    + Lesson 1 [txt](python-games/python-games.mkd) [pdf](python-games/python-games.pdf) [html](python-games/python-games.html)
     + Lesson 2 [txt](python-games/python-games-2.mkd) [pdf](python-games/python-games-2.pdf) [html](python-games/python-games-2.html)
     + Lesson 3 [txt](python-games/python-games-3.mkd) [pdf](python-games/python-games-3.pdf) [html](python-games/python-games-3.html)
     + Lesson 4 [txt](python-games/python-games-4.mkd) [pdf](python-games/python-games-4.pdf) [html](python-games/python-games-4.html)
     + Project File [tar only](python-games/project.tar)
+* Java
+    + Lesson 1 [txt](java/java.mkd) [pdf](java/java.html) [html](java/java.html)
 
