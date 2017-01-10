@@ -48,5 +48,5 @@ all: $(EVERYTHING)
 %.html: %.md
 	pandoc $(HTML_OPTS) $< -o $@
 
-index.html:
+index.html: README.md
 	@pandoc $(HTML_OPTS) README.md -o index.html
