@@ -23,6 +23,10 @@ HTML_OPTS+=-N
 HTML_OPTS+=--toc
 
 # Anyone adding more content, just copy and paste and update the paths below.
+# NOTE: we defined custom entries for the html generation because the gh-pages
+# doesn't understand all the markdown we use in our documents.  If you see a
+# page render with a % Title at the top, good chance someone forgot to add an
+# entry here for that page.
 EVERYTHING:=index.html live-boot/live-boot.html live-boot/live-boot.pdf \
 	text-analytics/lesson-01/lesson-plan.html text-analytics/lesson-01/lesson-plan.pdf \
 	text-analytics/lesson-02/lesson-plan.html text-analytics/lesson-02/lesson-plan.pdf \
@@ -31,7 +35,8 @@ EVERYTHING:=index.html live-boot/live-boot.html live-boot/live-boot.pdf \
 	python-games/python-games.pdf python-games/python-games.html \
 	python-games/python-games-2.pdf python-games/python-games-2.html \
 	python-games/python-games-3.pdf python-games/python-games-3.html \
-	python-games/python-games-4.pdf python-games/python-games-4.html
+	python-games/python-games-4.pdf python-games/python-games-4.html \
+	java/java.pdf java/java.html
 
 
 all: $(EVERYTHING)
