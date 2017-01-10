@@ -49,7 +49,7 @@ To get the code, execute the following command:
 
     git clone https://www.github.com/cyberpost500/modules/
 
-The code will be in the `modules/pythong-games/project directory.
+The code will be in the `modules/pythong-games/project` directory.
 
 Hello World
 ===========
