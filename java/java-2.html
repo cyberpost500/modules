@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Some Simple Java Programming pt. 2</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/modules/styles.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Some Simple Java Programming pt. 2</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#skillsconcepts"><span class="toc-section-number">1</span> Skills/Concepts</a></li>
+<li><a href="#preparation"><span class="toc-section-number">2</span> Preparation</a></li>
+<li><a href="#finally-some-graphics..."><span class="toc-section-number">3</span> Finally, some graphics...</a><ul>
+<li><a href="#background"><span class="toc-section-number">3.1</span> Background</a></li>
+<li><a href="#reviewrunmodify-the-code"><span class="toc-section-number">3.2</span> Review/Run/Modify the Code</a></li>
+<li><a href="#conclusion"><span class="toc-section-number">3.3</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#shape-classes"><span class="toc-section-number">4</span> Shape Classes</a><ul>
+<li><a href="#background-1"><span class="toc-section-number">4.1</span> Background</a></li>
+<li><a href="#reviewrunmodify-the-code-1"><span class="toc-section-number">4.2</span> Review/Run/Modify the Code</a></li>
+<li><a href="#conclusion-1"><span class="toc-section-number">4.3</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#animated-shapes"><span class="toc-section-number">5</span> Animated Shapes</a><ul>
+<li><a href="#background-2"><span class="toc-section-number">5.1</span> Background</a></li>
+<li><a href="#reviewrunmodify-the-code-2"><span class="toc-section-number">5.2</span> Review/Run/Modify the Code</a></li>
+<li><a href="#conclusion-2"><span class="toc-section-number">5.3</span> Conclusion</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="skillsconcepts"><span class="header-section-number">1</span> Skills/Concepts</h1>
+<p>This module is a continuation of the Simple Java Programming module.</p>
+<p>This module will continue to build on the previous concepts of:</p>
+<ul>
+<li>Packages</li>
+<li>Classes</li>
+<li>Java Drawing APIs</li>
+</ul>
+<p>In addition, this module will discuss public/private scope and revisit inheritance.</p>
+<h1 id="preparation"><span class="header-section-number">2</span> Preparation</h1>
+<p>You should be fine booting up any Linux distribution as long as it has a Java SDK.</p>
+<p>We will be using an existing git repository that contains a fair amount of code instead of producing a new program from scratch. This is to avoid copy and paste errors and allow us to cover material faster.</p>
+<p>To get the code, execute the following commands:</p>
+<pre><code>git clone https://www.github.com/cyberpost500/java-project/</code></pre>
+<p>The code will be in the <code>java-project</code> directory.</p>
+<h1 id="finally-some-graphics..."><span class="header-section-number">3</span> Finally, some graphics...</h1>
+<h2 id="background"><span class="header-section-number">3.1</span> Background</h2>
+<p>Creating graphics in Java is quite similar to Python, except that Java has built-in methods for all of the work, whereas in Python an external library does the heavy lifting.</p>
+<h2 id="reviewrunmodify-the-code"><span class="header-section-number">3.2</span> Review/Run/Modify the Code</h2>
+<ol start="0" style="list-style-type: decimal">
+<li>Check out the appropriate branch</li>
+</ol>
+<pre><code>git checkout 05_circles</code></pre>
+<ol style="list-style-type: decimal">
+<li>Compile the code</li>
+</ol>
+<pre><code>ant build</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Execute the class</li>
+</ol>
+<pre><code>ant run</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Move the position where the circle is drawn:</li>
+</ol>
+<pre><code>                 //drawArc(x, y, width, height, startAngle, arcAngle◀)
+                 g.drawArc(100, 100, 50, 50, 0, 360);◀</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Add another shape. See the javadocs for <code>java.awt.Graphics</code>.</li>
+</ol>
+<p>The javadocs for the default JDK should be installed to <code>/usr/share/doc/default-jdk-doc/api/</code></p>
+<p>(This is from the <code>default-jdk-doc</code> package, you may need to <code>sudo apt-get install default-jdk-doc</code>).</p>
+<p>Open the javadocs and navigate to the <code>java.awt.Graphics</code> package.</p>
+<pre><code>x-www-browser /usr/share/doc/default-jdk-doc/api/</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Save, build, and run</li>
+</ol>
+<p>You don't need to do it in separate steps like we've been doing, you can let the dependencies for the run target take care of it for you.</p>
+<pre><code>ant run</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Save your changes to a new branch (so we can re-use your changes later)</li>
+</ol>
+<pre><code>git checkout -b mine
+git commit -a</code></pre>
+<p>Be sure to save your commit message, otherwise it will not commit the changes.</p>
+<ol start="7" style="list-style-type: decimal">
+<li>Switch back to master before continuing</li>
+</ol>
+<pre><code>git checkout master
+</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>Confirm your changes are still there</li>
+</ol>
+<pre><code>git diff master..mine</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li>View the changes via a difftool</li>
+</ol>
+<pre><code>git difftool master..mine</code></pre>
+<h2 id="conclusion"><span class="header-section-number">3.3</span> Conclusion</h2>
+<p>Now the program displays a circle and optionally any other shapes you may have put into it. You may notice the method and argument names are a little different than they were in Python. If the documentation isn't clear enough or is too confusing, you can always google for a stack overflow or stack exchange article with an example of the API usage.</p>
+<h1 id="shape-classes"><span class="header-section-number">4</span> Shape Classes</h1>
+<h2 id="background-1"><span class="header-section-number">4.1</span> Background</h2>
+<p>We'll be using a common base class for our shapes again. This will provide a convenient way to re-use code we've already written for accomplishing very similar tasks. But one new facet we'll be exploring is something called an interface. An interface is a sort of contractual obligation that any class &quot;implementing&quot; that interface must adhere. Basically, every method called out in an interface has to be written into any class that implements that interface.</p>
+<p>We'll be using an interface as the most abstract representation of our shape, and then we'll create classes that implement this interface. Later on we'll extend those child classes with more children.</p>
+<h2 id="reviewrunmodify-the-code-1"><span class="header-section-number">4.2</span> Review/Run/Modify the Code</h2>
+<ol start="0" style="list-style-type: decimal">
+<li>Check out the appropriate branch</li>
+</ol>
+<pre><code>git checkout 06_shapes</code></pre>
+<ol style="list-style-type: decimal">
+<li>Review the code</li>
+</ol>
+<p>Spend a few minutes reviewing each of the new files and then view the updated version of the <code>MainWindow</code> class.</p>
+<ul>
+<li><code>./src/io/github/cyberpost500/hungryshapes/shapes/Shape.java</code></li>
+<li><code>./src/io/github/cyberpost500/hungryshapes/shapes/Circle.java</code></li>
+<li><code>./src/io/github/cyberpost500/hungryshapes/MainWindow.java</code></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Add another circle to the window</p></li>
+<li><p>Save, build, and run</p></li>
+</ol>
+<pre><code>ant run</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Revert the changes back</li>
+</ol>
+<h2 id="conclusion-1"><span class="header-section-number">4.3</span> Conclusion</h2>
+<p>You should have a passing familiarity with the object hierarchy. We'll spend a bit of time discussing this during the meeting and covering the relationship between the interface, the base class, and the main window.</p>
+<h1 id="animated-shapes"><span class="header-section-number">5</span> Animated Shapes</h1>
+<h2 id="background-2"><span class="header-section-number">5.1</span> Background</h2>
+<p>The animated shapes will still use graphical primitives, but now we'll need some additional helping classes to provide asynchronous updates to the user interface. We'll use a custom Runnable class that will be used to create threads that perform the task of updating the user interface and updating any animated shape positions.</p>
+<h2 id="reviewrunmodify-the-code-2"><span class="header-section-number">5.2</span> Review/Run/Modify the Code</h2>
+<ol start="0" style="list-style-type: decimal">
+<li>Switch to the appropriate branch</li>
+</ol>
+<pre><code>git checkout 07_animated_circles</code></pre>
+<ol style="list-style-type: decimal">
+<li>Review the code</li>
+</ol>
+<p>Spend a few minutes reviewing each of the new files and then view the updated version of the <code>MainWindow</code> class.</p>
+<ul>
+<li><code>src/io/github/cyberpost500/hungryshapes/shapes/MovingShape.java</code></li>
+<li><code>src/io/github/cyberpost500/hungryshapes/MainWindow.java</code></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Switch to the <code>08_bouncing_shape</code> branch</p></li>
+<li><p>Create a new shape using the custom code you created earlier as the <code>draw</code> method in a new shape class that extends the <code>BouncingShape</code></p></li>
+</ol>
+<ul>
+<li>create a new file for the shape</li>
+<li>create a <code>public class</code> that <code>extends BouncingShape</code></li>
+<li>define a constructor</li>
+<li>define a move method</li>
+<li>add the new shape to the <code>MainWindow</code> (both in the updater thread and the painting thread)</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Discussion to follow.</li>
+</ol>
+<h2 id="conclusion-2"><span class="header-section-number">5.3</span> Conclusion</h2>
+<p>These modifications may seem daunting, but they'll be easier in the future once you become more familiar with Java. Also, you should begin to appreciate the reusability of classes and the utility of extending classes to accomplish new behavior with similar objects.</p>
+</body>
+</html>
