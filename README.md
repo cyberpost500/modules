@@ -35,5 +35,5 @@ running list of the modules already exported to PDF (and HTML):
     + Project File [tar only](python-games/project.tar)
 * Java
     + Lesson 1 [txt](java/java.mkd) [pdf](java/java.html) [html](java/java.html)
-    + Project File [tar only](java/java-project.tar)
+    + Lesson 2 [txt](java/java-2.mkd) [pdf](java/java-2.html) [html](java/java-2.html)
 
