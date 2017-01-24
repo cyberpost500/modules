@@ -52,6 +52,7 @@ Review/Run/Modify the Code
 ------------
 
 0.  View the Documentation for the program:
+
 ~~~~
 pydoc game
 ~~~~~~~~~~~~~~~~~~~~
@@ -69,6 +70,7 @@ python game.py
 ~~~~
 pygame.draw.circle(screen, (0xff, 0xff, 0), (shape_x, shape_y), 10, 1
 ~~~~~~~~~~~~~~~~~~~~
+
 This is the line responsible for drawing the circle.  The position where the
 circle is drawn is controlled by variables `shape_x` and `shape_y`.
 
@@ -138,6 +140,7 @@ git checkout animated_circles
 Review/Run/Modify the Code
 ------------
 0.  View the Documentation for the program:
+
 ~~~~
 pydoc game
 ~~~~~~~~~~~~~~~~~~~~
