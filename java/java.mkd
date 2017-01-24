@@ -81,12 +81,10 @@ and paste errors and allow us to cover material faster.
 To get the code, execute the following commands:
 
 ~~~~
-git clone https://www.github.com/cyberpost500/modules/
-tar xf modules/java/project.tar
+git clone https://www.github.com/cyberpost500/java-project/
 ~~~~~~~~~~~~~~~~~~~~
 
-The code will be in the `project` directory.
-
+The code will be in the `java-project` directory.
 
 Hello World
 ===========
