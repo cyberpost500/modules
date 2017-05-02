@@ -37,7 +37,8 @@ EVERYTHING:=index.html live-boot/live-boot.html live-boot/live-boot.pdf \
 	python-games/python-games-3.pdf python-games/python-games-3.html \
 	python-games/python-games-4.pdf python-games/python-games-4.html \
 	java/java.pdf java/java.html \
-	java/java-2.pdf java/java-2.html
+	java/java-2.pdf java/java-2.html \
+	network/manual.pdf network/manual.html
 
 
 all: $(EVERYTHING)

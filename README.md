@@ -34,6 +34,6 @@ running list of the modules already exported to PDF (and HTML):
     + Lesson 4 [txt](python-games/python-games-4.mkd) [pdf](python-games/python-games-4.pdf) [html](python-games/python-games-4.html)
     + Project File [tar only](python-games/project.tar)
 * Java
-    + Lesson 1 [txt](java/java.mkd) [pdf](java/java.html) [html](java/java.html)
-    + Lesson 2 [txt](java/java-2.mkd) [pdf](java/java-2.html) [html](java/java-2.html)
-
+    + Lesson 1 [txt](java/java.mkd) [pdf](java/java.pdf) [html](java/java.html)
+    + Lesson 2 [txt](java/java-2.mkd) [pdf](java/java-2.pdfl) [html](java/java-2.html)
+* Networknig [txt](network/network.mkd) [pdf](network/network.pdf) [html](network/network.html)
