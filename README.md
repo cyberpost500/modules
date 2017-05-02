@@ -36,4 +36,4 @@ running list of the modules already exported to PDF (and HTML):
 * Java
     + Lesson 1 [txt](java/java.mkd) [pdf](java/java.pdf) [html](java/java.html)
     + Lesson 2 [txt](java/java-2.mkd) [pdf](java/java-2.pdfl) [html](java/java-2.html)
-* Networknig [txt](network/manual.mkd) [pdf](network/manual.pdf) [html](network/manual.html)
+* Networking [txt](network/manual.mkd) [pdf](network/manual.pdf) [html](network/manual.html)
