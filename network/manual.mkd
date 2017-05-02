@@ -269,8 +269,10 @@ Epected output:
 4.  The probject supports various games, so check out the common minetest game
     as well:
 
+~~~~ {.bash}
     cd minetest/games
     git clone /mnt/minetest/minetest_game
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Expected output:
 
