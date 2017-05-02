@@ -6,6 +6,26 @@
   <meta name="generator" content="pandoc" />
   <title>Manual Networking (and Minetest!)</title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; }
+code > span.dt { color: #204a87; }
+code > span.dv { color: #0000cf; }
+code > span.bn { color: #0000cf; }
+code > span.fl { color: #0000cf; }
+code > span.ch { color: #4e9a06; }
+code > span.st { color: #4e9a06; }
+code > span.co { color: #8f5902; font-style: italic; }
+code > span.ot { color: #8f5902; }
+code > span.al { color: #ef2929; }
+code > span.fu { color: #000000; }
+code > span.er { font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="/modules/styles.css" type="text/css" />
 </head>
 <body>
@@ -230,9 +250,10 @@ rtt min/avg/max/mdev = 0.164/0.172/0.180/0.008 ms</code></pre>
 <pre><code>Cloning into &#39;minetest&#39;...
 done.</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li><p>The probject supports various games, so check out the common minetest game as well:</p>
-<p>cd minetest/games git clone /mnt/minetest/minetest_game</p></li>
+<li>The probject supports various games, so check out the common minetest game as well:</li>
 </ol>
+<pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">cd</span> minetest/games
+    <span class="kw">git</span> clone /mnt/minetest/minetest_game</code></pre>
 <p>Expected output:</p>
 <pre><code>Cloning into &#39;minetest_game&#39;...
 done.</code></pre>
