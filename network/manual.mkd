@@ -107,15 +107,15 @@ up for the presentation layer.  For example, HTTP, FTP, SMTP.
 
 ### Presentation
 
-Encryption, decription, or other data formatting/conversions.  This isn't
+Encryption, decryption, or other data formatting/conversions.  This isn't
 providing a graphical presentation, but rather formatting and converting data
 to be presented to the session layer.  Think object serialization.
 
 ### Session
 
-A session is everything from the connecction being established until it
+A session is everything from the connection being established until it
 terminates.  This layer is responsible for allowing applications to talk to
-eachother across the network.  Data formatted from the presentation layer is
+each other across the network.  Data formatted from the presentation layer is
 transmitted during the session.
 
 ### Transport
@@ -138,8 +138,8 @@ layer.
 
 ### Physical
 
-Bits are encoded electromagnetically as the partical of choice, light for
-fiber, or electrons for ethernet, etc.
+Bits are encoded electromagnetically as the particle of choice, light for
+fiber, or electrons for Ethernet, etc.
 
 
 IP Addresses
@@ -179,7 +179,7 @@ the operating system to decide which interface is to be used for traffic, it
 uses the network mask for each interface to determine whether traffic should be
 routed over that interface.  Then, in transit, other systems have their own
 routing tables that are used to determine where to route the traffic based on
-the destination IP adddress and its set of configured network masks.
+the destination IP address and its set of configured network masks.
 
 Generally an interface will have a default route over which any traffic not
 explicitly destined
@@ -187,9 +187,9 @@ explicitly destined
 
 Network Switches/Hubs
 ----------------------
-A network hub is a device that replicates all traffic recieved across all
+A network hub is a device that replicates all traffic received across all
 ports.  In this context, a port refers to the connection between the
-ethernet cable and the RJ45 jack.  A switch is a device that monitors media
+Ethernet cable and the RJ45 jack.  A switch is a device that monitors media
 access addresses across its ports and only routes traffic between the ports for
 which traffic is addressed.
 
@@ -198,9 +198,9 @@ handle many.
 
 Preparation
 ===========
-We'll be using a CISCO switch in this exercise and plugging in ethernet cables.
+We'll be using a CISCO switch in this exercise and plugging in Ethernet cables.
 Plug in the switch, power it on, and boot up the laptops that will be used.
-Plug your laptop into the switch using one of the provided ethernet cables.
+Plug your laptop into the switch using one of the provided Ethernet cables.
 
 
 Bring Up the Network
@@ -210,7 +210,7 @@ In this module, we will manually establish a new IPv4 network.
 Once the machine is powered on, and plugged into the CISCO switch, open a
 terminal and carry out the following commands.
 
-1.  View the current network configuration with the ip command:
+1.  View the current network configuration with the IP command:
 
     ip addr show
 
@@ -235,11 +235,11 @@ The results will vary, but generally will look like the following:
 
     ip a
 
-3.  Bring up your wired ethernet device (if its state is listed as DOWN):
+3.  Bring up your wired Ethernet device (if its state is listed as DOWN):
 
     sudo ip link set enp3s0 up
 
-3.  Assign your ethernet device an ip address, in this example we use `192.168.2.1` with a 24-bit
+3.  Assign your Ethernet device an IP address, in this example we use `192.168.2.1` with a 24-bit
     mask:
 
     sudo ip addr add dev enp3s0 192.168.99.2/24
@@ -248,7 +248,7 @@ In this context, the 24-bit mask works out to being the 192.168.99 part of the
 address.  So anything destined for the `192.168.99.0` network will be routed
 through the device specified.
 
-4.  Try to ping the raspbery pi server at 192.168.99.1:
+4.  Try to ping the raspberry pi server at 192.168.99.1:
 
     ping -c 2 192.168.99.1
 
@@ -309,13 +309,13 @@ This indicates that there is a directory `/srv/minetest` that anyone may mount.
 
     git clone /mnt/minetest
 
-Epected output:
+Expected output:
 
     Cloning into 'minetest'...
     done.
 
 
-4.  The probject supports various games, so check out the common minetest game
+4.  The project supports various games, so check out the common Minetest game
     as well:
 
 ~~~~ {.bash}
@@ -520,7 +520,7 @@ server in much the same fashion as the client.
 
     cmake . -DRUN_IN_PLACE=TRUE -DBUILD_SERVER=TRUE
 
-Successful output will look like the folowing:
+Successful output will look like the following:
 
     -- *** Will build version 0.4.14-dev ***
     -- cURL support enabled.
