@@ -87,11 +87,60 @@ It's a seven layer model where data traverses the model one layer at a time.
   Physical
 ------------------
 
-We'll discuss the layers briefly during the meeting.
 
 Of the various mnemonics for remembering the layers, my favorite is:
 
 > A Python Sent The Network Data Packing
+
+Data originating in an application traverses from the application layer down to
+the physical layer in the sending host and then goes from the physical layer up
+to the application layer by the receiving application.  The layers are more
+theoretical than they are actual, as much of the actual implementation logic in
+an application will scale multiple layers.  However, the model is still useful
+as many networking tasks can be generalized to take advantage of swappable
+implementations for the intermediate layers.
+
+### Application
+
+Abstract network services are made available to applications that package data
+up for the presentation layer.  For example, HTTP, FTP, SMTP.
+
+### Presentation
+
+Encryption, decription, or other data formatting/conversions.  This isn't
+providing a graphical presentation, but rather formatting and converting data
+to be presented to the session layer.  Think object serialization.
+
+### Session
+
+A session is everything from the connecction being established until it
+terminates.  This layer is responsible for allowing applications to talk to
+eachother across the network.  Data formatted from the presentation layer is
+transmitted during the session.
+
+### Transport
+
+Host-based communication between two endpoints is accomplished at the transport
+layer.  Transmission control protocol (TCP) logic is at this level.  It
+encompasses concepts such as flow control, error recovery, and retransmission
+logic as data is sent to the network layer.
+
+### Network
+
+Network routing, paths, switching, forwarding.  For example, IP-based
+connections live at this layer.
+
+### Data
+
+Network data is written into frames as bits.  Think media access control (MAC)
+and logical links.  Data is encoded as bits before it is passed to the physical
+layer.
+
+### Physical
+
+Bits are encoded electromagnetically as the partical of choice, light for
+fiber, or electrons for ethernet, etc.
+
 
 IP Addresses
 -------------
@@ -258,7 +307,7 @@ This indicates that there is a directory `/srv/minetest` that anyone may mount.
 
 3.  Check out the files
 
-    git clone /mnt/minetest/minetest
+    git clone /mnt/minetest
 
 Epected output:
 
@@ -271,7 +320,7 @@ Epected output:
 
 ~~~~ {.bash}
     cd minetest/games
-    git clone /mnt/minetest/minetest_game
+    git clone /mnt/minetest_game
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Expected output:
@@ -446,7 +495,6 @@ For example:
 
 **Alternately**  Choose the *Server* tab and create your own world.
 
-
 Conclusion
 ----------
 Generally there is an additional step of installing the compiled code, but many
@@ -457,3 +505,90 @@ instructions to specify an installation path.  If you blindly install projects
 to your installed system, you could end up with collisions between software you
 have installed from source and software installed from the distribution's
 package manager.
+
+
+Build the Server
+================
+The server was probably built in the previous step, but this is included here
+in case anyone needs to build *just* the server.
+
+Before we can start using mods, we need a place to run those mods.  Build the
+server in much the same fashion as the client.
+
+
+1.  Use cmake to create the build configuration:
+
+    cmake . -DRUN_IN_PLACE=TRUE -DBUILD_SERVER=TRUE
+
+Successful output will look like the folowing:
+
+    -- *** Will build version 0.4.14-dev ***
+    -- cURL support enabled.
+    -- GetText disabled.
+    -- Sound enabled.
+    -- Freetype enabled.
+    -- Could NOT find LuaJit (missing:  LUA_LIBRARY LUA_INCLUDE_DIR) 
+    -- LuaJIT not found, using bundled Lua.
+    -- Using GMP provided by system.
+    -- Found Curses: /usr/lib/x86_64-linux-gnu/libcurses.so  
+    -- ncurses console enabled.
+    -- Could NOT find PostgreSQL (missing:  PostgreSQL_LIBRARY
+    PostgreSQL_INCLUDE_DIR PostgreSQL_TYPE_INCLUDE_DIR) 
+    -- PostgreSQL not found!
+    -- LevelDB not found!
+    -- Redis not found!
+    -- Using bundled JSONCPP library.
+    -- SpatialIndex not found!
+    -- Could NOT find Doxygen (missing:  DOXYGEN_EXECUTABLE) 
+    -- Configuring done
+    -- Generating done
+    -- Build files have been written to: /home/stephen/minetest
+
+2.  Start the build, this time, provide a number of jobs that `make` can use to
+    take advantage of multi-threading the build so that it doesn't take quite
+as long.
+
+    make -j4
+
+The final line of output should look like the following:
+
+    [100%] Built target minetestserver
+
+Launch the Server
+=================
+The server can actually be configured and launched from the client interface.
+
+1.  Launch the client.
+
+    ./bin/minetest
+
+2.  Click on the Server tab.
+
+3.  Click on New.
+
+4.  Type in a world name.
+
+5.  Select a map generator.  You can experiment with this later to see the effects.
+
+6.  Select a game type (generally leave this on the default, *Minetest Game*).
+
+7.  Click on Create
+
+8.  Choose a user name and password, when you start the server, this will be an
+    administrative account with access to additional commands.  (Note, you will
+need to edit the key bindings after you launch the game in order to use
+double-jump to fly.)
+
+9. Click on Start Game.
+
+Conclusion
+-----------------
+In testing mods we'll use this method the most, so it's presented first.  Later
+on we'll discuss how to launch the server from a script and why you might want
+to do that.
+
+Get some Mods
+=============
+The school network probably blocks the Minetest web site, so point your web
+browser to the [Pi](http://192.168.99.1) and get some mods from there.
+Otherwise, browse over to the [minetest website](http://www.minetest.net/customize/).
