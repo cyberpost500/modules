@@ -183,9 +183,11 @@ Make it Count
 
 2. Copy the PNG files to the textures directory:
 
+~~~~
     cp ~/Desktop/1.png mymod/textures/
     cp ~/Desktop/2.png mymod/textures/
     cp ~/Desktop/3.png mymod/textures/
+~~~~~~~~~~~~~~~~
 
 3. Copy the `register_abs` block three times, modify the  nodenames for each to
    refer to the node names from step 0.
