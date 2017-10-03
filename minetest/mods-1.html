@@ -179,8 +179,12 @@ minetest<span class="ot">.</span>register_abm<span class="ot">({</span>
 <ol start="0" style="list-style-type: decimal">
 <li><p>Edit the <code>mymodule/init.lua</code> file again. Copy and paste the entry for the node three times, rename the nodes to <code>mymod:phos_1</code> to <code>mymod:phos_3</code>.</p></li>
 <li><p>Edit the tiles to refer to images <code>1.png</code> to <code>3.png</code>.</p></li>
-<li><p>Copy the PNG files to the textures directory:</p>
-<p>cp ~/Desktop/1.png mymod/textures/ cp ~/Desktop/2.png mymod/textures/ cp ~/Desktop/3.png mymod/textures/</p></li>
+<li><p>Copy the PNG files to the textures directory:</p></li>
+</ol>
+<pre><code>    cp ~/Desktop/1.png mymod/textures/
+    cp ~/Desktop/2.png mymod/textures/
+    cp ~/Desktop/3.png mymod/textures/</code></pre>
+<ol start="3" style="list-style-type: decimal">
 <li><p>Copy the <code>register_abs</code> block three times, modify the nodenames for each to refer to the node names from step 0.</p></li>
 <li><p>Modify the <code>fire:basic_flame</code> entry for each of the new blocks and instead have them change into <code>mymod:phos_2</code>, <code>mymod:phos_1</code>, and <code>mymod:phos_final</code>.</p></li>
 <li><p>Reload the module, and this time add block three to the world and see it count down.</p></li>
