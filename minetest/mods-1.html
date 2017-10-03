@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Minetest Mods</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; }
+code > span.dt { color: #204a87; }
+code > span.dv { color: #0000cf; }
+code > span.bn { color: #0000cf; }
+code > span.fl { color: #0000cf; }
+code > span.ch { color: #4e9a06; }
+code > span.st { color: #4e9a06; }
+code > span.co { color: #8f5902; font-style: italic; }
+code > span.ot { color: #8f5902; }
+code > span.al { color: #ef2929; }
+code > span.fu { color: #000000; }
+code > span.er { font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="/modules/styles.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Minetest Mods</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#skillsconcepts"><span class="toc-section-number">1</span> Skills/Concepts</a><ul>
+<li><a href="#console-use"><span class="toc-section-number">1.1</span> Console Use</a></li>
+</ul></li>
+<li><a href="#overview"><span class="toc-section-number">2</span> Overview</a></li>
+<li><a href="#process"><span class="toc-section-number">3</span> Process</a><ul>
+<li><a href="#create-the-graphics"><span class="toc-section-number">3.1</span> Create the Graphics</a></li>
+<li><a href="#create-the-base-module"><span class="toc-section-number">3.2</span> Create the Base Module</a></li>
+<li><a href="#make-it-burn"><span class="toc-section-number">3.3</span> Make it Burn</a></li>
+<li><a href="#make-it-count"><span class="toc-section-number">3.4</span> Make it Count</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="skillsconcepts"><span class="header-section-number">1</span> Skills/Concepts</h1>
+<p>This module provides an introduction to Minetest modding. It will cover some basic image manipulation and rudimentary Lua scripting.</p>
+<p>The following concepts will be touched upon in this module:</p>
+<ul>
+<li>console use</li>
+<li>image editing</li>
+<li>image editing at the console</li>
+<li>basic usage of Minetest</li>
+<li>modding</li>
+</ul>
+<h2 id="console-use"><span class="header-section-number">1.1</span> Console Use</h2>
+<p>This module relies heavily on the command-line. You will be using a terminal emulator to execute the following commands.</p>
+<table>
+<colgroup>
+<col width="27%" />
+<col width="52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cp</td>
+<td align="left">Copy file command</td>
+</tr>
+<tr class="even">
+<td align="left">gimp</td>
+<td align="left">Can be used to launch the GNU Image Manipulation Program from a terminal instead of using the menus.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="overview"><span class="header-section-number">2</span> Overview</h1>
+<p>Modules for Minetest require a specific directory hierarchy. The files consist of an entry-point script for initialization and supporting files. Generally the supporting files consist of additional scripts, PNG files, documentation, etc. Although Minetest is written in C++, the scripting language uses Lua. Minetest provides hooks for sophisticated eventing and other application programmer interfaces (APIs).</p>
+<p>We will be re-creating the directory hierarchy and creating a simple node that can be added to the world. Then we'll create three more nodes, the three additional nodes will make use of Minetest's eventing APIs to replace themselves with each previous node, down to the original node. Then the original node will replace itself with fire.</p>
+<p>We will create the grpahics with the Gimp (GNU Image Manipulation Program) and test each new addition in a standalone game where we can use Administrative powers to add the nodes to the world.</p>
+<h1 id="process"><span class="header-section-number">3</span> Process</h1>
+<h2 id="create-the-graphics"><span class="header-section-number">3.1</span> Create the Graphics</h2>
+<ol start="0" style="list-style-type: decimal">
+<li><p>Launch the Gimp, either from a menu through the graphical interface, or by typing <code>gimp</code> into a terminal.</p></li>
+<li><p>Create a new image, dimensions 32x32. You'll need to click the turn-key arrow to choose a background color.</p></li>
+</ol>
+<div class="figure">
+<img src="images/00_new_image.png" alt="New Image Dialog" /><p class="caption">New Image Dialog</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>Choose either a background color or set it to transparent.</li>
+</ol>
+<div class="figure">
+<img src="images/01_new_image.png" alt="New Image Dialog, showing color options" /><p class="caption">New Image Dialog, showing color options</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Hit <em>Control+B</em> to open the toolbox.</p></li>
+<li><p>Chose the pencil tool.</p></li>
+</ol>
+<div class="figure">
+<img src="images/02_toolbox.png" alt="Toolbox" /><p class="caption">Toolbox</p>
+</div>
+<ol start="5" style="list-style-type: decimal">
+<li>Modify the properties of the tool to be square in dimensions.</li>
+</ol>
+<div class="figure">
+<img src="images/03_pixel.png" alt="Brush Style" /><p class="caption">Brush Style</p>
+</div>
+<ol start="6" style="list-style-type: decimal">
+<li>Modify the size to be one pixel.</li>
+</ol>
+<div class="figure">
+<img src="images/04_pencil_size.png" alt="Pencil Size" /><p class="caption">Pencil Size</p>
+</div>
+<ol start="7" style="list-style-type: decimal">
+<li><p>Zoom in on the image and color it in some distinguishable way. When you are done modifying it, save it, and then export it as a PNG. Save it where you like, but remember the location, for example, on the Desktop. Choose any name you like, this module will assume the name <code>final.png</code>.</p></li>
+<li><p>Create three more graphics, containing the numbers 3, 2, and 1. Be sure to export these as PNGs.</p></li>
+</ol>
+<h2 id="create-the-base-module"><span class="header-section-number">3.2</span> Create the Base Module</h2>
+<p>The commands in this section should be executed from a terminal in the <code>minetest/mods</code> directory.</p>
+<ol start="0" style="list-style-type: decimal">
+<li><p>Create a directory to hold the module.</p>
+<p>mkdir mymodule</p></li>
+<li><p>Create a directory for the textures.</p>
+<p>mkdir mymodule/textures</p></li>
+<li><p>Copy the image created earlier into the module's textures directory.</p>
+<p>cp ~/Desktop/final.png mymodule/textures</p></li>
+<li><p>Create the entry-pont script, <code>mymodule/init.lua</code>, and put the following text in it:</p></li>
+</ol>
+<pre class="sourceCode lua"><code class="sourceCode lua">minetest<span class="ot">.</span>register_node<span class="ot">(</span><span class="st">&quot;mymod:phos_final&quot;</span><span class="ot">,</span>
+    <span class="ot">{</span>
+        description <span class="ot">=</span> <span class="st">&quot;phosphorous&quot;</span><span class="ot">,</span>
+        tiles <span class="ot">=</span> <span class="ot">{</span><span class="st">&quot;final.png&quot;</span><span class="ot">},</span>
+        groups <span class="ot">=</span> <span class="ot">{</span>snappy<span class="ot">=</span><span class="dv">1</span><span class="ot">,</span> crumbly<span class="ot">=</span><span class="dv">2</span><span class="ot">,</span> <span class="ot">},</span>
+        is_ground_content <span class="ot">=</span> <span class="kw">false</span><span class="ot">,</span>
+    <span class="ot">}</span>
+<span class="ot">)</span></code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Run the game, create a new Local Game.</p></li>
+<li><p>Configure the new local game to enable the custom module.</p></li>
+<li><p>Enter the game (in creative mode).</p></li>
+<li><p>Press I.</p></li>
+<li><p>Click the Node tab.</p></li>
+<li><p>Navigate the node tab (it was page six on my system) and find the node with the graphic you created.</p></li>
+<li><p>Drag it to one of the numbered slots, and place it in the world.</p></li>
+</ol>
+<h2 id="make-it-burn"><span class="header-section-number">3.3</span> Make it Burn</h2>
+<ol start="0" style="list-style-type: decimal">
+<li>Edit the <code>mymodule/init.lua</code> file and put the following in it:</li>
+</ol>
+<pre class="sourceCode lua"><code class="sourceCode lua">minetest<span class="ot">.</span>register_node<span class="ot">(</span><span class="st">&quot;mymod:phos_final&quot;</span><span class="ot">,</span>
+    <span class="ot">{</span>
+        description <span class="ot">=</span> <span class="st">&quot;phosphorous&quot;</span><span class="ot">,</span>
+        tiles <span class="ot">=</span> <span class="ot">{</span><span class="st">&quot;final.png&quot;</span><span class="ot">},</span>
+        groups <span class="ot">=</span> <span class="ot">{</span>snappy<span class="ot">=</span><span class="dv">1</span><span class="ot">,</span> crumbly<span class="ot">=</span><span class="dv">2</span><span class="ot">,</span> <span class="ot">},</span>
+        is_ground_content <span class="ot">=</span> <span class="kw">false</span><span class="ot">,</span>
+    <span class="ot">}</span>
+<span class="ot">)</span>
+
+minetest<span class="ot">.</span>register_abm<span class="ot">({</span>
+    nodenames <span class="ot">=</span> <span class="ot">{</span><span class="st">&quot;mymod:phos_final&quot;</span><span class="ot">},</span>
+    interval <span class="ot">=</span> <span class="dv">10</span><span class="ot">,</span>
+    chance <span class="ot">=</span> <span class="dv">1</span><span class="ot">,</span>
+    action <span class="ot">=</span> <span class="kw">function</span><span class="ot">(</span>pos<span class="ot">)</span>
+        minetest<span class="ot">.</span>add_node<span class="ot">(</span>pos<span class="ot">,</span> <span class="ot">{</span>name<span class="ot">=</span><span class="st">&quot;fire:basic_flame&quot;</span><span class="ot">})</span>
+    <span class="kw">end</span><span class="ot">,</span>
+<span class="ot">})</span></code></pre>
+<ol style="list-style-type: decimal">
+<li><p>Press escape and choose <em>Exit to Menu</em> to leave the game and return to the menu.</p></li>
+<li><p>The module is already active, so simply join the game again and add more of he custom block.</p></li>
+</ol>
+<h2 id="make-it-count"><span class="header-section-number">3.4</span> Make it Count</h2>
+<ol start="0" style="list-style-type: decimal">
+<li><p>Edit the <code>mymodule/init.lua</code> file again. Copy and paste the entry for the node three times, rename the nodes to <code>mymod:phos_1</code> to <code>mymod:phos_3</code>.</p></li>
+<li><p>Edit the tiles to refer to images <code>1.png</code> to <code>3.png</code>.</p></li>
+<li><p>Copy the PNG files to the textures directory:</p>
+<p>cp ~/Desktop/1.png mymod/textures/ cp ~/Desktop/2.png mymod/textures/ cp ~/Desktop/3.png mymod/textures/</p></li>
+<li><p>Copy the <code>register_abs</code> block three times, modify the nodenames for each to refer to the node names from step 0.</p></li>
+<li><p>Modify the <code>fire:basic_flame</code> entry for each of the new blocks and instead have them change into <code>mymod:phos_2</code>, <code>mymod:phos_1</code>, and <code>mymod:phos_final</code>.</p></li>
+<li><p>Reload the module, and this time add block three to the world and see it count down.</p></li>
+</ol>
+</body>
+</html>
