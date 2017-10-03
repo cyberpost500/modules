@@ -37,3 +37,5 @@ running list of the modules already exported to PDF (and HTML):
     + Lesson 1 [txt](java/java.mkd) [pdf](java/java.pdf) [html](java/java.html)
     + Lesson 2 [txt](java/java-2.mkd) [pdf](java/java-2.pdfl) [html](java/java-2.html)
 * Networking [txt](network/manual.mkd) [pdf](network/manual.pdf) [html](network/manual.html)
+* Minetest 
+    + Lesson 1 [txt](minetest/mods-1.mkd) [pdf](minetest/mods-1.pdf) [html](minetest/mods-1.html)

@@ -37,7 +37,15 @@ code > span.er { font-weight: bold; }
 <li><a href="#skillsconcepts"><span class="toc-section-number">1</span> Skills/Concepts</a><ul>
 <li><a href="#console-use"><span class="toc-section-number">1.1</span> Console Use</a></li>
 <li><a href="#getting-help-for-commands"><span class="toc-section-number">1.2</span> Getting Help for Commands</a></li>
-<li><a href="#osi-model"><span class="toc-section-number">1.3</span> OSI Model</a></li>
+<li><a href="#osi-model"><span class="toc-section-number">1.3</span> OSI Model</a><ul>
+<li><a href="#application"><span class="toc-section-number">1.3.1</span> Application</a></li>
+<li><a href="#presentation"><span class="toc-section-number">1.3.2</span> Presentation</a></li>
+<li><a href="#session"><span class="toc-section-number">1.3.3</span> Session</a></li>
+<li><a href="#transport"><span class="toc-section-number">1.3.4</span> Transport</a></li>
+<li><a href="#network"><span class="toc-section-number">1.3.5</span> Network</a></li>
+<li><a href="#data"><span class="toc-section-number">1.3.6</span> Data</a></li>
+<li><a href="#physical"><span class="toc-section-number">1.3.7</span> Physical</a></li>
+</ul></li>
 <li><a href="#ip-addresses"><span class="toc-section-number">1.4</span> IP Addresses</a><ul>
 <li><a href="#ipv4-address"><span class="toc-section-number">1.4.1</span> IPv4 Address</a></li>
 <li><a href="#ipv6-address"><span class="toc-section-number">1.4.2</span> IPv6 Address</a></li>
@@ -58,6 +66,11 @@ code > span.er { font-weight: bold; }
 <li><a href="#run-the-game"><span class="toc-section-number">6</span> Run the Game</a><ul>
 <li><a href="#conclusion-3"><span class="toc-section-number">6.1</span> Conclusion</a></li>
 </ul></li>
+<li><a href="#build-the-server"><span class="toc-section-number">7</span> Build the Server</a></li>
+<li><a href="#launch-the-server"><span class="toc-section-number">8</span> Launch the Server</a><ul>
+<li><a href="#conclusion-4"><span class="toc-section-number">8.1</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#get-some-mods"><span class="toc-section-number">9</span> Get some Mods</a></li>
 </ul>
 </div>
 <h1 id="skillsconcepts"><span class="header-section-number">1</span> Skills/Concepts</h1>
@@ -157,11 +170,25 @@ code > span.er { font-weight: bold; }
 </tr>
 </tbody>
 </table>
-<p>We'll discuss the layers briefly during the meeting.</p>
 <p>Of the various mnemonics for remembering the layers, my favorite is:</p>
 <blockquote>
 <p>A Python Sent The Network Data Packing</p>
 </blockquote>
+<p>Data originating in an application traverses from the application layer down to the physical layer in the sending host and then goes from the physical layer up to the application layer by the receiving application. The layers are more theoretical than they are actual, as much of the actual implementation logic in an application will scale multiple layers. However, the model is still useful as many networking tasks can be generalized to take advantage of swappable implementations for the intermediate layers.</p>
+<h3 id="application"><span class="header-section-number">1.3.1</span> Application</h3>
+<p>Abstract network services are made available to applications that package data up for the presentation layer. For example, HTTP, FTP, SMTP.</p>
+<h3 id="presentation"><span class="header-section-number">1.3.2</span> Presentation</h3>
+<p>Encryption, decryption, or other data formatting/conversions. This isn't providing a graphical presentation, but rather formatting and converting data to be presented to the session layer. Think object serialization.</p>
+<h3 id="session"><span class="header-section-number">1.3.3</span> Session</h3>
+<p>A session is everything from the connection being established until it terminates. This layer is responsible for allowing applications to talk to each other across the network. Data formatted from the presentation layer is transmitted during the session.</p>
+<h3 id="transport"><span class="header-section-number">1.3.4</span> Transport</h3>
+<p>Host-based communication between two endpoints is accomplished at the transport layer. Transmission control protocol (TCP) logic is at this level. It encompasses concepts such as flow control, error recovery, and retransmission logic as data is sent to the network layer.</p>
+<h3 id="network"><span class="header-section-number">1.3.5</span> Network</h3>
+<p>Network routing, paths, switching, forwarding. For example, IP-based connections live at this layer.</p>
+<h3 id="data"><span class="header-section-number">1.3.6</span> Data</h3>
+<p>Network data is written into frames as bits. Think media access control (MAC) and logical links. Data is encoded as bits before it is passed to the physical layer.</p>
+<h3 id="physical"><span class="header-section-number">1.3.7</span> Physical</h3>
+<p>Bits are encoded electromagnetically as the particle of choice, light for fiber, or electrons for Ethernet, etc.</p>
 <h2 id="ip-addresses"><span class="header-section-number">1.4</span> IP Addresses</h2>
 <p>Internet Protocol addresses. There are two varieties of IP address in use on the public Internet, IPv4 and IPv6.</p>
 <h3 id="ipv4-address"><span class="header-section-number">1.4.1</span> IPv4 Address</h3>
@@ -171,18 +198,18 @@ code > span.er { font-weight: bold; }
 <p><a href="https://en.wikipedia.org/wiki/IPv6">IPv6</a> addresses are made up of eight groups of two bytes. IPv6 addresses are generally represented with some abbreviated form of the colon separated byte values. For example: <code>1234:5678:9ABC:DEF0:0000:0000:0000:0000</code> or <code>1234:5678:9ABC:DEF0::</code>.</p>
 <p>Because it's 128 bits of address space, 2<sup>128</sup> addresses can be represented. Writing this value out in long-form exceeds my vocabulary for numbers.</p>
 <h2 id="network-masks"><span class="header-section-number">1.5</span> Network Masks</h2>
-<p>Network masks are used in routing tables to define what route traffic must take to reach a location. Any given computer may have multiple network interfaces, these interfaces are generally connected to some sort of network. In order for the operating system to decide which interface is to be used for traffic, it uses the network mask for each interface to determine whether traffic should be routed over that interface. Then, in transit, other systems have their own routing tables that are used to determine where to route the traffic based on the destination IP adddress and its set of configured network masks.</p>
+<p>Network masks are used in routing tables to define what route traffic must take to reach a location. Any given computer may have multiple network interfaces, these interfaces are generally connected to some sort of network. In order for the operating system to decide which interface is to be used for traffic, it uses the network mask for each interface to determine whether traffic should be routed over that interface. Then, in transit, other systems have their own routing tables that are used to determine where to route the traffic based on the destination IP address and its set of configured network masks.</p>
 <p>Generally an interface will have a default route over which any traffic not explicitly destined</p>
 <h2 id="network-switcheshubs"><span class="header-section-number">1.6</span> Network Switches/Hubs</h2>
-<p>A network hub is a device that replicates all traffic recieved across all ports. In this context, a port refers to the connection between the ethernet cable and the RJ45 jack. A switch is a device that monitors media access addresses across its ports and only routes traffic between the ports for which traffic is addressed.</p>
+<p>A network hub is a device that replicates all traffic received across all ports. In this context, a port refers to the connection between the Ethernet cable and the RJ45 jack. A switch is a device that monitors media access addresses across its ports and only routes traffic between the ports for which traffic is addressed.</p>
 <p>A hub can only handle one simultaneous transmission at a time, a switch can handle many.</p>
 <h1 id="preparation"><span class="header-section-number">2</span> Preparation</h1>
-<p>We'll be using a CISCO switch in this exercise and plugging in ethernet cables. Plug in the switch, power it on, and boot up the laptops that will be used. Plug your laptop into the switch using one of the provided ethernet cables.</p>
+<p>We'll be using a CISCO switch in this exercise and plugging in Ethernet cables. Plug in the switch, power it on, and boot up the laptops that will be used. Plug your laptop into the switch using one of the provided Ethernet cables.</p>
 <h1 id="bring-up-the-network"><span class="header-section-number">3</span> Bring Up the Network</h1>
 <p>In this module, we will manually establish a new IPv4 network.</p>
 <p>Once the machine is powered on, and plugged into the CISCO switch, open a terminal and carry out the following commands.</p>
 <ol style="list-style-type: decimal">
-<li><p>View the current network configuration with the ip command:</p>
+<li><p>View the current network configuration with the IP command:</p>
 <p>ip addr show</p></li>
 </ol>
 <p>The results will vary, but generally will look like the following:</p>
@@ -203,14 +230,14 @@ group default qlen 1000
 <ol start="2" style="list-style-type: decimal">
 <li><p>Be lazy, and use the abbreviated form of the command:</p>
 <p>ip a</p></li>
-<li><p>Bring up your wired ethernet device (if its state is listed as DOWN):</p>
+<li><p>Bring up your wired Ethernet device (if its state is listed as DOWN):</p>
 <p>sudo ip link set enp3s0 up</p></li>
-<li><p>Assign your ethernet device an ip address, in this example we use <code>192.168.2.1</code> with a 24-bit mask:</p>
+<li><p>Assign your Ethernet device an IP address, in this example we use <code>192.168.2.1</code> with a 24-bit mask:</p>
 <p>sudo ip addr add dev enp3s0 192.168.99.2/24</p></li>
 </ol>
 <p>In this context, the 24-bit mask works out to being the 192.168.99 part of the address. So anything destined for the <code>192.168.99.0</code> network will be routed through the device specified.</p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Try to ping the raspbery pi server at 192.168.99.1:</p>
+<li><p>Try to ping the raspberry pi server at 192.168.99.1:</p>
 <p>ping -c 2 192.168.99.1</p></li>
 </ol>
 <p>The result will look similar to the following:</p>
@@ -244,16 +271,16 @@ rtt min/avg/max/mdev = 0.164/0.172/0.180/0.008 ms</code></pre>
 <li><p>Mount the directory locally:</p>
 <p>sudo mount 192.168.99.1:/srv/minetest /mnt</p></li>
 <li><p>Check out the files</p>
-<p>git clone /mnt/minetest/minetest</p></li>
+<p>git clone /mnt/minetest</p></li>
 </ol>
-<p>Epected output:</p>
+<p>Expected output:</p>
 <pre><code>Cloning into &#39;minetest&#39;...
 done.</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>The probject supports various games, so check out the common minetest game as well:</li>
+<li>The project supports various games, so check out the common Minetest game as well:</li>
 </ol>
 <pre class="sourceCode bash"><code class="sourceCode bash">    <span class="kw">cd</span> minetest/games
-    <span class="kw">git</span> clone /mnt/minetest/minetest_game</code></pre>
+    <span class="kw">git</span> clone /mnt/minetest_game</code></pre>
 <p>Expected output:</p>
 <pre><code>Cloning into &#39;minetest_game&#39;...
 done.</code></pre>
@@ -369,18 +396,69 @@ libfreetype6-dev zlib1g-dev libgmp-dev libjsoncpp-dev</code></pre>
 <p>For example:</p>
 <pre><code>./bin/minetest</code></pre>
 <div class="figure">
-<img src="images/minetest.png" alt="Minetest Window" />
-<p class="caption">Minetest Window</p>
+<img src="images/minetest.png" alt="Minetest Window" /><p class="caption">Minetest Window</p>
 </div>
 <ol start="2" style="list-style-type: decimal">
 <li>Click on the <em>Client</em> tab, enter the IP address of the pi, enter a user name, pick a password, and click connect.</li>
 </ol>
 <div class="figure">
-<img src="images/client.png" alt="Minetest Client Tab" />
-<p class="caption">Minetest Client Tab</p>
+<img src="images/client.png" alt="Minetest Client Tab" /><p class="caption">Minetest Client Tab</p>
 </div>
 <p><strong>Alternately</strong> Choose the <em>Server</em> tab and create your own world.</p>
 <h2 id="conclusion-3"><span class="header-section-number">6.1</span> Conclusion</h2>
 <p>Generally there is an additional step of installing the compiled code, but many projects support running the executables in place, as is the case with Minetest. But beware of performing a <code>make install</code> if a project suggests it unless you have taken the necessary steps according to that projects instructions to specify an installation path. If you blindly install projects to your installed system, you could end up with collisions between software you have installed from source and software installed from the distribution's package manager.</p>
+<h1 id="build-the-server"><span class="header-section-number">7</span> Build the Server</h1>
+<p>The server was probably built in the previous step, but this is included here in case anyone needs to build <em>just</em> the server.</p>
+<p>Before we can start using mods, we need a place to run those mods. Build the server in much the same fashion as the client.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use cmake to create the build configuration:</p>
+<p>cmake . -DRUN_IN_PLACE=TRUE -DBUILD_SERVER=TRUE</p></li>
+</ol>
+<p>Successful output will look like the following:</p>
+<pre><code>-- *** Will build version 0.4.14-dev ***
+-- cURL support enabled.
+-- GetText disabled.
+-- Sound enabled.
+-- Freetype enabled.
+-- Could NOT find LuaJit (missing:  LUA_LIBRARY LUA_INCLUDE_DIR) 
+-- LuaJIT not found, using bundled Lua.
+-- Using GMP provided by system.
+-- Found Curses: /usr/lib/x86_64-linux-gnu/libcurses.so  
+-- ncurses console enabled.
+-- Could NOT find PostgreSQL (missing:  PostgreSQL_LIBRARY
+PostgreSQL_INCLUDE_DIR PostgreSQL_TYPE_INCLUDE_DIR) 
+-- PostgreSQL not found!
+-- LevelDB not found!
+-- Redis not found!
+-- Using bundled JSONCPP library.
+-- SpatialIndex not found!
+-- Could NOT find Doxygen (missing:  DOXYGEN_EXECUTABLE) 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/stephen/minetest</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Start the build, this time, provide a number of jobs that <code>make</code> can use to take advantage of multi-threading the build so that it doesn't take quite as long.</p>
+<p>make -j4</p></li>
+</ol>
+<p>The final line of output should look like the following:</p>
+<pre><code>[100%] Built target minetestserver</code></pre>
+<h1 id="launch-the-server"><span class="header-section-number">8</span> Launch the Server</h1>
+<p>The server can actually be configured and launched from the client interface.</p>
+<ol style="list-style-type: decimal">
+<li><p>Launch the client.</p>
+<p>./bin/minetest</p></li>
+<li><p>Click on the Server tab.</p></li>
+<li><p>Click on New.</p></li>
+<li><p>Type in a world name.</p></li>
+<li><p>Select a map generator. You can experiment with this later to see the effects.</p></li>
+<li><p>Select a game type (generally leave this on the default, <em>Minetest Game</em>).</p></li>
+<li><p>Click on Create</p></li>
+<li><p>Choose a user name and password, when you start the server, this will be an administrative account with access to additional commands. (Note, you will need to edit the key bindings after you launch the game in order to use double-jump to fly.)</p></li>
+<li><p>Click on Start Game.</p></li>
+</ol>
+<h2 id="conclusion-4"><span class="header-section-number">8.1</span> Conclusion</h2>
+<p>In testing mods we'll use this method the most, so it's presented first. Later on we'll discuss how to launch the server from a script and why you might want to do that.</p>
+<h1 id="get-some-mods"><span class="header-section-number">9</span> Get some Mods</h1>
+<p>The school network probably blocks the Minetest web site, so point your web browser to the <a href="http://192.168.99.1">Pi</a> and get some mods from there. Otherwise, browse over to the <a href="http://www.minetest.net/customize/">minetest website</a>.</p>
 </body>
 </html>
