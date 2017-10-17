@@ -9,7 +9,6 @@ The following concepts will be touched upon in this module:
 
  * console use
  * image editing
- * image editing at the console
  * basic usage of Minetest
  * modding
 
@@ -48,9 +47,9 @@ additional nodes will make use of Minetest's eventing APIs to replace
 themselves with each previous node, down to the original node.  Then the
 original node will replace itself with fire.
 
-We will create the grpahics with the Gimp (GNU Image Manipulation Program) and
-test each new addition in a standalone game where we can use Administrative
-powers to add the nodes to the world.
+We will create the graphics with the Gimp (GNU Image Manipulation Program) and
+test each new addition in a standalone game where we can use Creative (or
+Administrative) powers to add the nodes to the world.
 
 
 Process
@@ -194,8 +193,49 @@ Make it Count
 
 4. Modify the `fire:basic_flame` entry for each of the new blocks and instead
    have them change into `mymod:phos_2`, `mymod:phos_1`, and
-`mymod:phos_final`.
+`mymod:phos_final`.  Be sure to edit the description so it's easier to find the
+blocks in creative mode.
 
 5. Reload the module, and this time add block three to the world and see it
    count down.
 
+Troubleshooting and Errors
+=========================
+
+Place `CONTENT_IGNORE`
+----------------------
+If you mistype the name of the module or the node, you may see an error that
+looks like the following:
+
+~~~~
+    2017-10-16 20:52:12: ERROR[Server]: Map::setNode(): Not allowing to place CONTENT_IGNORE while trying to replace "mine:phos_1" at (37,22,36) (block (2,1,2))
+~~~~~~~~~~~~~~~~
+
+Module name must match
+----------------------
+The prefixes used in the node name must be the same as the directory in which
+the module resides.  You may see an error like the following:
+~~~~
+2017-10-16 22:27:17: ERROR[Main]: ModError: Failed to load and run script from /home/stephen/minetest/bin/../mods/mine/init.lua:
+2017-10-16 22:27:17: ERROR[Main]: ...me/stephen/minetest/bin/../builtin/game/register.lua:62: Name wrong:phos_final does not follow naming conventions: "mine:" or ":" prefix required
+2017-10-16 22:27:17: ERROR[Main]: stack traceback:
+2017-10-16 22:27:17: ERROR[Main]:   [C]: in function 'error'
+2017-10-16 22:27:17: ERROR[Main]:   ...me/stephen/minetest/bin/../builtin/game/register.lua:62: in function 'check_modname_prefix'
+2017-10-16 22:27:17: ERROR[Main]:   ...me/stephen/minetest/bin/../builtin/game/register.lua:110: in function 'register_item'
+2017-10-16 22:27:17: ERROR[Main]:   ...me/stephen/minetest/bin/../builtin/game/register.lua:177: in function 'register_node'
+2017-10-16 22:27:17: ERROR[Main]:   /home/stephen/minetest/bin/../mods/mine/init.lua:2: in main chunk
+2017-10-16 22:27:17: ERROR[Main]: Check debug.txt for details.
+~~~~~~~~~~~~~~~~
+
+Make sure the node name prefix matches the directory name.  In the stack trace
+above, the `wrong` should be `mine`.  The timestamp that reads 
+`2017-10-16 22:27:17` in the above output contains the correct directory name
+and timestamp `2017-10-16 22:27:17` contains both the incorrect and the correct
+name.
+
+Conclusion
+==========
+We created very simple graphics and placed them in the correct directory
+hierarchy and made a simple Lua script that drove everything.  Then we loaded
+up the module in minetest.  We were able to see that reloading the code to try
+new things only required leaving the world and re-entering.
