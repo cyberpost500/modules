@@ -44,6 +44,11 @@ code > span.er { font-weight: bold; }
 <li><a href="#make-it-burn"><span class="toc-section-number">3.3</span> Make it Burn</a></li>
 <li><a href="#make-it-count"><span class="toc-section-number">3.4</span> Make it Count</a></li>
 </ul></li>
+<li><a href="#troubleshooting-and-errors"><span class="toc-section-number">4</span> Troubleshooting and Errors</a><ul>
+<li><a href="#place-content_ignore"><span class="toc-section-number">4.1</span> Place <code>CONTENT_IGNORE</code></a></li>
+<li><a href="#module-name-must-match"><span class="toc-section-number">4.2</span> Module name must match</a></li>
+</ul></li>
+<li><a href="#conclusion"><span class="toc-section-number">5</span> Conclusion</a></li>
 </ul>
 </div>
 <h1 id="skillsconcepts"><span class="header-section-number">1</span> Skills/Concepts</h1>
@@ -52,7 +57,6 @@ code > span.er { font-weight: bold; }
 <ul>
 <li>console use</li>
 <li>image editing</li>
-<li>image editing at the console</li>
 <li>basic usage of Minetest</li>
 <li>modding</li>
 </ul>
@@ -83,7 +87,7 @@ code > span.er { font-weight: bold; }
 <h1 id="overview"><span class="header-section-number">2</span> Overview</h1>
 <p>Modules for Minetest require a specific directory hierarchy. The files consist of an entry-point script for initialization and supporting files. Generally the supporting files consist of additional scripts, PNG files, documentation, etc. Although Minetest is written in C++, the scripting language uses Lua. Minetest provides hooks for sophisticated eventing and other application programmer interfaces (APIs).</p>
 <p>We will be re-creating the directory hierarchy and creating a simple node that can be added to the world. Then we'll create three more nodes, the three additional nodes will make use of Minetest's eventing APIs to replace themselves with each previous node, down to the original node. Then the original node will replace itself with fire.</p>
-<p>We will create the grpahics with the Gimp (GNU Image Manipulation Program) and test each new addition in a standalone game where we can use Administrative powers to add the nodes to the world.</p>
+<p>We will create the graphics with the Gimp (GNU Image Manipulation Program) and test each new addition in a standalone game where we can use Creative (or Administrative) powers to add the nodes to the world.</p>
 <h1 id="process"><span class="header-section-number">3</span> Process</h1>
 <h2 id="create-the-graphics"><span class="header-section-number">3.1</span> Create the Graphics</h2>
 <ol start="0" style="list-style-type: decimal">
@@ -91,32 +95,37 @@ code > span.er { font-weight: bold; }
 <li><p>Create a new image, dimensions 32x32. You'll need to click the turn-key arrow to choose a background color.</p></li>
 </ol>
 <div class="figure">
-<img src="images/00_new_image.png" alt="New Image Dialog" /><p class="caption">New Image Dialog</p>
+<img src="images/00_new_image.png" alt="New Image Dialog" />
+<p class="caption">New Image Dialog</p>
 </div>
 <ol start="2" style="list-style-type: decimal">
 <li>Choose either a background color or set it to transparent.</li>
 </ol>
 <div class="figure">
-<img src="images/01_new_image.png" alt="New Image Dialog, showing color options" /><p class="caption">New Image Dialog, showing color options</p>
+<img src="images/01_new_image.png" alt="New Image Dialog, showing color options" />
+<p class="caption">New Image Dialog, showing color options</p>
 </div>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Hit <em>Control+B</em> to open the toolbox.</p></li>
 <li><p>Chose the pencil tool.</p></li>
 </ol>
 <div class="figure">
-<img src="images/02_toolbox.png" alt="Toolbox" /><p class="caption">Toolbox</p>
+<img src="images/02_toolbox.png" alt="Toolbox" />
+<p class="caption">Toolbox</p>
 </div>
 <ol start="5" style="list-style-type: decimal">
 <li>Modify the properties of the tool to be square in dimensions.</li>
 </ol>
 <div class="figure">
-<img src="images/03_pixel.png" alt="Brush Style" /><p class="caption">Brush Style</p>
+<img src="images/03_pixel.png" alt="Brush Style" />
+<p class="caption">Brush Style</p>
 </div>
 <ol start="6" style="list-style-type: decimal">
 <li>Modify the size to be one pixel.</li>
 </ol>
 <div class="figure">
-<img src="images/04_pencil_size.png" alt="Pencil Size" /><p class="caption">Pencil Size</p>
+<img src="images/04_pencil_size.png" alt="Pencil Size" />
+<p class="caption">Pencil Size</p>
 </div>
 <ol start="7" style="list-style-type: decimal">
 <li><p>Zoom in on the image and color it in some distinguishable way. When you are done modifying it, save it, and then export it as a PNG. Save it where you like, but remember the location, for example, on the Desktop. Choose any name you like, this module will assume the name <code>final.png</code>.</p></li>
@@ -186,8 +195,17 @@ minetest<span class="ot">.</span>register_abm<span class="ot">({</span>
     cp ~/Desktop/3.png mymod/textures/</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Copy the <code>register_abs</code> block three times, modify the nodenames for each to refer to the node names from step 0.</p></li>
-<li><p>Modify the <code>fire:basic_flame</code> entry for each of the new blocks and instead have them change into <code>mymod:phos_2</code>, <code>mymod:phos_1</code>, and <code>mymod:phos_final</code>.</p></li>
+<li><p>Modify the <code>fire:basic_flame</code> entry for each of the new blocks and instead have them change into <code>mymod:phos_2</code>, <code>mymod:phos_1</code>, and <code>mymod:phos_final</code>. Be sure to edit the description so it's easier to find the blocks in creative mode.</p></li>
 <li><p>Reload the module, and this time add block three to the world and see it count down.</p></li>
 </ol>
+<h1 id="troubleshooting-and-errors"><span class="header-section-number">4</span> Troubleshooting and Errors</h1>
+<h2 id="place-content_ignore"><span class="header-section-number">4.1</span> Place <code>CONTENT_IGNORE</code></h2>
+<p>If you mistype the name of the module or the node, you may see an error that looks like the following:</p>
+<pre><code>    2017-10-16 20:52:12: ERROR[Server]: Map::setNode(): Not allowing to place CONTENT_IGNORE while trying to replace &quot;mine:phos_1&quot; at (37,22,36) (block (2,1,2))</code></pre>
+<h2 id="module-name-must-match"><span class="header-section-number">4.2</span> Module name must match</h2>
+<p>The prefixes used in the node name must be the same as the directory in which the module resides. You may see an error like the following: ~<sub>~</sub> 2017-10-16 22:27:17: ERROR[Main]: ModError: Failed to load and run script from /home/stephen/minetest/bin/../mods/mine/init.lua: 2017-10-16 22:27:17: ERROR[Main]: ...me/stephen/minetest/bin/../builtin/game/register.lua:62: Name wrong:phos_final does not follow naming conventions: &quot;mine:&quot; or &quot;:&quot; prefix required 2017-10-16 22:27:17: ERROR[Main]: stack traceback: 2017-10-16 22:27:17: ERROR[Main]: [C]: in function 'error' 2017-10-16 22:27:17: ERROR[Main]: ...me/stephen/minetest/bin/../builtin/game/register.lua:62: in function 'check_modname_prefix' 2017-10-16 22:27:17: ERROR[Main]: ...me/stephen/minetest/bin/../builtin/game/register.lua:110: in function 'register_item' 2017-10-16 22:27:17: ERROR[Main]: ...me/stephen/minetest/bin/../builtin/game/register.lua:177: in function 'register_node' 2017-10-16 22:27:17: ERROR[Main]: /home/stephen/minetest/bin/../mods/mine/init.lua:2: in main chunk 2017-10-16 22:27:17: ERROR[Main]: Check debug.txt for details. ~<sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></p>
+<p>Make sure the node name prefix matches the directory name. In the stack trace above, the <code>wrong</code> should be <code>mine</code>. The timestamp that reads <code>2017-10-16 22:27:17</code> in the above output contains the correct directory name and timestamp <code>2017-10-16 22:27:17</code> contains both the incorrect and the correct name.</p>
+<h1 id="conclusion"><span class="header-section-number">5</span> Conclusion</h1>
+<p>We created very simple graphics and placed them in the correct directory hierarchy and made a simple Lua script that drove everything. Then we loaded up the module in minetest. We were able to see that reloading the code to try new things only required leaving the world and re-entering.</p>
 </body>
 </html>
