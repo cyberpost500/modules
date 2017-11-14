@@ -21,7 +21,9 @@ emulator to execute the following commands.
 Command             Description
 ---------           --------------------------------------
 cd                  Change directory
+
 ls                  List directory contents (whats inside)
+
 subl                Sublime text editor
 
 ----------------------------------------------------------
@@ -86,6 +88,7 @@ minetest.register_chatcommand("lesson_2:antigravity",
                 })
         end
     })
+~~~~~~~~~~~~~~~~
 
 2. Run the game, create a new Local Game.
 
@@ -124,6 +127,7 @@ minetest.register_chatcommand("lesson_2:antigravity",
                 })
         end
     })
+~~~~~~~~~~~~~~~~
 
 1. Run the game, create a new Local Game.
 
@@ -173,6 +177,7 @@ minetest.register_chatcommand("lesson_2:antigravity",
                 })
         end
     })
+~~~~~~~~~~~~~~~~
 
 1. Run the game, create a new Local Game.
 
