@@ -7,51 +7,48 @@
   <title>Minetest Mods</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; }
-code > span.dt { color: #204a87; }
-code > span.dv { color: #0000cf; }
-code > span.bn { color: #0000cf; }
-code > span.fl { color: #0000cf; }
-code > span.ch { color: #4e9a06; }
-code > span.st { color: #4e9a06; }
-code > span.co { color: #8f5902; font-style: italic; }
-code > span.ot { color: #8f5902; }
-code > span.al { color: #ef2929; }
-code > span.fu { color: #000000; }
-code > span.er { font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
-  <link rel="stylesheet" href="/modules/styles.css" type="text/css" />
 </head>
 <body>
 <div id="header">
 <h1 class="title">Minetest Mods</h1>
 </div>
-<div id="TOC">
-<ul>
-<li><a href="#skillsconcepts"><span class="toc-section-number">1</span> Skills/Concepts</a><ul>
-<li><a href="#console-use"><span class="toc-section-number">1.1</span> Console Use</a></li>
-</ul></li>
-<li><a href="#overview"><span class="toc-section-number">2</span> Overview</a></li>
-<li><a href="#process"><span class="toc-section-number">3</span> Process</a><ul>
-<li><a href="#create-the-graphics"><span class="toc-section-number">3.1</span> Create the Graphics</a></li>
-<li><a href="#create-the-base-module"><span class="toc-section-number">3.2</span> Create the Base Module</a></li>
-<li><a href="#make-it-burn"><span class="toc-section-number">3.3</span> Make it Burn</a></li>
-<li><a href="#make-it-count"><span class="toc-section-number">3.4</span> Make it Count</a></li>
-</ul></li>
-<li><a href="#troubleshooting-and-errors"><span class="toc-section-number">4</span> Troubleshooting and Errors</a><ul>
-<li><a href="#place-content_ignore"><span class="toc-section-number">4.1</span> Place <code>CONTENT_IGNORE</code></a></li>
-<li><a href="#module-name-must-match"><span class="toc-section-number">4.2</span> Module name must match</a></li>
-</ul></li>
-<li><a href="#conclusion"><span class="toc-section-number">5</span> Conclusion</a></li>
-</ul>
-</div>
-<h1 id="skillsconcepts"><span class="header-section-number">1</span> Skills/Concepts</h1>
+<h1 id="skillsconcepts">Skills/Concepts</h1>
 <p>This module provides an introduction to Minetest modding. It will cover some basic image manipulation and rudimentary Lua scripting.</p>
 <p>The following concepts will be touched upon in this module:</p>
 <ul>
@@ -60,9 +57,9 @@ code > span.er { font-weight: bold; }
 <li>basic usage of Minetest</li>
 <li>modding</li>
 </ul>
-<h2 id="console-use"><span class="header-section-number">1.1</span> Console Use</h2>
+<h2 id="console-use">Console Use</h2>
 <p>This module relies heavily on the command-line. You will be using a terminal emulator to execute the following commands.</p>
-<table>
+<table style="width:81%;">
 <colgroup>
 <col width="27%" />
 <col width="52%" />
@@ -84,12 +81,12 @@ code > span.er { font-weight: bold; }
 </tr>
 </tbody>
 </table>
-<h1 id="overview"><span class="header-section-number">2</span> Overview</h1>
+<h1 id="overview">Overview</h1>
 <p>Modules for Minetest require a specific directory hierarchy. The files consist of an entry-point script for initialization and supporting files. Generally the supporting files consist of additional scripts, PNG files, documentation, etc. Although Minetest is written in C++, the scripting language uses Lua. Minetest provides hooks for sophisticated eventing and other application programmer interfaces (APIs).</p>
 <p>We will be re-creating the directory hierarchy and creating a simple node that can be added to the world. Then we'll create three more nodes, the three additional nodes will make use of Minetest's eventing APIs to replace themselves with each previous node, down to the original node. Then the original node will replace itself with fire.</p>
 <p>We will create the graphics with the Gimp (GNU Image Manipulation Program) and test each new addition in a standalone game where we can use Creative (or Administrative) powers to add the nodes to the world.</p>
-<h1 id="process"><span class="header-section-number">3</span> Process</h1>
-<h2 id="create-the-graphics"><span class="header-section-number">3.1</span> Create the Graphics</h2>
+<h1 id="process">Process</h1>
+<h2 id="create-the-graphics">Create the Graphics</h2>
 <ol start="0" style="list-style-type: decimal">
 <li><p>Launch the Gimp, either from a menu through the graphical interface, or by typing <code>gimp</code> into a terminal.</p></li>
 <li><p>Create a new image, dimensions 32x32. You'll need to click the turn-key arrow to choose a background color.</p></li>
@@ -131,7 +128,7 @@ code > span.er { font-weight: bold; }
 <li><p>Zoom in on the image and color it in some distinguishable way. When you are done modifying it, save it, and then export it as a PNG. Save it where you like, but remember the location, for example, on the Desktop. Choose any name you like, this module will assume the name <code>final.png</code>.</p></li>
 <li><p>Create three more graphics, containing the numbers 3, 2, and 1. Be sure to export these as PNGs.</p></li>
 </ol>
-<h2 id="create-the-base-module"><span class="header-section-number">3.2</span> Create the Base Module</h2>
+<h2 id="create-the-base-module">Create the Base Module</h2>
 <p>The commands in this section should be executed from a terminal in the <code>minetest/mods</code> directory.</p>
 <ol start="0" style="list-style-type: decimal">
 <li><p>Create a directory to hold the module.</p>
@@ -142,14 +139,14 @@ code > span.er { font-weight: bold; }
 <p>cp ~/Desktop/final.png mymodule/textures</p></li>
 <li><p>Create the entry-pont script, <code>mymodule/init.lua</code>, and put the following text in it:</p></li>
 </ol>
-<pre class="sourceCode lua"><code class="sourceCode lua">minetest<span class="ot">.</span>register_node<span class="ot">(</span><span class="st">&quot;mymod:phos_final&quot;</span><span class="ot">,</span>
+<div class="sourceCode"><pre class="sourceCode lua"><code class="sourceCode lua">minetest<span class="ot">.</span>register_node<span class="ot">(</span><span class="st">&quot;mymodule:phos_final&quot;</span><span class="ot">,</span>
     <span class="ot">{</span>
         description <span class="ot">=</span> <span class="st">&quot;phosphorous&quot;</span><span class="ot">,</span>
         tiles <span class="ot">=</span> <span class="ot">{</span><span class="st">&quot;final.png&quot;</span><span class="ot">},</span>
         groups <span class="ot">=</span> <span class="ot">{</span>snappy<span class="ot">=</span><span class="dv">1</span><span class="ot">,</span> crumbly<span class="ot">=</span><span class="dv">2</span><span class="ot">,</span> <span class="ot">},</span>
         is_ground_content <span class="ot">=</span> <span class="kw">false</span><span class="ot">,</span>
     <span class="ot">}</span>
-<span class="ot">)</span></code></pre>
+<span class="ot">)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li><p>Run the game, create a new Local Game.</p></li>
 <li><p>Configure the new local game to enable the custom module.</p></li>
@@ -159,11 +156,11 @@ code > span.er { font-weight: bold; }
 <li><p>Navigate the node tab (it was page six on my system) and find the node with the graphic you created.</p></li>
 <li><p>Drag it to one of the numbered slots, and place it in the world.</p></li>
 </ol>
-<h2 id="make-it-burn"><span class="header-section-number">3.3</span> Make it Burn</h2>
+<h2 id="make-it-burn">Make it Burn</h2>
 <ol start="0" style="list-style-type: decimal">
 <li>Edit the <code>mymodule/init.lua</code> file and put the following in it:</li>
 </ol>
-<pre class="sourceCode lua"><code class="sourceCode lua">minetest<span class="ot">.</span>register_node<span class="ot">(</span><span class="st">&quot;mymod:phos_final&quot;</span><span class="ot">,</span>
+<div class="sourceCode"><pre class="sourceCode lua"><code class="sourceCode lua">minetest<span class="ot">.</span>register_node<span class="ot">(</span><span class="st">&quot;mymodule:phos_final&quot;</span><span class="ot">,</span>
     <span class="ot">{</span>
         description <span class="ot">=</span> <span class="st">&quot;phosphorous&quot;</span><span class="ot">,</span>
         tiles <span class="ot">=</span> <span class="ot">{</span><span class="st">&quot;final.png&quot;</span><span class="ot">},</span>
@@ -173,39 +170,39 @@ code > span.er { font-weight: bold; }
 <span class="ot">)</span>
 
 minetest<span class="ot">.</span>register_abm<span class="ot">({</span>
-    nodenames <span class="ot">=</span> <span class="ot">{</span><span class="st">&quot;mymod:phos_final&quot;</span><span class="ot">},</span>
+    nodenames <span class="ot">=</span> <span class="ot">{</span><span class="st">&quot;mymodule:phos_final&quot;</span><span class="ot">},</span>
     interval <span class="ot">=</span> <span class="dv">10</span><span class="ot">,</span>
     chance <span class="ot">=</span> <span class="dv">1</span><span class="ot">,</span>
     action <span class="ot">=</span> <span class="kw">function</span><span class="ot">(</span>pos<span class="ot">)</span>
         minetest<span class="ot">.</span>add_node<span class="ot">(</span>pos<span class="ot">,</span> <span class="ot">{</span>name<span class="ot">=</span><span class="st">&quot;fire:basic_flame&quot;</span><span class="ot">})</span>
     <span class="kw">end</span><span class="ot">,</span>
-<span class="ot">})</span></code></pre>
+<span class="ot">})</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><p>Press escape and choose <em>Exit to Menu</em> to leave the game and return to the menu.</p></li>
 <li><p>The module is already active, so simply join the game again and add more of he custom block.</p></li>
 </ol>
-<h2 id="make-it-count"><span class="header-section-number">3.4</span> Make it Count</h2>
+<h2 id="make-it-count">Make it Count</h2>
 <ol start="0" style="list-style-type: decimal">
-<li><p>Edit the <code>mymodule/init.lua</code> file again. Copy and paste the entry for the node three times, rename the nodes to <code>mymod:phos_1</code> to <code>mymod:phos_3</code>.</p></li>
+<li><p>Edit the <code>mymodule/init.lua</code> file again. Copy and paste the entry for the node three times, rename the nodes to <code>mymodule:phos_1</code> to <code>mymodule:phos_3</code>.</p></li>
 <li><p>Edit the tiles to refer to images <code>1.png</code> to <code>3.png</code>.</p></li>
 <li><p>Copy the PNG files to the textures directory:</p></li>
 </ol>
-<pre><code>    cp ~/Desktop/1.png mymod/textures/
-    cp ~/Desktop/2.png mymod/textures/
-    cp ~/Desktop/3.png mymod/textures/</code></pre>
+<pre><code>    cp ~/Desktop/1.png mymodule/textures/
+    cp ~/Desktop/2.png mymodule/textures/
+    cp ~/Desktop/3.png mymodule/textures/</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Copy the <code>register_abs</code> block three times, modify the nodenames for each to refer to the node names from step 0.</p></li>
-<li><p>Modify the <code>fire:basic_flame</code> entry for each of the new blocks and instead have them change into <code>mymod:phos_2</code>, <code>mymod:phos_1</code>, and <code>mymod:phos_final</code>. Be sure to edit the description so it's easier to find the blocks in creative mode.</p></li>
+<li><p>Modify the <code>fire:basic_flame</code> entry for each of the new blocks and instead have them change into <code>mymodule:phos_2</code>, <code>mymodule:phos_1</code>, and <code>mymodule:phos_final</code>. Be sure to edit the description so it's easier to find the blocks in creative mode.</p></li>
 <li><p>Reload the module, and this time add block three to the world and see it count down.</p></li>
 </ol>
-<h1 id="troubleshooting-and-errors"><span class="header-section-number">4</span> Troubleshooting and Errors</h1>
-<h2 id="place-content_ignore"><span class="header-section-number">4.1</span> Place <code>CONTENT_IGNORE</code></h2>
+<h1 id="troubleshooting-and-errors">Troubleshooting and Errors</h1>
+<h2 id="place-content_ignore">Place <code>CONTENT_IGNORE</code></h2>
 <p>If you mistype the name of the module or the node, you may see an error that looks like the following:</p>
 <pre><code>    2017-10-16 20:52:12: ERROR[Server]: Map::setNode(): Not allowing to place CONTENT_IGNORE while trying to replace &quot;mine:phos_1&quot; at (37,22,36) (block (2,1,2))</code></pre>
-<h2 id="module-name-must-match"><span class="header-section-number">4.2</span> Module name must match</h2>
+<h2 id="module-name-must-match">Module name must match</h2>
 <p>The prefixes used in the node name must be the same as the directory in which the module resides. You may see an error like the following: ~<sub>~</sub> 2017-10-16 22:27:17: ERROR[Main]: ModError: Failed to load and run script from /home/stephen/minetest/bin/../mods/mine/init.lua: 2017-10-16 22:27:17: ERROR[Main]: ...me/stephen/minetest/bin/../builtin/game/register.lua:62: Name wrong:phos_final does not follow naming conventions: &quot;mine:&quot; or &quot;:&quot; prefix required 2017-10-16 22:27:17: ERROR[Main]: stack traceback: 2017-10-16 22:27:17: ERROR[Main]: [C]: in function 'error' 2017-10-16 22:27:17: ERROR[Main]: ...me/stephen/minetest/bin/../builtin/game/register.lua:62: in function 'check_modname_prefix' 2017-10-16 22:27:17: ERROR[Main]: ...me/stephen/minetest/bin/../builtin/game/register.lua:110: in function 'register_item' 2017-10-16 22:27:17: ERROR[Main]: ...me/stephen/minetest/bin/../builtin/game/register.lua:177: in function 'register_node' 2017-10-16 22:27:17: ERROR[Main]: /home/stephen/minetest/bin/../mods/mine/init.lua:2: in main chunk 2017-10-16 22:27:17: ERROR[Main]: Check debug.txt for details. ~<sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></p>
 <p>Make sure the node name prefix matches the directory name. In the stack trace above, the <code>wrong</code> should be <code>mine</code>. The timestamp that reads <code>2017-10-16 22:27:17</code> in the above output contains the correct directory name and timestamp <code>2017-10-16 22:27:17</code> contains both the incorrect and the correct name.</p>
-<h1 id="conclusion"><span class="header-section-number">5</span> Conclusion</h1>
+<h1 id="conclusion">Conclusion</h1>
 <p>We created very simple graphics and placed them in the correct directory hierarchy and made a simple Lua script that drove everything. Then we loaded up the module in minetest. We were able to see that reloading the code to try new things only required leaving the world and re-entering.</p>
 </body>
 </html>
