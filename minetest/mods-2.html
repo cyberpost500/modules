@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Minetest Mods</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Minetest Mods</h1>
+</div>
+<h1 id="skillsconcepts">Skills/Concepts</h1>
+<p>This module guides students through creating a mod for a Minetest tool. It will cover some Lua scripting using the Minetest Application Programming Interface (API).</p>
+<p>The following concepts will be touched upon in this module:</p>
+<ul>
+<li>console use</li>
+<li>basic usage of Minetest</li>
+<li>modding</li>
+</ul>
+<h2 id="console-use">Console Use</h2>
+<p>This module relies heavily on the command-line. You will be using a terminal emulator to execute the following commands.</p>
+<table style="width:81%;">
+<colgroup>
+<col width="27%" />
+<col width="52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cd</td>
+<td align="left">Change directory</td>
+</tr>
+<tr class="even">
+<td align="left">ls</td>
+<td align="left">List directory contents (whats inside)</td>
+</tr>
+<tr class="odd">
+<td align="left">subl</td>
+<td align="left">Sublime text editor</td>
+</tr>
+</tbody>
+</table>
+<h1 id="overview">Overview</h1>
+<p>Modules for Minetest require a specific directory hierarchy. The files consist of an entry-point script for initialization and supporting files. Generally the supporting files consist of additional scripts, PNG files, documentation, etc. Although Minetest is written in C++, the scripting language uses Lua. Minetest provides hooks for sophisticated eventing and other application programmer interfaces (APIs).</p>
+<p>Modules for Minetest require a specific directory hierarchy. The files consist of an entry-point script for initialization and supporting files. Generally the supporting files consist of additional scripts, PNG files, documentation, etc. Although Minetest is written in C++, the scripting language uses Lua. Minetest provides hooks for sophisticated eventing and other application programmer interfaces (APIs).</p>
+<p>We will be adding chat command to Minecraft which will trigger a change in gravity in the game. We will allow for the player to specify how much gravity they want with the command.</p>
+<h1 id="process">Process</h1>
+<h2 id="create-the-base-module">Create the Base Module</h2>
+<p>The commands in this section should be executed from a terminal in the <code>minetest/mods</code> directory.</p>
+<ol start="0" style="list-style-type: decimal">
+<li><p>Create a directory to hold the module.</p>
+<p>mkdir lesson_2</p></li>
+<li><p>Create the entry-point script, <code>lesson_2/init.lua</code>, and put the following text in it:</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode lua"><code class="sourceCode lua">minetest<span class="ot">.</span>register_chatcommand<span class="ot">(</span><span class="st">&quot;lesson_2:antigravity&quot;</span><span class="ot">,</span>
+    <span class="ot">{</span>
+        params <span class="ot">=</span> <span class="st">&quot;&quot;</span><span class="ot">,</span>
+        description <span class="ot">=</span> <span class="st">&quot;Lesson 2: Antigravity enabler&quot;</span><span class="ot">,</span>
+        func <span class="ot">=</span> <span class="kw">function</span><span class="ot">(</span>name<span class="ot">,</span> param<span class="ot">)</span>
+                <span class="kw">local</span> player <span class="ot">=</span> minetest<span class="ot">.</span>get_player_by_name<span class="ot">(</span>name<span class="ot">)</span>
+                <span class="kw">if</span> <span class="kw">not</span> player <span class="kw">then</span>
+                  <span class="kw">return</span> <span class="kw">false</span><span class="ot">,</span> <span class="st">&quot;Player not found&quot;</span>
+                <span class="kw">end</span>
+                player:set_physics_override<span class="ot">(</span>
+                <span class="ot">{</span>
+                  gravity <span class="ot">=</span> <span class="dv">0.2</span> <span class="co">-- set gravity to 20% of its original value</span>
+                                <span class="co">-- (0.2 * 9.81)</span>
+                <span class="ot">})</span>
+        <span class="kw">end</span>
+    <span class="ot">})</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Run the game, create a new Local Game.</p></li>
+<li><p>Configure the new local game to enable the custom module.</p></li>
+<li><p>Enter the game (in creative mode).</p></li>
+<li><p>Type <code>/antigravity</code> and press Enter.</p></li>
+<li><p>Jump.</p></li>
+</ol>
+<h2 id="make-it-configurable">Make it Configurable</h2>
+<p>Alright, we can lower gravity and jump like Superman... but what if we get bored of 20% gravity? We would have to quite the game, modify gravity in the 'init.lua' script to a new value. Lets modify the script so we can change the value of gravity in-game!</p>
+<ol start="0" style="list-style-type: decimal">
+<li>Edit the <code>lesson_2/init.lua</code> file and put the following in it:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode lua"><code class="sourceCode lua">minetest<span class="ot">.</span>register_chatcommand<span class="ot">(</span><span class="st">&quot;lesson_2:antigravity&quot;</span><span class="ot">,</span>
+    <span class="ot">{</span>
+        params <span class="ot">=</span> <span class="st">&quot;&lt;percent&gt;&quot;</span><span class="ot">,</span>
+        description <span class="ot">=</span> <span class="st">&quot;Lesson 2: Antigravity enabler&quot;</span><span class="ot">,</span>
+        func <span class="ot">=</span> <span class="kw">function</span><span class="ot">(</span>name<span class="ot">,</span> param<span class="ot">)</span>
+                <span class="kw">local</span> player <span class="ot">=</span> minetest<span class="ot">.</span>get_player_by_name<span class="ot">(</span>name<span class="ot">)</span>
+                <span class="kw">if</span> <span class="kw">not</span> player <span class="kw">then</span>
+                  <span class="kw">return</span> <span class="kw">false</span><span class="ot">,</span> <span class="st">&quot;Player not found&quot;</span>
+                <span class="kw">end</span>
+                player:set_physics_override<span class="ot">(</span>
+                <span class="ot">{</span>
+                  gravity <span class="ot">=</span> param <span class="co">-- set gravity to &#39;param&#39;% of its original value</span>
+                                  <span class="co">-- (&#39;param&#39; * 9.81)</span>
+                <span class="ot">})</span>
+        <span class="kw">end</span>
+    <span class="ot">})</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li><p>Run the game, create a new Local Game.</p></li>
+<li><p>Configure the new local game to enable the custom module.</p></li>
+<li><p>Enter the game (in creative mode).</p></li>
+<li><p>Type <code>/antigravity 20</code> and press Enter.</p></li>
+<li><p>Jump.</p></li>
+<li><p>Uh oh...</p></li>
+</ol>
+<h2 id="what-went-wrong">What Went Wrong?!?!</h2>
+<p>We tried to jump but barely left the ground, what happened??? Take a few minutes and see if you can figure it out before we fix the mistake.</p>
+<p>The problem is with our math. We want the player to what percent of gravity they would like to experience. However, the number the player provides is not a percent but the multipler of gravity. By typing in '/antigravity 20' we actually increased gravity by 20x.</p>
+<p>To make this into a percent, we need to divide the number the player provides by '100'. Make the following modification to the script to fix the problem:</p>
+<ol start="0" style="list-style-type: decimal">
+<li>Edit the <code>lesson_2/init.lua</code> file and put the following in it:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode lua"><code class="sourceCode lua">minetest<span class="ot">.</span>register_chatcommand<span class="ot">(</span><span class="st">&quot;lesson_2:antigravity&quot;</span><span class="ot">,</span>
+    <span class="ot">{</span>
+        params <span class="ot">=</span> <span class="st">&quot;&lt;percent&gt;&quot;</span><span class="ot">,</span>
+        description <span class="ot">=</span> <span class="st">&quot;Lesson 2: Antigravity enabler&quot;</span><span class="ot">,</span>
+        func <span class="ot">=</span> <span class="kw">function</span><span class="ot">(</span>name<span class="ot">,</span> param<span class="ot">)</span>
+                <span class="kw">local</span> player <span class="ot">=</span> minetest<span class="ot">.</span>get_player_by_name<span class="ot">(</span>name<span class="ot">)</span>
+                <span class="kw">if</span> <span class="kw">not</span> player <span class="kw">then</span>
+                  <span class="kw">return</span> <span class="kw">false</span><span class="ot">,</span> <span class="st">&quot;Player not found&quot;</span>
+                <span class="kw">end</span>
+                player:set_physics_override<span class="ot">(</span>
+                <span class="ot">{</span>
+                  gravity <span class="ot">=</span> param <span class="ot">/</span> <span class="dv">100</span> <span class="co">-- set gravity to &#39;param&#39;% of its original value</span>
+                                        <span class="co">-- (&#39;param&#39; * 9.81)</span>
+                <span class="ot">})</span>
+        <span class="kw">end</span>
+    <span class="ot">})</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li><p>Run the game, create a new Local Game.</p></li>
+<li><p>Configure the new local game to enable the custom module.</p></li>
+<li><p>Enter the game (in creative mode).</p></li>
+<li><p>Type <code>/antigravity 20</code> and press Enter.</p></li>
+<li><p>Jump.</p></li>
+</ol>
+<h1 id="conclusion">Conclusion</h1>
+<p>First, we created very simple player modification to change the gravity. We accomplished this by using the <code>minetest.register_chatcommand()</code> API function to create a new chat command and define what happens when it is envoked. The first iteration of our script had a static modifier to the gravity that could not be changed in game.</p>
+<p>The second iteration of our script allowed the player to specify the desired amount of gravity in game by providing a number after the command (<code>/antigravity 20</code>). While this modified the gravity, it did not decrease it like we expected.</p>
+<p>After reviewing the code, it became apparent we were multipying gravity by the number provided by the user instead of using the number as a percent. We were able to fix the code to convert the user provided number into a percent by dividing it by <code>100</code>.</p>
+</body>
+</html>
