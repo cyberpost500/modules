@@ -114,7 +114,7 @@ The commands in this section should be executed from a terminal in the
    text in it:
 
 ~~~~ {.lua}
-minetest.register_node("mymod:phos_final",
+minetest.register_node("mymodule:phos_final",
     {
         description = "phosphorous",
         tiles = {"final.png"},
@@ -146,7 +146,7 @@ Make it Burn
 0. Edit the `mymodule/init.lua` file and put the following in it:
 
 ~~~~ {.lua}
-minetest.register_node("mymod:phos_final",
+minetest.register_node("mymodule:phos_final",
     {
         description = "phosphorous",
         tiles = {"final.png"},
@@ -156,7 +156,7 @@ minetest.register_node("mymod:phos_final",
 )
 
 minetest.register_abm({
-    nodenames = {"mymod:phos_final"},
+    nodenames = {"mymodule:phos_final"},
     interval = 10,
     chance = 1,
     action = function(pos)
@@ -176,24 +176,24 @@ Make it Count
 -------------
 
 0. Edit the `mymodule/init.lua` file again.  Copy and paste the entry for the
-   node three times, rename the nodes to `mymod:phos_1` to `mymod:phos_3`.
+   node three times, rename the nodes to `mymodule:phos_1` to `mymodule:phos_3`.
 
 1. Edit the tiles to refer to images `1.png` to `3.png`.
 
 2. Copy the PNG files to the textures directory:
 
 ~~~~
-    cp ~/Desktop/1.png mymod/textures/
-    cp ~/Desktop/2.png mymod/textures/
-    cp ~/Desktop/3.png mymod/textures/
+    cp ~/Desktop/1.png mymodule/textures/
+    cp ~/Desktop/2.png mymodule/textures/
+    cp ~/Desktop/3.png mymodule/textures/
 ~~~~~~~~~~~~~~~~
 
 3. Copy the `register_abs` block three times, modify the  nodenames for each to
    refer to the node names from step 0.
 
 4. Modify the `fire:basic_flame` entry for each of the new blocks and instead
-   have them change into `mymod:phos_2`, `mymod:phos_1`, and
-`mymod:phos_final`.  Be sure to edit the description so it's easier to find the
+   have them change into `mymodule:phos_2`, `mymodule:phos_1`, and
+`mymodule:phos_final`.  Be sure to edit the description so it's easier to find the
 blocks in creative mode.
 
 5. Reload the module, and this time add block three to the world and see it
