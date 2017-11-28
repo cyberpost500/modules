@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Minetest Mods</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="/modules/styles.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Minetest Mods</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#skillsconcepts"><span class="toc-section-number">1</span> Skills/Concepts</a><ul>
+<li><a href="#console-use"><span class="toc-section-number">1.1</span> Console Use</a></li>
+</ul></li>
+<li><a href="#overview"><span class="toc-section-number">2</span> Overview</a></li>
+<li><a href="#interpreted-vs-compiled-languages"><span class="toc-section-number">3</span> Interpreted vs Compiled Languages</a></li>
+<li><a href="#process"><span class="toc-section-number">4</span> Process</a><ul>
+<li><a href="#install-lua-interpreter"><span class="toc-section-number">4.1</span> Install Lua Interpreter</a></li>
+<li><a href="#printing"><span class="toc-section-number">4.2</span> Printing</a></li>
+<li><a href="#variables"><span class="toc-section-number">4.3</span> Variables</a></li>
+<li><a href="#types"><span class="toc-section-number">4.4</span> Types</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="skillsconcepts"><span class="header-section-number">1</span> Skills/Concepts</h1>
+<p>In this module, we'll start learning some programming terminology and concepts. Up to this point, we've done several copy-paste examples for our Minetest mods (which are written in Lua) but haven't really explained how it works in detail.</p>
+<p>In this lesson, we'll take a step back and explain some basic programming concepts and terminology so you're better equipped to write mods and other programs.</p>
+<p>The following concepts will be touched upon in this module:</p>
+<ol style="list-style-type: decimal">
+<li>Console use</li>
+<li>Installing Lua 5.1 interpreter</li>
+<li>Basic Lua and Console Interaction</li>
+</ol>
+<ul>
+<li>Printing in Lua</li>
+<li>Variables and Types</li>
+<li>Mathematical Operators</li>
+<li>User Input</li>
+</ul>
+<h2 id="console-use"><span class="header-section-number">1.1</span> Console Use</h2>
+<p>This module relies heavily on the command-line. You will be using a terminal emulator to execute the following commands.</p>
+<table style="width:81%;">
+<colgroup>
+<col width="27%" />
+<col width="52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cd</td>
+<td align="left">Change directory</td>
+</tr>
+<tr class="even">
+<td align="left">ls</td>
+<td align="left">List directory contents (whats inside)</td>
+</tr>
+<tr class="odd">
+<td align="left">subl</td>
+<td align="left">Sublime text editor</td>
+</tr>
+<tr class="even">
+<td align="left">lua</td>
+<td align="left">Lua interpreter</td>
+</tr>
+</tbody>
+</table>
+<h1 id="overview"><span class="header-section-number">2</span> Overview</h1>
+<p>First let's watch a video about why we should learn programming:</p>
+<p><a href="https://www.youtube.com/watch?v=2PwVNrqrMww">Video: Why we should learn programming</a></p>
+<p>Programming continues to become one of the most valuable skill sets of the future. Learning how to program will give you an advantage, even if you decide to not actually become a software developer in the future.</p>
+<p>For example, say you went into a law enforcement career in the future. For each of your cases, you may be required provide a summary for each of the cases you work on. Now, lets say your supervisor asks you to provide all the case summaries you've been working on during the year, by the end of the day. Over a year, it's possible you've worked on hundreds of cases! If you know how to program, you could write a script that grabs the summaries from all those reports and copies them into a single document for your boss. Without programming, you might have to spend a day or two copying and pasting.</p>
+<p>In this module, we'll start with some of the basics of programming using Lua scripting language.</p>
+<h1 id="interpreted-vs-compiled-languages"><span class="header-section-number">3</span> Interpreted vs Compiled Languages</h1>
+<p>In the world of programming, there are two basic types of programming languages; interpreted and compiled.</p>
+<p>Compiled Languages: A language where, when the program is compiled, is expressed in the instructions of the target machine. Usually, compiled languages are used when computing resources are a factor (memory, execution time, etc...)</p>
+<p>Benefits:</p>
+<ul>
+<li>Faster performance by directly using the native code of the target machine</li>
+<li>Opportunity to apply quite powerful optimizations during the compile stage</li>
+</ul>
+<p>Interpreted Languages: The program instructions are not directly executed by the target machine, but instead read and executed by some other program (which normally is written in the language of the native machine). Usually, interpreted languages are used for proto-typing and quick development and where computing resources are not as much of a factor.</p>
+<p>Benefits:</p>
+<ul>
+<li>Scripts can be run cross-platform without needing to recompile</li>
+<li>Can make on-the-fly changes to scripts.</li>
+</ul>
+<p>Lua is an interpreted language. In this lesson, we will provide instructions to the interactive interpretor to be executed.</p>
+<h1 id="process"><span class="header-section-number">4</span> Process</h1>
+<h2 id="install-lua-interpreter"><span class="header-section-number">4.1</span> Install Lua Interpreter</h2>
+<p>First, we'll install the Lua 5.1 Interpreter on your computer. The Lua interpreter will execute the instructions we write later in the module.</p>
+<ol start="0" style="list-style-type: decimal">
+<li><p>Open a terminal.</p></li>
+<li><p>Enter the following command:</p></li>
+</ol>
+<p><code>sudo apt-get install lua5.1 lua5.1-doc</code></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Enter password when prompted and wait for Lua to install.</li>
+</ol>
+<h2 id="printing"><span class="header-section-number">4.2</span> Printing</h2>
+<p>One of the first things you'll be taught when learning how to program is how to print. Printing is usually used for debugging but is also useful when first learning a language.</p>
+<ol start="0" style="list-style-type: decimal">
+<li>In a terminal, start the interactive Lua interpretor by entering the following command:</li>
+</ol>
+<p><code>lua</code></p>
+<p>This should drop you into the interactive interpretor.</p>
+<ol style="list-style-type: decimal">
+<li>Type the following command:</li>
+</ol>
+<p><code>print(&quot;Hello World&quot;)</code></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>After pressing <code>Enter</code>, &quot;Hello World&quot; should have been printed to the screen.</p></li>
+<li><p>Try the following command:</p></li>
+</ol>
+<p><code>print(1+2)</code></p>
+<ol start="4" style="list-style-type: decimal">
+<li>The mathematical statement should be resolved to print <code>3</code>.</li>
+</ol>
+<h2 id="variables"><span class="header-section-number">4.3</span> Variables</h2>
+<p>In programming, variables are used to store information that can be referenced and used in other parts of the program.</p>
+<ol start="0" style="list-style-type: decimal">
+<li>Lets set a variable. Enter the following command in the Lua interactive interpretor:</li>
+</ol>
+<p><code>a = &quot;Hello World&quot;</code></p>
+<ol style="list-style-type: decimal">
+<li>We assigned the string &quot;Hello World&quot; to the variable <code>a</code>. We can now use the variable name to access the string. In your interpretor, enter the following command:</li>
+</ol>
+<p><code>print(a)</code></p>
+<p>The string &quot;Hello World&quot; should have been printed to the screen.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Try reassigning the variable <code>a</code> to another string and printing it. What happens?</li>
+</ol>
+<h2 id="types"><span class="header-section-number">4.4</span> Types</h2>
+<p>There are eight basic types in Lua: nil, boolean, number, string, userdata, function, thread, and table. The type function gives the type name of a given value:</p>
+<div class="sourceCode"><pre class="sourceCode lua"><code class="sourceCode lua">    <span class="fu">print</span><span class="ot">(</span><span class="fu">type</span><span class="ot">(</span><span class="st">&quot;Hello world&quot;</span><span class="ot">))</span>  <span class="co">--&gt; string</span>
+    <span class="fu">print</span><span class="ot">(</span><span class="fu">type</span><span class="ot">(</span><span class="dv">10.4</span><span class="ot">*</span><span class="dv">3</span><span class="ot">))</span>         <span class="co">--&gt; number</span>
+    <span class="fu">print</span><span class="ot">(</span><span class="fu">type</span><span class="ot">(</span><span class="fu">print</span><span class="ot">))</span>          <span class="co">--&gt; function</span>
+    <span class="fu">print</span><span class="ot">(</span><span class="fu">type</span><span class="ot">(</span><span class="fu">type</span><span class="ot">))</span>           <span class="co">--&gt; function</span>
+    <span class="fu">print</span><span class="ot">(</span><span class="fu">type</span><span class="ot">(</span><span class="kw">true</span><span class="ot">))</span>           <span class="co">--&gt; boolean</span>
+    <span class="fu">print</span><span class="ot">(</span><span class="fu">type</span><span class="ot">(</span><span class="kw">nil</span><span class="ot">))</span>            <span class="co">--&gt; nil</span>
+    <span class="fu">print</span><span class="ot">(</span><span class="fu">type</span><span class="ot">(</span><span class="fu">type</span><span class="ot">(</span>X<span class="ot">)))</span>        <span class="co">--&gt; string</span></code></pre></div>
+<ol start="0" style="list-style-type: decimal">
+<li>Try entering the commands in the table above to see their output.</li>
+</ol>
+</body>
+</html>
