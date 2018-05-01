@@ -65,7 +65,7 @@
 </ol>
 <pre><code>ant run</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Move the position where the circle is drawn:</li>
+<li>Move the position where the circle is drawn by editing <code>src/io/github/cyberpost500/hungryshapes/MainWindow.java</code>:</li>
 </ol>
 <pre><code>                 //drawArc(x, y, width, height, startAngle, arcAngle◀)
                  g.drawArc(100, 100, 50, 50, 0, 360);◀</code></pre>
@@ -82,35 +82,24 @@
 <p>You don't need to do it in separate steps like we've been doing, you can let the dependencies for the run target take care of it for you.</p>
 <pre><code>ant run</code></pre>
 <ol start="6" style="list-style-type: decimal">
-<li>Save your changes to a new branch (so we can re-use your changes later)</li>
-</ol>
-<pre><code>git checkout -b mine
-git commit -a</code></pre>
-<p>Be sure to save your commit message, otherwise it will not commit the changes.</p>
-<ol start="7" style="list-style-type: decimal">
-<li>Switch back to master before continuing</li>
+<li><p>Revert the changes back</p>
+<p>git checkout src/io/github/cyberpost500/hungryshapes/MainWindow.java</p></li>
+<li><p>Switch back to master before continuing</p></li>
 </ol>
 <pre><code>git checkout master
 </code></pre>
-<ol start="8" style="list-style-type: decimal">
-<li>Confirm your changes are still there</li>
-</ol>
-<pre><code>git diff master..mine</code></pre>
-<ol start="9" style="list-style-type: decimal">
-<li>View the changes via a difftool</li>
-</ol>
-<pre><code>git difftool master..mine</code></pre>
 <h2 id="conclusion"><span class="header-section-number">3.3</span> Conclusion</h2>
 <p>Now the program displays a circle and optionally any other shapes you may have put into it. You may notice the method and argument names are a little different than they were in Python. If the documentation isn't clear enough or is too confusing, you can always google for a stack overflow or stack exchange article with an example of the API usage.</p>
 <h1 id="shape-classes"><span class="header-section-number">4</span> Shape Classes</h1>
 <h2 id="background-1"><span class="header-section-number">4.1</span> Background</h2>
-<p>We'll be using a common base class for our shapes again. This will provide a convenient way to re-use code we've already written for accomplishing very similar tasks. But one new facet we'll be exploring is something called an interface. An interface is a sort of contractual obligation that any class &quot;implementing&quot; that interface must adhere. Basically, every method called out in an interface has to be written into any class that implements that interface.</p>
+<p>We'll be using a common base class for our shapes again. This will provide a convenient way to re-use code we've already written for accomplishing very similar tasks. But one new facet we'll be exploring is something called an interface. An interface is a sort of contractual obligation that any class &quot;implementing&quot; that interface must adhere to. Basically, every method called out in an interface has to be written into any class that implements that interface.</p>
 <p>We'll be using an interface as the most abstract representation of our shape, and then we'll create classes that implement this interface. Later on we'll extend those child classes with more children.</p>
 <h2 id="reviewrunmodify-the-code-1"><span class="header-section-number">4.2</span> Review/Run/Modify the Code</h2>
 <ol start="0" style="list-style-type: decimal">
-<li>Check out the appropriate branch</li>
+<li>Check out the appropriate branch, and clean the build environmentof any stray files from the previous branch.</li>
 </ol>
-<pre><code>git checkout 06_shapes</code></pre>
+<pre><code>git checkout 06_shapes
+ant clean</code></pre>
 <ol style="list-style-type: decimal">
 <li>Review the code</li>
 </ol>
@@ -121,7 +110,7 @@ git commit -a</code></pre>
 <li><code>./src/io/github/cyberpost500/hungryshapes/MainWindow.java</code></li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Add another circle to the window</p></li>
+<li><p>Add another circle to the window by editing the <code>MainWindow</code> class, specifically.</p></li>
 <li><p>Save, build, and run</p></li>
 </ol>
 <pre><code>ant run</code></pre>
@@ -148,7 +137,7 @@ git commit -a</code></pre>
 </ul>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Switch to the <code>08_bouncing_shape</code> branch</p></li>
-<li><p>Create a new shape using the custom code you created earlier as the <code>draw</code> method in a new shape class that extends the <code>BouncingShape</code></p></li>
+<li><p>Create a new shape by creating a new class that extends the <code>BouncingShape</code></p></li>
 </ol>
 <ul>
 <li>create a new file for the shape</li>
