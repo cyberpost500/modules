@@ -60,7 +60,8 @@ ant build
 ant run
 ~~~~~~~~~~~~~~~~~~~~
 
-3.  Move the position where the circle is drawn:
+3.  Move the position where the circle is drawn by editing
+    `src/io/github/cyberpost500/hungryshapes/MainWindow.java`:
 
 ~~~~
                  //drawArc(x, y, width, height, startAngle, arcAngle◀)
@@ -88,32 +89,15 @@ the dependencies for the run target take care of it for you.
 ant run
 ~~~~~~~~~~~~~~~~~~~~
 
-6.  Save your changes to a new branch (so we can re-use your changes later)
+6.  Revert the changes back
 
-~~~~
-git checkout -b mine
-git commit -a
-~~~~~~~~~~~~~~~~~~~~
-
-Be sure to save your commit message, otherwise it will not commit the changes.
+    git checkout src/io/github/cyberpost500/hungryshapes/MainWindow.java
 
 7.  Switch back to master before continuing
 
 ~~~~
 git checkout master
 
-~~~~~~~~~~~~~~~~~~~~
-
-8.  Confirm your changes are still there
-
-~~~~
-git diff master..mine
-~~~~~~~~~~~~~~~~~~~~
-
-9.  View the changes via a difftool
-
-~~~~
-git difftool master..mine
 ~~~~~~~~~~~~~~~~~~~~
 
 Conclusion
@@ -134,8 +118,8 @@ We'll be using a common base class for our shapes again.  This will provide a
 convenient way to re-use code we've already written for accomplishing very
 similar tasks.  But one new facet we'll be exploring is something called an
 interface.  An interface is a sort of contractual obligation that any class
-"implementing" that interface must adhere.  Basically, every method called out
-in an interface has to be written into any class that implements that
+"implementing" that interface must adhere to.  Basically, every method called
+out in an interface has to be written into any class that implements that
 interface.
 
 We'll be using an interface as the most abstract representation of our shape,
@@ -144,10 +128,12 @@ extend those child classes with more children.
 
 Review/Run/Modify the Code
 -----------
-0.  Check out the appropriate branch
+0.  Check out the appropriate branch, and clean the build environmentof any
+    stray files from the previous branch.
 
 ~~~~
 git checkout 06_shapes
+ant clean
 ~~~~~~~~~~~~~~~~~~~~
 
 1.  Review the code
@@ -159,7 +145,8 @@ version of the `MainWindow` class.
 * `./src/io/github/cyberpost500/hungryshapes/shapes/Circle.java`
 * `./src/io/github/cyberpost500/hungryshapes/MainWindow.java`
 
-2.  Add another circle to the window
+2.  Add another circle to the window by editing the `MainWindow` class,
+    specifically.
 
 3.  Save, build, and run
 
@@ -205,8 +192,7 @@ version of the `MainWindow` class.
 
 2.  Switch to the `08_bouncing_shape` branch
 
-3.  Create a new shape using the custom code you created earlier as the `draw`
-    method in a new shape class that extends the `BouncingShape`
+3.  Create a new shape by creating a new class that extends the `BouncingShape`
 
 * create a new file for the shape
 * create a `public class` that `extends BouncingShape`
