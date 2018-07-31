@@ -1,0 +1,108 @@
+<!-- Cyber Post 500
+     Basic Web Development
+     Activity 3 - Event-Driven JavaScript
+     by Toni York, May 2018                -->
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>3 - Event-Driven JavaScript</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <!-- use the oncontextmenu attribute to turn off default right click behavior -->
+  <body oncontextmenu="return false;">
+    
+    <h3>JavaScript Interactivity Example</h3>
+
+    <svg width="600"
+         height="350"
+         xmlns="http://www.w3.org/2000/svg"
+         id="MyCanvas"
+         onload="initialize(evt)">
+
+      <!-- outline the canvas area -->
+      <rect x="0" y="0" width="600" height="350" fill="white" stroke="black"></rect>
+
+      <!-- define the stamp shapes without drawing anything on the canvas yet -->
+      <defs>
+
+        <g id="MyStamp">
+          <circle r="15" fill="red"></circle>
+          <circle r="12" fill="white"></circle>
+          <circle r="9" fill="red"></circle>
+          <circle r="6" fill="white"></circle>
+          <circle r="3" fill="red"></circle>
+        </g>
+
+        <g id="YourStamp">
+          <!-- Make your own SVG drawing here! -->
+        </g>
+
+      </defs>
+
+      <!-- code for event-driven listening and handling -->
+      <script type="text/javascript">
+
+        // set up event listening
+        function initialize(event) {
+
+          // tell the console what's happening (for debugging)
+          console.log("Initializing...");
+
+          // add the event listener and corresponding handler function for mouse clicks
+          document.getElementById("MyCanvas").addEventListener("mouseup", mouseHandler);
+        }
+
+        // handler for mouse clicks
+        function mouseHandler(event) {
+
+          // find the click event's coordinates inside MyCanvas
+          var coords = document.getElementById("MyCanvas").getBoundingClientRect();
+          var xcoord = event.clientX - coords.left;
+          var ycoord = event.clientY - coords.top;
+
+          // output these coordinates to the console (for debugging)
+          console.log(""); // a blank line to format the output nicely
+          console.log("x: " + xcoord + "     y: " + ycoord);
+
+          // code to handle left clicks
+          if (event.which == 1) {
+
+            // tell the console what's happening (for debugging)
+            console.log("Left click event!");
+
+            // make a new copy of MyStamp
+            var newShape;
+            newShape = document.createElementNS("http://www.w3.org/2000/svg", "use");
+            newShape.setAttribute("href", "#MyStamp");
+
+            // set its location to be the location of the click
+            newShape.setAttribute("x", xcoord.toString());
+            newShape.setAttribute("y", ycoord.toString());
+
+            // append the new shape to the drawing so it will appear
+            document.getElementById("MyCanvas").appendChild(newShape);
+          }
+
+          // code to handle right clicks
+          if (event.which == 3) {
+
+            // tell the console what's happening (for debugging)
+            console.log("Right click event!");
+
+            // Add your code here!
+            // HINT: Copy the left click code and modify it.
+          }
+        }
+
+      </script>
+
+    </svg>
+
+  </body>
+
+</html>
