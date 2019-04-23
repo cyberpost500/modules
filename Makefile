@@ -38,6 +38,7 @@ EVERYTHING:=index.html live-boot/live-boot.html live-boot/live-boot.pdf \
 	python-games/python-games-4.pdf python-games/python-games-4.html \
 	java/java.pdf java/java.html \
 	java/java-2.pdf java/java-2.html \
+	java/libgdx1.pdf java/libgdx1.html \
 	network/manual.pdf network/manual.html \
 	minetest/mods-1.pdf minetest/mods-1.html \
 	minetest/mods-2.pdf minetest/mods-2.html \
