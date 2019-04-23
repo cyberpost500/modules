@@ -1,0 +1,22 @@
+/*   Cyber Post 500
+     Basic Web Development
+     by Toni York, May 2018   */
+
+/* good color resource: http://www.color-hex.com/ */
+
+table {
+  background-color: #c0c0c0;
+  border-collapse: collapse;
+  border: 3px solid #012c57;
+  empty-cells: show;
+}
+
+td {
+  border: 1px solid #012c57;
+  width: 4em;
+  text-align: center;
+}
+
+#GoPale:hover {
+  fill-opacity: 0.5;
+}
