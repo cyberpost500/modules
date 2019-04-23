@@ -98,12 +98,12 @@ gdx-setup.jar                     100%[=========================================
 Projects* since we're only focusing on Java/Desktop, and so the download wont
 take as long.
 
-![LibGDX Project Generator Screenshot](libgdx.1.png)
+![LibGDX Project Generator Screenshot](images/libgdx.1.png)
 
 3. Click *Generate* and wait patiently for the downloading to finish.  You'll
    want to look for the "Done!" in the box below the generate button.
 
-![LibGDX Project Generator Screenshot - Done](libgdx.2.png)
+![LibGDX Project Generator Screenshot - Done](images/libgdx.2.png)
 
 
 4. Verify that your project will build and run by invoking the bundled
@@ -132,7 +132,7 @@ warning: [options] bootstrap class path not set in conjunction with -source 1.6
 Which may be obscured by the window that you really care about, that looks like
 this:
 
-![LibGDX Project - Successful build & run](libgdx.3.png)
+![LibGDX Project - Successful build & run](images/libgdx.3.png)
 
 Conclusion
 ----------
