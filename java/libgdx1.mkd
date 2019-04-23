@@ -12,6 +12,7 @@ game.  This will involve the following concepts:
 Software Development Kits (SDKs)
 -------------------------
 From [Wikipedia](https://en.wikipedia.org/wiki/Software_development_kit):
+
 > A software development kit (SDK or devkit) is typically a set of software
 > development tools that allows the creation of applications for a certain
 > software package, software framework, hardware platform, computer system,
